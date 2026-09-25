@@ -1,35 +1,17 @@
-> 历史文档：2026-09-20 审查确认本文含功能与兼容性过度声明。当前状态以 [审查报告](AUDIT_2026-09-20.md) 和 [第一阶段整改](PHASE1_REMEDIATION.md) 为准，本文保留作历史对照。
+# 开发指南
 
-# FastBatchPlot 开发者扩展指南
+需要 Windows、.NET SDK 8、ZWCAD 2026 SDK（ZwManaged.dll / ZwDatabaseMgd.dll）。设置 `ZWCAD2026_SDK` 或 MSBuild 属性 `ZWCADSdkPath`；本机默认 D:\ZWCAD2026。全解决方案还会编译 AutoCAD 项目，需要对应 SDK；仅开发中望可构建 ZWCAD 项目。
 
-## 1. 编译与构建
-系统基于 .NET SDK 8.0 构建，采用多目标框架编译体系：
-```bash
-cd "E:\366256\vibecoding\批打印-new"
-dotnet build FastBatchPlot.sln
+```powershell
+dotnet build src/FastBatchPlot.ZWCAD/FastBatchPlot.ZWCAD.csproj -c Release -p:ZWCADSdkPath='D:\ZWCAD2026'
+dotnet test src/FastBatchPlot.Tests/FastBatchPlot.Tests.csproj -c Release
+dotnet run --project src/FastBatchPlot.UiChecks/FastBatchPlot.UiChecks.csproj -c Release
+dotnet run --project src/FastBatchPlot.FrameworkChecks/FastBatchPlot.FrameworkChecks.csproj -c Release
+./deploy/Build-Release.ps1 -ZWCADSdkPath 'D:\ZWCAD2026'
 ```
 
-## 2. 运行单元测试
-```bash
-dotnet test src/FastBatchPlot.Tests/FastBatchPlot.Tests.csproj
-```
-测试集涵盖：
-- 标准与加长图幅自动识别
-- 空间分行聚类算法
-- 自然图号排序
-- 文件名占位符替换
-- PDF 合并与书签大纲生成
-- 目录 CSV 导出
+测试和假宿主 UI 不连接 CAD。新宿主能力需要在 CadBridge 定义接口，再实现原生适配；编译通过不等于原生兼容。
 
-## 3. 添加新的图纸幅面
-在 `src/FastBatchPlot.Core/Models/PaperSize.cs` 的 `StandardSizes` 列表中增加新的幅面定义：
-```csharp
-new PaperSize("A1+1/3", 1121, 594, true),
-```
-重新编译即可在全系统中生效。
+字段修复主要入口：Core/Templates/TitleTemplates.cs、ZWCAD/ZwCadAdapter.Templates.cs、UI/Views/TitleTemplateForm.cs。新增规则应覆盖歧义、邻字段和原配置保持不变的回归。先查原对象与变换，再改算法。
 
-## 4. 适配新版本 CAD 或新 CAD 平台 (如浩辰CAD/BricsCAD)
-只需在 `FastBatchPlot.CadBridge` 接口基础上新增适配项目，实现：
-1. `ICadHost`：实现实体遍历与屏幕定位；
-2. `ICadPlotter`：实现该平台下的原生打印引擎调用。
-上层核心算法与用户界面（UI）100% 完全复用。
+原生验证先核对实际加载 DLL 路径及 SHA256。新发布包的 NETLOAD 不能覆盖自动加载的旧 DLL，详见 [部署说明](PORTABLE_DEPLOYMENT.md)。结果须记录实际字段值、逐项比对、失败和限制，不能只记处理成功数。

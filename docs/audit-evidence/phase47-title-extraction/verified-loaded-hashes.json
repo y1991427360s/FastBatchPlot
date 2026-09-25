@@ -1,0 +1,17 @@
+[
+  {
+    "Path": "C:\\Users\\ys199\\AppData\\Local\\FastBatchPlot\\ZWCAD2026\\Contents\\FastBatchPlot.ZWCAD.dll",
+    "Hash": "4E26B2B8C6A61ED3F63F6ECD06D0677AAEF991493FD57F8635647D77A0B5212B",
+    "MatchesPackage": true
+  },
+  {
+    "Path": "C:\\Users\\ys199\\AppData\\Local\\FastBatchPlot\\ZWCAD2026\\Contents\\FastBatchPlot.CadBridge.dll",
+    "Hash": "5F80AABEED3F2B8B7DA884FBF47472AE8D9E3052104850462EC5CD8A8B930A5C",
+    "MatchesPackage": true
+  },
+  {
+    "Path": "C:\\Users\\ys199\\AppData\\Local\\FastBatchPlot\\ZWCAD2026\\Contents\\FastBatchPlot.Core.dll",
+    "Hash": "F1E80C9EE33A6775AF162B7546876739581132BF9343243FF87C78AA3EA354F1",
+    "MatchesPackage": true
+  }
+]
