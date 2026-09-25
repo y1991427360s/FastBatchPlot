@@ -1,0 +1,7 @@
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.Pmp.cs(21,20): warning CS8602: 解引用可能出现空引用。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\FastBatchPlot.Core.csproj::TargetFramework=netstandard2.0]
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.Pmp.cs(27,20): warning CS8602: 解引用可能出现空引用。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\FastBatchPlot.Core.csproj::TargetFramework=netstandard2.0]
+NET48_GENERATED_PDF_MEDIA_OK
+NET48_PDF_HISTORY_OK
+NET48_PDF_SCOPE_OK
+NET48_RASTER_VALIDATION_OK
+NET48_STAMP_AUTHORIZATION_OK; elapsedMs=3069

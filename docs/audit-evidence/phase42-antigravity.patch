@@ -1,0 +1,200 @@
+--- a/src/FastBatchPlot.CadBridge/CadPageConsistency.cs
++++ b/src/FastBatchPlot.CadBridge/CadPageConsistency.cs
+@@ -18,19 +18,41 @@
+             this.host=host;this.plotter=plotter;
+             snapshot=new BatchPlotRun(new[]{new BatchPage(frame,"")},config);
+-            sourceRevision=(host as ICadRevisionHost)?.GetSourceRevision(snapshot.Pages[0].Frame);
+-            resourceRevision=(plotter as ICadPlotResourceHost)?.GetPlotResourceRevision(snapshot.Config);
++            if (host is ICadRevisionHost revHost)
++            {
++                sourceRevision = revHost.GetSourceRevision(snapshot.Pages[0].Frame);
++                if (string.IsNullOrWhiteSpace(sourceRevision))
++                    throw new InvalidOperationException("CAD 宿主实现了版本接口但返回了空标记。");
++            }
++            if (plotter is ICadPlotResourceHost resHost)
++            {
++                resourceRevision = resHost.GetPlotResourceRevision(snapshot.Config);
++                if (string.IsNullOrWhiteSpace(resourceRevision))
++                    throw new InvalidOperationException("打印器实现了资源接口但返回了空标记。");
++            }
+         }
+
+         public void Verify()
+         {
+             try
+             {
+                 if(!ReferenceEquals(host,CadHostProvider.Host)||!ReferenceEquals(plotter,CadHostProvider.Plotter))
+                     throw new InvalidOperationException("CAD 宿主已切换。");
+-                if(sourceRevision!=null&&!string.Equals(sourceRevision,((ICadRevisionHost)host).GetSourceRevision(snapshot.Pages[0].Frame),StringComparison.Ordinal))
+-                    throw new InvalidOperationException("原图、外参会话或修改记录已变化。");
+-                if(resourceRevision!=null&&!string.Equals(resourceRevision,((ICadPlotResourceHost)plotter).GetPlotResourceRevision(snapshot.Config),StringComparison.Ordinal))
+-                    throw new InvalidOperationException("打印样式或设备配置已变化。");
++                if(sourceRevision!=null)
++                {
++                    var currentSource = ((ICadRevisionHost)host).GetSourceRevision(snapshot.Pages[0].Frame);
++                    if(string.IsNullOrWhiteSpace(currentSource))
++                        throw new InvalidOperationException("原图修订标记变为空。");
++                    if(!string.Equals(sourceRevision,currentSource,StringComparison.Ordinal))
++                        throw new InvalidOperationException("原图、外参会话或修改记录已变化。");
++                }
++                if(resourceRevision!=null)
++                {
++                    var currentResource = ((ICadPlotResourceHost)plotter).GetPlotResourceRevision(snapshot.Config);
++                    if(string.IsNullOrWhiteSpace(currentResource))
++                        throw new InvalidOperationException("打印样式或设备配置标记变为空。");
++                    if(!string.Equals(resourceRevision,currentResource,StringComparison.Ordinal))
++                        throw new InvalidOperationException("打印样式或设备配置已变化。");
++                }
+             }
+             catch(Exception ex)
+             {
+--- a/src/FastBatchPlot.UiChecks/PageConsistencyChecks.cs
++++ b/src/FastBatchPlot.UiChecks/PageConsistencyChecks.cs
+@@ -1,4 +1,7 @@
++using System;
++using System.Collections.Generic;
+ using FastBatchPlot.CadBridge;
++using FastBatchPlot.Core.Detection;
+ using FastBatchPlot.Core.Models;
+ using FastBatchPlot.Core.Tasks;
+ using FastBatchPlot.UI.Views;
+@@ -26,7 +29,138 @@
+             PumpUntil((System.Threading.Tasks.Task)Call(form,"RunPlotPages",run,new[]{frame},host,plotter)!);
+             Check(run.Pages[0].State==BatchPageState.Failed&&!run.CanMerge&&File.Exists(path),"未启用磁盘历史时也进行页后核验并保留不确定成果");
+             Check(run.Pages[0].Error.Contains("输出后来源核验失败")&&run.Pages[0].Error.Contains("模拟清理警告"),"页后失败保留原打印接口的清理警告");
++
++            foreach (var blank in new[] { (string?)null, "", "   " })
++            {
++                var blankHost = new ConsistencyRevisionHost { RevisionProvider = _ => blank };
++                bool hostConstructRejected = false;
++                try { new CadPageConsistency(blankHost, plotter, frame, config); }
++                catch (InvalidOperationException) { hostConstructRejected = true; }
++                Check(hostConstructRejected, $"宿主返回空标记({(blank == null ? "null" : blank.Length == 0 ? "空串" : "空白")})构造时拒绝");
++
++                var blankPlotter = new ConsistencyResourcePlotter { ResourceRevisionProvider = _ => blank };
++                bool plotterConstructRejected = false;
++                try { new CadPageConsistency(host, blankPlotter, frame, config); }
++                catch (InvalidOperationException) { plotterConstructRejected = true; }
++                Check(plotterConstructRejected, $"打印器返回空标记({(blank == null ? "null" : blank.Length == 0 ? "空串" : "空白")})构造时拒绝");
++            }
++
++            foreach (var blank in new[] { (string?)null, "", "   " })
++            {
++                var verifyBlankHost = new ConsistencyRevisionHost { RevisionProvider = _ => "valid-host-rev" };
++                CadHostProvider.Host = verifyBlankHost;
++                CadHostProvider.Plotter = plotter;
++                var verifyHostConsistency = new CadPageConsistency(verifyBlankHost, plotter, frame, config);
++                verifyBlankHost.RevisionProvider = _ => blank;
++                bool verifyHostBlankFailed = false;
++                try { verifyHostConsistency.Verify(); }
++                catch (InvalidOperationException ex)
++                {
++                    verifyHostBlankFailed = ex.Message.Contains("输出后来源核验失败") &&
++                                            ex.Message.Contains("已生成文件保留供检查，本页不记为成功");
++                }
++                Check(verifyHostBlankFailed, $"Verify 时宿主返回空标记({(blank == null ? "null" : blank.Length == 0 ? "空串" : "空白")})核验失败且提示保留文件");
++
++                var verifyBlankPlotter = new ConsistencyResourcePlotter { ResourceRevisionProvider = _ => "valid-plotter-res" };
++                CadHostProvider.Host = host;
++                CadHostProvider.Plotter = verifyBlankPlotter;
++                var verifyPlotterConsistency = new CadPageConsistency(host, verifyBlankPlotter, frame, config);
++                verifyBlankPlotter.ResourceRevisionProvider = _ => blank;
++                bool verifyPlotterBlankFailed = false;
++                try { verifyPlotterConsistency.Verify(); }
++                catch (InvalidOperationException ex)
++                {
++                    verifyPlotterBlankFailed = ex.Message.Contains("输出后来源核验失败") &&
++                                               ex.Message.Contains("已生成文件保留供检查，本页不记为成功");
++                }
++                Check(verifyPlotterBlankFailed, $"Verify 时打印器返回空标记({(blank == null ? "null" : blank.Length == 0 ? "空串" : "空白")})核验失败且提示保留文件");
++            }
++
++            var throwHost = new ConsistencyRevisionHost { RevisionProvider = _ => "init-host-rev" };
++            CadHostProvider.Host = throwHost;
++            CadHostProvider.Plotter = plotter;
++            var throwHostCheck = new CadPageConsistency(throwHost, plotter, frame, config);
++            throwHost.RevisionProvider = _ => throw new InvalidOperationException("宿主内部状态异常");
++            bool throwHostFailed = false;
++            try { throwHostCheck.Verify(); }
++            catch (InvalidOperationException ex)
++            {
++                throwHostFailed = ex.Message.Contains("输出后来源核验失败") &&
++                                  ex.Message.Contains("宿主内部状态异常") &&
++                                  ex.Message.Contains("已生成文件保留供检查，本页不记为成功");
++            }
++            Check(throwHostFailed, "Verify 时宿主接口抛错核验失败且保留清理提示与已有文件");
++
++            var throwPlotter = new ConsistencyResourcePlotter { ResourceRevisionProvider = _ => "init-plotter-res" };
++            CadHostProvider.Host = host;
++            CadHostProvider.Plotter = throwPlotter;
++            var throwPlotterCheck = new CadPageConsistency(host, throwPlotter, frame, config);
++            throwPlotter.ResourceRevisionProvider = _ => throw new InvalidOperationException("打印资源已被占用");
++            bool throwPlotterFailed = false;
++            try { throwPlotterCheck.Verify(); }
++            catch (InvalidOperationException ex)
++            {
++                throwPlotterFailed = ex.Message.Contains("输出后来源核验失败") &&
++                                     ex.Message.Contains("打印资源已被占用") &&
++                                     ex.Message.Contains("已生成文件保留供检查，本页不记为成功");
++            }
++            Check(throwPlotterFailed, "Verify 时打印器接口抛错核验失败且保留清理提示与已有文件");
++
++            var multiHost = new ConsistencyRevisionHost { RevisionProvider = _ => "snap-rev-1" };
++            var multiPlotter = new ConsistencyResourcePlotter { ResourceRevisionProvider = _ => "snap-res-1" };
++            CadHostProvider.Host = multiHost;
++            CadHostProvider.Plotter = multiPlotter;
++            var multiConsistency = new CadPageConsistency(multiHost, multiPlotter, frame, config);
++            multiConsistency.Verify();
++            multiConsistency.Verify();
++            Check(true, "多次 Verify 保持初始快照一致时校验通过");
++            multiHost.RevisionProvider = _ => "snap-rev-2";
++            bool multiFail = false;
++            try { multiConsistency.Verify(); }
++            catch (InvalidOperationException ex)
++            {
++                multiFail = ex.Message.Contains("已生成文件保留供检查，本页不记为成功");
++            }
++            Check(multiFail, "宿主变化后再次 Verify 依然按最初快照判定失败");
++            multiHost.RevisionProvider = _ => "snap-rev-1";
++            multiConsistency.Verify();
++            Check(true, "宿主恢复最初版本标记后 Verify 再次通过，证明基准快照未被后续调用覆盖");
++
++            var plainHost = new ConsistencyMockHost();
++            var plainPlotter = new RecoveryPlotter();
++            CadHostProvider.Host = plainHost;
++            CadHostProvider.Plotter = plainPlotter;
++            var plainConsistency = new CadPageConsistency(plainHost, plainPlotter, frame, config);
++            plainConsistency.Verify();
++            Check(true, "未实现可选接口的兼容宿主与打印器可正常构造与核验");
+         }
+         finally{CadHostProvider.Host=previousHost;CadHostProvider.Plotter=previousPlotter;Directory.Delete(directory,true);}
+     }
++
++    private class ConsistencyMockHost : ICadHost
++    {
++        public string PlatformName => "MockPlatform";
++        public string Version => "1.0";
++        public void WriteMessage(string message) {}
++        public string GetCurrentDocumentPath() => "";
++        public string GetCurrentDocumentName() => "";
++        public List<RawPolylineCandidate> CollectPolylineCandidates(string layerFilter = "*") => new List<RawPolylineCandidate>();
++        public List<RawBlockCandidate> CollectBlockCandidates(string blockNameFilter = "*") => new List<RawBlockCandidate>();
++        public bool PromptSelectFrames(out List<RawPolylineCandidate> polylines, out List<RawBlockCandidate> blocks) { polylines = new List<RawPolylineCandidate>(); blocks = new List<RawBlockCandidate>(); return false; }
++        public bool PromptSelectSampleBlock(out string blockName, out string layerName) { blockName = ""; layerName = ""; return false; }
++        public void ZoomToFrame(double minX, double minY, double maxX, double maxY) {}
++        public List<string> GetAllLayers() => new List<string>();
++        public List<string> GetAllBlockNames() => new List<string>();
++    }
++
++    private sealed class ConsistencyRevisionHost : ConsistencyMockHost, ICadRevisionHost
++    {
++        public Func<PlotFrame, string?>? RevisionProvider { get; set; }
++        public string? GetSourceRevision(PlotFrame frame) => RevisionProvider != null ? RevisionProvider(frame) : null;
++    }
++
++    private sealed class ConsistencyResourcePlotter : RecoveryPlotter, ICadPlotResourceHost
++    {
++        public Func<PlotConfig, string?>? ResourceRevisionProvider { get; set; }
++        public string? GetPlotResourceRevision(PlotConfig config) => ResourceRevisionProvider != null ? ResourceRevisionProvider(config) : null;
++    }
+ }

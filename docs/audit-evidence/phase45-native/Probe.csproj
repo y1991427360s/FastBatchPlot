@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><TargetFramework>net48</TargetFramework><LangVersion>latest</LangVersion><AssemblyName>Phase45Probe</AssemblyName></PropertyGroup><ItemGroup>
+<Reference Include="ZwManaged"><HintPath>D:/ZWCAD2026/ZwManaged.dll</HintPath><Private>false</Private></Reference>
+<Reference Include="ZwDatabaseMgd"><HintPath>D:/ZWCAD2026/ZwDatabaseMgd.dll</HintPath><Private>false</Private></Reference>
+</ItemGroup></Project>

@@ -1,0 +1,77 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+/OCProperties <<
+/OCGs [ 5 0 R ]
+/D <<
+/BaseState /ON
+/OFF [ 5 0 R ]
+/Order [ (Drawing 1) 5 0 R ]
+>>
+>>
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Resources <<
+/Properties <<
+/L1 5 0 R
+>>
+>>
+/MediaBox [ 0.0 0.0 300 200 ]
+/Parent 2 0 R
+/Contents 6 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /OCG
+/Name (Hidden CAD layer)
+>>
+endobj
+6 0 obj
+<<
+/Length 69
+>>
+stream
+0 0 1 rg 20 20 70 70 re f
+/OC /L1 BDC
+1 0 0 rg 160 20 70 70 re f
+EMC
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000266 00000 n 
+0000000404 00000 n 
+0000000461 00000 n 
+trailer
+<<
+/Size 7
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+580
+%%EOF

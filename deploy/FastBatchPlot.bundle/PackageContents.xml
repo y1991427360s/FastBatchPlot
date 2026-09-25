@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationPackage 
+  SchemaVersion="1.0" 
+  AutodeskProduct="AutoCAD" 
+  ProductType="Application" 
+  Name="FastBatchPlot" 
+  Description="FastBatchPlot - AutoCAD 2018 批打印插件（原生验收待完成）" 
+  AppVersion="1.0.0" 
+  Author="User">
+  
+  <CompanyDetails Name="FastBatchPlot Team" />
+  
+  <Components Description="AutoCAD .NET Plugin">
+    <RuntimeRequirements OS="Win64" Platform="AutoCAD*" SeriesMin="R22.0" SeriesMax="R22.0" />
+    <ComponentEntry 
+      AppName="FastBatchPlot.AutoCAD" 
+      ModuleName="Contents/FastBatchPlot.AutoCAD.dll" 
+      AppType=".Net" 
+      LoadOnCommandInvocation="True" 
+      LoadOnAutoCADStartup="True">
+      <Commands GroupName="FastBatchPlot">
+        <Command Local="BP" Global="BP" />
+        <Command Local="BATCHPLOT" Global="BATCHPLOT" />
+        <Command Local="M_BATCHPLOT" Global="M_BATCHPLOT" />
+        <Command Local="MSTEEL" Global="MSTEEL" />
+        <Command Local="BP_TRUE2INDEX" Global="BP_TRUE2INDEX" />
+        <Command Local="BP_INSERT_TK" Global="BP_INSERT_TK" />
+      </Commands>
+    </ComponentEntry>
+  </Components>
+</ApplicationPackage>

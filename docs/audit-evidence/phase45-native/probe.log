@@ -1,0 +1,19 @@
+2026-09-20T22:09:06.9259638+08:00 MEDIA ISO_full_bleed_A4_(297.00_x_210.00_MM)
+2026-09-20T22:09:07.0030139+08:00 AFTER VALIDATE validated=True
+2026-09-20T22:09:07.0045545+08:00 SETTINGS DWG to PDF.pc5 / ISO_full_bleed_A4_(297.00_x_210.00_MM)
+2026-09-20T22:09:07.0060994+08:00 CONFIG ERROR System.InvalidOperationException: 对象的当前状态使该操作无效。
+   在 ZwSoft.ZwCAD.Runtime.DisposableWrapper.Attach(IntPtr unmanagedPointer, Boolean autoDelete)
+   在 ZwSoft.ZwCAD.PlottingServices.PlotConfig..ctor(IntPtr unmanagedPointer, Boolean autoDelete)
+   在 ZwSoft.ZwCAD.PlottingServices.PlotInfo.get_ValidatedConfig()
+   在 Phase45Probe.Config(PlotInfo info, String when)
+2026-09-20T22:09:07.0060994+08:00 BEGIN PLOT
+2026-09-20T22:09:07.3040888+08:00 BEGIN DOCUMENT
+2026-09-20T22:09:07.3040888+08:00 AFTER BEGIN DOCUMENT validated=True
+2026-09-20T22:09:07.3040888+08:00 SETTINGS DWG to PDF.pc5 / ISO_full_bleed_A4_(297.00_x_210.00_MM)
+2026-09-20T22:09:07.3056180+08:00 CONFIG ERROR System.InvalidOperationException: 对象的当前状态使该操作无效。
+   在 ZwSoft.ZwCAD.Runtime.DisposableWrapper.Attach(IntPtr unmanagedPointer, Boolean autoDelete)
+   在 ZwSoft.ZwCAD.PlottingServices.PlotConfig..ctor(IntPtr unmanagedPointer, Boolean autoDelete)
+   在 ZwSoft.ZwCAD.PlottingServices.PlotInfo.get_ValidatedConfig()
+   在 Phase45Probe.Config(PlotInfo info, String when)
+2026-09-20T22:09:07.3780492+08:00 BEGIN PAGE
+2026-09-20T22:09:07.5128409+08:00 PRINT OK

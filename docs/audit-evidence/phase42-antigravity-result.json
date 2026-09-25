@@ -1,0 +1,25 @@
+{
+  "id": "b809ef8497f94227ba7d42eecfc0dcc1",
+  "status": "succeeded",
+  "started_at": "2026-09-20T13:24:06.344374+00:00",
+  "cwd": "E:\\366256\\vibecoding\\批打印-new",
+  "mode": "accept-edits",
+  "model": "",
+  "effort": "",
+  "timeout_seconds": 480,
+  "stdout_log": "C:\\Users\\ys199\\.codex\\tools\\antigravity-mcp\\runs\\b809ef8497f94227ba7d42eecfc0dcc1.stdout.log",
+  "stderr_log": "C:\\Users\\ys199\\.codex\\tools\\antigravity-mcp\\runs\\b809ef8497f94227ba7d42eecfc0dcc1.stderr.log",
+  "pid": 45120,
+  "exit_code": 0,
+  "cli_status": "SUCCESS",
+  "usage": {
+    "input_tokens": 15548,
+    "output_tokens": 763,
+    "thinking_tokens": 692,
+    "cache_read_tokens": 0,
+    "total_tokens": 16311
+  },
+  "conversation_id": "65f4a49c-e573-4250-a995-2d7589d4e27b",
+  "response": "",
+  "finished_at": "2026-09-20T13:24:21.100349+00:00"
+}

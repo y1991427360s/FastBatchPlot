@@ -1,0 +1,38 @@
+  正在确定要还原的项目…
+  所有项目均是最新的，无法还原。
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\AutoCAD\FastBatchPlot.Core.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\AutoCAD\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\AutoCAD\FastBatchPlot.UI.dll
+  FastBatchPlot.AutoCAD -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\AutoCAD\FastBatchPlot.AutoCAD.dll
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.52
+  正在确定要还原的项目…
+  所有项目均是最新的，无法还原。
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\ZWCAD\FastBatchPlot.Core.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\ZWCAD\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\ZWCAD\FastBatchPlot.UI.dll
+  FastBatchPlot.ZWCAD -> E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739.build\ZWCAD\FastBatchPlot.ZWCAD.dll
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.47
+PACKAGE_CREATED=E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739
+
+FullName
+--------                                                                                                                
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\AutoCAD2018\FastBatchPlot.bundle\Contents\F…
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\AutoCAD2018\FastBatchPlot.bundle\Contents\F…
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\AutoCAD2018\FastBatchPlot.bundle\Contents\F…
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\AutoCAD2018\FastBatchPlot.bundle\Contents\F…
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\ZWCAD2026\Contents\FastBatchPlot.CadBridge.…
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\ZWCAD2026\Contents\FastBatchPlot.Core.dll   
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\ZWCAD2026\Contents\FastBatchPlot.UI.dll     
+E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-210047-739\ZWCAD2026\Contents\FastBatchPlot.ZWCAD.dll  
+仅完成构建与打包。未启动、连接或验证 CAD；原生加载和打印验收仍待明确授权。
+

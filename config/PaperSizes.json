@@ -1,0 +1,20 @@
+{
+  "StandardSizes": [
+    { "Name": "A0", "WidthMm": 1189, "HeightMm": 841, "IsLandscape": true },
+    { "Name": "A1", "WidthMm": 841, "HeightMm": 594, "IsLandscape": true },
+    { "Name": "A2", "WidthMm": 594, "HeightMm": 420, "IsLandscape": true },
+    { "Name": "A3", "WidthMm": 420, "HeightMm": 297, "IsLandscape": true },
+    { "Name": "A4", "WidthMm": 297, "HeightMm": 210, "IsLandscape": true }
+  ],
+  "ElongatedSizes": [
+    { "Name": "A0+1/4", "WidthMm": 1486, "HeightMm": 841, "IsLandscape": true },
+    { "Name": "A0+1/2", "WidthMm": 1783, "HeightMm": 841, "IsLandscape": true },
+    { "Name": "A1+1/4", "WidthMm": 1051, "HeightMm": 594, "IsLandscape": true },
+    { "Name": "A1+1/2", "WidthMm": 1261, "HeightMm": 594, "IsLandscape": true },
+    { "Name": "A1+3/4", "WidthMm": 1471, "HeightMm": 594, "IsLandscape": true },
+    { "Name": "A2+1/4", "WidthMm": 743, "HeightMm": 420, "IsLandscape": true },
+    { "Name": "A2+1/2", "WidthMm": 891, "HeightMm": 420, "IsLandscape": true },
+    { "Name": "A3+1/4", "WidthMm": 525, "HeightMm": 297, "IsLandscape": true },
+    { "Name": "A3+1/2", "WidthMm": 630, "HeightMm": 297, "IsLandscape": true }
+  ]
+}

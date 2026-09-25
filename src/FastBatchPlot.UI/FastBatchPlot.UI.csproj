@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FastBatchPlot.UI</AssemblyName>
+    <RootNamespace>FastBatchPlot.UI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastBatchPlot.Core\FastBatchPlot.Core.csproj" />
+    <ProjectReference Include="..\FastBatchPlot.CadBridge\FastBatchPlot.CadBridge.csproj" />
+  </ItemGroup>
+
+</Project>

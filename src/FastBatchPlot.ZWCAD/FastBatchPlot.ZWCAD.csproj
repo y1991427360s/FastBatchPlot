@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FastBatchPlot.ZWCAD</AssemblyName>
+    <RootNamespace>FastBatchPlot.ZWCAD</RootNamespace>
+    <ZWCADSdkPath Condition="'$(ZWCADSdkPath)' == ''">$(ZWCAD2026_SDK)</ZWCADSdkPath>
+    <ZWCADSdkPath Condition="'$(ZWCADSdkPath)' == '' and Exists('$(ProgramW6432)\ZWSOFT\ZWCAD 2026\ZwManaged.dll')">$(ProgramW6432)\ZWSOFT\ZWCAD 2026</ZWCADSdkPath>
+    <ZWCADSdkPath Condition="'$(ZWCADSdkPath)' == ''">D:\ZWCAD2026</ZWCADSdkPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastBatchPlot.Core\FastBatchPlot.Core.csproj" />
+    <ProjectReference Include="..\FastBatchPlot.CadBridge\FastBatchPlot.CadBridge.csproj" />
+    <ProjectReference Include="..\FastBatchPlot.UI\FastBatchPlot.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Editor.StartUserInteraction 含 WPF Window 重载，编译时需要这些框架引用（运行时由 .NET Framework 提供）。 -->
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="ZwDatabaseMgd">
+      <HintPath>$(ZWCADSdkPath)\ZwDatabaseMgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="ZwManaged">
+      <HintPath>$(ZWCADSdkPath)\ZwManaged.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="ValidateZWCAD2026Sdk" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(ZWCADSdkPath)\ZwManaged.dll') or !Exists('$(ZWCADSdkPath)\ZwDatabaseMgd.dll')" Text="缺少 ZWCAD 2026 SDK；请设置 ZWCADSdkPath 或 ZWCAD2026_SDK 指向包含 ZwManaged/ZwDatabaseMgd.dll 的目录。" />
+    <GetAssemblyIdentity AssemblyFiles="$(ZWCADSdkPath)\ZwManaged.dll">
+      <Output TaskParameter="Assemblies" ItemName="ZWCADSdkIdentity" />
+    </GetAssemblyIdentity>
+    <Error Condition="!$([System.String]::Copy('%(ZWCADSdkIdentity.Version)').StartsWith('26.'))" Text="当前发布目标仅支持 ZWCAD 2026（ZwManaged 程序集主版本 26），请检查 ZWCADSdkPath。" />
+  </Target>
+
+</Project>

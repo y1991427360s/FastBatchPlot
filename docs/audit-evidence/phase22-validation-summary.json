@@ -1,0 +1,53 @@
+{
+  "packagePath": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-172010-637",
+  "sourceFiles": [
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.Core\\Printing\\ZwPdfMediaFiles.cs",
+      "sha256": "3886F4E2F21D8217B1A490508441B5F54EE90277C03DFBFF16F8B8F3B1D3A21F",
+      "lastWriteTimeUtc": "2026-09-20T09:16:52.2399522Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.Core\\Planning\\GeneratedPdfMediaGuard.cs",
+      "sha256": "CAFCD14E5B2D56A8B6406B110294E313D27B612D5A241517A18C871F4A020267",
+      "lastWriteTimeUtc": "2026-09-20T09:18:13.1836262Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.Core\\Planning\\PlotPlanBuilder.cs",
+      "sha256": "706629C10AC7085F47A8A9CB2679CBAEF15B65F0736AE6858E956757B55B802F",
+      "lastWriteTimeUtc": "2026-09-20T09:18:13.1836262Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.Core\\Planning\\PlotOutputCommitter.cs",
+      "sha256": "983BCE502A20744A2945976B8FFA3DC4C5B094A4714D2336582BDFDE00A05F08",
+      "lastWriteTimeUtc": "2026-09-20T09:18:13.1851526Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.ZWCAD\\ZwCadPlotEngine.cs",
+      "sha256": "4CCC6341E0032530DDC2CC31B2E51A0EDC5F6D00E91EA25063AFC7A5FBB57158",
+      "lastWriteTimeUtc": "2026-09-20T09:09:58.6578534Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.ZWCAD\\ZwCadPlotEngine.Media.cs",
+      "sha256": "6CBCEDABDE39E4C1B80C75511ED3429887EBC437E27EE2253E10ADABCECA364E",
+      "lastWriteTimeUtc": "2026-09-20T09:12:28.4064279Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.UI\\Views\\BatchPlotForm.cs",
+      "sha256": "E76DC572D595526BD07AF570C1EEEFDE8102190B201CEA454F04CD75438D7B1D",
+      "lastWriteTimeUtc": "2026-09-20T09:17:08.4475910Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.UI\\Views\\BatchPlotForm.TaskRun.cs",
+      "sha256": "43FBAF6F0DFCD62D44554C3138DDB46EB166B74B9163F77E3AD09128D6807D90",
+      "lastWriteTimeUtc": "2026-09-20T09:17:08.4460400Z"
+    },
+    {
+      "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.UI\\Views\\BatchPlotForm.History.cs",
+      "sha256": "1031416584DD680F218213AD561D41DEBAB37CCAB3EF8F7B2E82F93C29B99151",
+      "lastWriteTimeUtc": "2026-09-20T09:17:08.4481176Z"
+    }
+  ],
+  "coreTests": 407,
+  "offlineUiChecks": 262,
+  "nativeCadValidation": false
+}

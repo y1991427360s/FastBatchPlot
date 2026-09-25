@@ -1,0 +1,158 @@
+{
+  "method": "只读磁盘文件静态分析，无 DLL 加载、无 CAD 连接或运行",
+  "files": [
+    {
+      "path": "D:\\ZWCAD2026\\ZwPlotConfig.dll",
+      "size": 456056,
+      "sha256": "8b4fe79081679bd9abd75844bf2275d629c1be4b986a2901e695192e8c408d55"
+    },
+    {
+      "path": "D:\\ZWCAD2026\\ZwPlotConfigEditor.dll",
+      "size": 326520,
+      "sha256": "7ec1d91dc3017f61877f7a408ff70cd9d9415f348bf7257a7e825cd318d1e285"
+    },
+    {
+      "path": "D:\\ZWCAD2026\\zh-CN\\ZwPlotConfigEditorRes.dll",
+      "size": 1093496,
+      "sha256": "d6bc8dc881a98815ad327c4328de14225c74d2761307c9aaa0bb41853243ba2b"
+    },
+    {
+      "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWPLOT_PDF.pc5",
+      "size": 1816,
+      "sha256": "4bf89788c47e8a8c5ff7b740360356389e1a4b90cdcf4195b06887596912accd"
+    }
+  ],
+  "lines_overwrite_string_rva": "0x4c890",
+  "parser_read": [
+    {
+      "rva": "0x1adcc",
+      "instruction": "mov r9, rsi"
+    },
+    {
+      "rva": "0x1adcf",
+      "instruction": "mov r8d, 1"
+    },
+    {
+      "rva": "0x1add5",
+      "instruction": "lea rdx, [rip + 0x31ab4]"
+    },
+    {
+      "rva": "0x1addc",
+      "instruction": "lea rcx, [rip + 0x318a5]"
+    },
+    {
+      "rva": "0x1ade3",
+      "instruction": "call qword ptr [rip + 0x2b25f]"
+    },
+    {
+      "rva": "0x1ade9",
+      "instruction": "mov dword ptr [rdi + 0xf0], eax"
+    }
+  ],
+  "parser_write": [
+    {
+      "rva": "0x1dfbb",
+      "instruction": "mov r8d, dword ptr [rdi + 0xf0]"
+    },
+    {
+      "rva": "0x1dfc2",
+      "instruction": "lea rdx, [rip + 0x2d2cf]"
+    },
+    {
+      "rva": "0x1dfc9",
+      "instruction": "lea rcx, [rbp + 0x550]"
+    },
+    {
+      "rva": "0x1dfd0",
+      "instruction": "call qword ptr [rip + 0x28da2]"
+    },
+    {
+      "rva": "0x1dfd6",
+      "instruction": "mov r9, rsi"
+    },
+    {
+      "rva": "0x1dfd9",
+      "instruction": "mov r8, qword ptr [rbp + 0x550]"
+    },
+    {
+      "rva": "0x1dfe0",
+      "instruction": "lea rdx, [rip + 0x2e8a9]"
+    },
+    {
+      "rva": "0x1dfe7",
+      "instruction": "lea rcx, [rip + 0x2e69a]"
+    },
+    {
+      "rva": "0x1dfee",
+      "instruction": "call qword ptr [rip + 0x28064]"
+    }
+  ],
+  "editor_summary": [
+    {
+      "rva": "0x1973a",
+      "instruction": "mov rcx, qword ptr [rdi + 0x130]"
+    },
+    {
+      "rva": "0x19741",
+      "instruction": "cmp dword ptr [rcx + 0xf0], 0"
+    },
+    {
+      "rva": "0x19748",
+      "instruction": "lea rcx, [rsp + 0x78]"
+    },
+    {
+      "rva": "0x1974d",
+      "instruction": "jne 0x18001976b"
+    },
+    {
+      "rva": "0x1974f",
+      "instruction": "mov edx, 0x7e8"
+    },
+    {
+      "rva": "0x19754",
+      "instruction": "call 0x180026ee0"
+    },
+    {
+      "rva": "0x19759",
+      "instruction": "nop "
+    },
+    {
+      "rva": "0x1975a",
+      "instruction": "mov rdx, rax"
+    },
+    {
+      "rva": "0x1975d",
+      "instruction": "lea rcx, [rsp + 0x70]"
+    },
+    {
+      "rva": "0x19762",
+      "instruction": "call qword ptr [rip + 0x17128]"
+    },
+    {
+      "rva": "0x19768",
+      "instruction": "nop "
+    },
+    {
+      "rva": "0x19769",
+      "instruction": "jmp 0x180019785"
+    },
+    {
+      "rva": "0x1976b",
+      "instruction": "mov edx, 0x7e9"
+    },
+    {
+      "rva": "0x19770",
+      "instruction": "call 0x180026ee0"
+    }
+  ],
+  "resources": {
+    "0x7e7": "合并控制<",
+    "0x7e8": "直线合并>",
+    "0x7e9": "直线覆盖>"
+  },
+  "interpretation": {
+    "lines_overwrite=0": "直线合并（MergeLines=true）",
+    "lines_overwrite=1": "直线覆盖（MergeLines=false）",
+    "limitation": "证实配置与编辑器语义；未进行 CAD 实际打印验证"
+  }
+}

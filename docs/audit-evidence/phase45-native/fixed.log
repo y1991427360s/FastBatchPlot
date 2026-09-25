@@ -1,0 +1,57 @@
+2026-09-20T22:10:52.9957165+08:00 DEVICES None | 导出为WPS PDF | ZWCAD Virtual Eps Plotter 1.0 | OneNote for Windows 10 | RICOH IM C4500 PCL 6 | RICOH IM C3000 PCL 6 | OneNote (Desktop) | Microsoft XPS Document Writer | Microsoft Print to PDF | IM C3000  创新中心 | HwPrinter | Fax | 6楼东彩机C3503 | 6楼东MP 3054_1 | 6F西MP 5054 | 6F西 租赁事业部 2554 | Default Windows System Printer | DWF6 ePlot.pc5 | DWFx ePlot (XPS Compatible).pc5 | DWG to PDF.pc5 | M_PDF.pc5 | SVG.pc5 | ZWCAD PDF(General Documentation).pc5 | ZWCAD PDF(High Quality Print).pc5 | ZWCAD PDF(Smallest File).pc5 | ZWCAD PDF(Web and Mobile).pc5 | ZWCAD Virtual JPEG Plotter.pc5 | ZWCAD Virtual PNG Plotter.pc5 | ZWPLOT_DWF.pc5 | ZWPLOT_EPS.pc5 | ZWPLOT_JPG.pc5 | ZWPLOT_PDF.pc5 | ZWPLOT_PNG.pc5
+2026-09-20T22:10:52.9957165+08:00 STYLES Monochrome.stb | zwcad-Color.stb | zwcad.stb | Grayscale.ctb | Monochrome.ctb | zwcad.ctb | 彩色.ctb | 蓝白.ctb | 黑白.ctb
+2026-09-20T22:10:52.9972345+08:00 DEVICE DWG to PDF.pc5
+2026-09-20T22:10:52.9972345+08:00 BEGIN Model
+2026-09-20T22:10:53.0070375+08:00 BEFORE Y0sdiWzBM+Dq5rd95I3mzbdvzYP1ULto0ixOZKRJchI=
+2026-09-20T22:10:53.7481618+08:00 PLOT True 
+2026-09-20T22:10:53.7481618+08:00 AFTER pqdTSPgvW6WF+fSpd/YocUwZ5Ct7o5oLk4QfC6d6hY0=
+2026-09-20T22:10:53.7496831+08:00 FIRST System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:53.7496831+08:00 FIRST System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:53.7507188+08:00 FAIL System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   在 Phase45FixedProbe.Run()
+2026-09-20T22:10:53.7507188+08:00 BEGIN 布局1
+2026-09-20T22:10:53.7547934+08:00 BEFORE QgMAORaFxTc9jhrJYu3oubJi1ZQZkz/10bkiNtpHtmQ=
+2026-09-20T22:10:53.7547934+08:00 MOD ImpSymbolTableRecord 24C
+2026-09-20T22:10:53.7563112+08:00 MOD Viewport 24B
+2026-09-20T22:10:53.7563112+08:00 MOD ImpSymbolTableRecord 24D
+2026-09-20T22:10:54.6266733+08:00 MOD ViewportTableRecord 1BA
+2026-09-20T22:10:54.6281816+08:00 PLOT True 
+2026-09-20T22:10:54.6298193+08:00 AFTER j5gkZ//ZLE2S4lSRTuc9l8k60Ug+KU/okD+H4jxHuAk=
+2026-09-20T22:10:54.6298193+08:00 FIRST System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:54.6313340+08:00 FIRST System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:54.6313340+08:00 FAIL System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   在 Phase45FixedProbe.Run()
+2026-09-20T22:10:54.6313340+08:00 BEGIN 布局2
+2026-09-20T22:10:54.6356330+08:00 BEFORE We7ghmMfkcSYWYwC5/4npXMBqkwmmwPI14Z/1R7Dsg4=
+2026-09-20T22:10:54.6371693+08:00 MOD ImpSymbolTableRecord 252
+2026-09-20T22:10:54.6371693+08:00 MOD Viewport 251
+2026-09-20T22:10:54.6371693+08:00 MOD ImpSymbolTableRecord 253
+2026-09-20T22:10:55.4312985+08:00 MOD ViewportTableRecord 1BA
+2026-09-20T22:10:55.4328135+08:00 PLOT True 
+2026-09-20T22:10:55.4338190+08:00 AFTER UZHbGohwlduHSphtSfzIm9b0fZpr0zM/LFRvsb+zsXM=
+2026-09-20T22:10:55.4343264+08:00 FIRST System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:55.4343264+08:00 FIRST System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+2026-09-20T22:10:55.4343264+08:00 FAIL System.InvalidOperationException: 输出后来源核验失败：原图、外参会话或修改记录已变化。 已生成文件保留供检查，本页不记为成功、不参与自动合并；请重新建立完整批次。 ---> System.InvalidOperationException: 原图、外参会话或修改记录已变化。
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 FastBatchPlot.CadBridge.CadPageConsistency.Verify()
+   在 Phase45FixedProbe.Run()
+2026-09-20T22:10:55.4343264+08:00 DONE layout=Model

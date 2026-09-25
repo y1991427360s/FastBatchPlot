@@ -1,0 +1,18 @@
+2026-09-20T22:12:10.3260730+08:00 DEVICES None | 导出为WPS PDF | ZWCAD Virtual Eps Plotter 1.0 | OneNote for Windows 10 | RICOH IM C4500 PCL 6 | RICOH IM C3000 PCL 6 | OneNote (Desktop) | Microsoft XPS Document Writer | Microsoft Print to PDF | IM C3000  创新中心 | HwPrinter | Fax | 6楼东彩机C3503 | 6楼东MP 3054_1 | 6F西MP 5054 | 6F西 租赁事业部 2554 | Default Windows System Printer | DWF6 ePlot.pc5 | DWFx ePlot (XPS Compatible).pc5 | DWG to PDF.pc5 | M_PDF.pc5 | SVG.pc5 | ZWCAD PDF(General Documentation).pc5 | ZWCAD PDF(High Quality Print).pc5 | ZWCAD PDF(Smallest File).pc5 | ZWCAD PDF(Web and Mobile).pc5 | ZWCAD Virtual JPEG Plotter.pc5 | ZWCAD Virtual PNG Plotter.pc5 | ZWPLOT_DWF.pc5 | ZWPLOT_EPS.pc5 | ZWPLOT_JPG.pc5 | ZWPLOT_PDF.pc5 | ZWPLOT_PNG.pc5
+2026-09-20T22:12:10.3275858+08:00 STYLES Monochrome.stb | zwcad-Color.stb | zwcad.stb | Grayscale.ctb | Monochrome.ctb | zwcad.ctb | 彩色.ctb | 蓝白.ctb | 黑白.ctb
+2026-09-20T22:12:10.3290949+08:00 DEVICE DWG to PDF.pc5
+2026-09-20T22:12:10.3296143+08:00 BEGIN Model
+2026-09-20T22:12:10.3329909+08:00 READ PN0uQ+9gQUFIZ1htU8T7t/yl5JA68/KWRMsp/E//wis=
+2026-09-20T22:12:10.3342891+08:00 READ Jmlc+h11sPuABbURdmpp/CqoxJobhiN/TBo8Z/edb3M=
+2026-09-20T22:12:10.3348222+08:00 READ Qt90/IM52wZ1x1QOhyybabIDCcznbCZQv7O/nUJq4Vk=
+2026-09-20T22:12:10.3397979+08:00 BEFORE +4vrNGlub+Z26AAvXTwS7MXEnIiUzp+rpqzQzvX0hjk=
+2026-09-20T22:12:10.6620377+08:00 FIRST System.IO.InvalidDataException: 源 PC5 不是已识别的中望原生 PDF 预设。
+   在 FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot, PdfOutputOptions options)
+2026-09-20T22:12:10.6630579+08:00 FIRST System.IO.InvalidDataException: 源 PC5 不是已识别的中望原生 PDF 预设。
+   在 FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot, PdfOutputOptions options)
+   在 FastBatchPlot.ZWCAD.ZwCadPlotEngine.ResolvePdfMedia(PlotSettings settings, PlotPlan plan, String selectedDevice, PdfOutputOptions options, ZwPdfMediaFiles& files)
+   在 FastBatchPlot.ZWCAD.ZwCadPlotEngine.ExecutePlot(PlotFrame frame, PlotConfig config, String outputFilePath, Boolean toPrinter, Boolean preview, PlotPreviewOutcome& previewOutcome, String& errorMessage)
+2026-09-20T22:12:10.6645748+08:00 PLOT False 匹配纸张与 PDF 参数失败：源 PC5 不是已识别的中望原生 PDF 预设。
+2026-09-20T22:12:10.6645748+08:00 AFTER gRD1IPNaWdomEkSx4PU1/6Dr13bHBZwR+H6FUDJcC1c=
+2026-09-20T22:12:10.6645748+08:00 VERIFY SKIPPED: plot failed
+2026-09-20T22:12:10.6645748+08:00 DONE layout=Model

@@ -1,0 +1,44 @@
+[
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated\\FBP_2e2d1abd1e4246f0a8317c21801d2539.pc3",
+    "bytes": 1155,
+    "sha256": "018ff3e26acd2df8d64f22cba5057e26aa808f30dba11944b222a3697fbd38b4",
+    "zlib_verified": true,
+    "fields_verified": true
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated\\FBP_2e2d1abd1e4246f0a8317c21801d2539.pmp",
+    "bytes": 751,
+    "sha256": "d2bc3f4b934d5788e04bb62f0607efaf488b4e58dd3c8190d00788d0435829ce",
+    "zlib_verified": true,
+    "fields_verified": true
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated-acad\\FBP_259eb00cda5c4581bb9a66af95dc79b9.pc3",
+    "bytes": 1156,
+    "sha256": "abfd40cb7a2d710be4afe4b8582398aaec8fde83e949e256bcd3f7a33bf052ca",
+    "zlib_verified": true,
+    "fields_verified": true
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated-acad\\FBP_259eb00cda5c4581bb9a66af95dc79b9.pmp",
+    "bytes": 751,
+    "sha256": "777bebb7789cf70d3b7cbd312320de75a6944c443b3724adc903e22264342c0a",
+    "zlib_verified": true,
+    "fields_verified": true
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated-zwcad\\FBP_f85393fe69a045e489219a45fb942206.pc3",
+    "bytes": 1156,
+    "sha256": "c22ad7f8a352b385e31c398930ba03ac8f7ee49c82d91a98c39d7b24fe08cb32",
+    "zlib_verified": true,
+    "fields_verified": true
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\docs\\audit-evidence\\phase24-generated-zwcad\\FBP_f85393fe69a045e489219a45fb942206.pmp",
+    "bytes": 751,
+    "sha256": "af373a5c2f41417f6b5d648234075aca2c974b97c4af290ebc159d56f23fa2b2",
+    "zlib_verified": true,
+    "fields_verified": true
+  }
+]

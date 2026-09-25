@@ -1,0 +1,22 @@
+[
+  {
+    "File": "FastBatchPlot.AutoCAD.dll",
+    "BundleTime": "2026-09-14T14:32:10.7247061+08:00",
+    "SameAsRelease": false
+  },
+  {
+    "File": "FastBatchPlot.CadBridge.dll",
+    "BundleTime": "2026-09-14T14:32:10.0933049+08:00",
+    "SameAsRelease": false
+  },
+  {
+    "File": "FastBatchPlot.Core.dll",
+    "BundleTime": "2026-09-14T14:32:09.8966745+08:00",
+    "SameAsRelease": false
+  },
+  {
+    "File": "FastBatchPlot.UI.dll",
+    "BundleTime": "2026-09-14T14:32:10.5327222+08:00",
+    "SameAsRelease": false
+  }
+]

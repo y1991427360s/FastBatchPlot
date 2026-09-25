@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><TargetFramework>net48</TargetFramework><LangVersion>latest</LangVersion><AssemblyName>Phase43Probe</AssemblyName></PropertyGroup>
+ <ItemGroup>
+  <Reference Include="ZwManaged"><HintPath>D:/ZWCAD2026/ZwManaged.dll</HintPath><Private>false</Private></Reference>
+  <Reference Include="ZwDatabaseMgd"><HintPath>D:/ZWCAD2026/ZwDatabaseMgd.dll</HintPath><Private>false</Private></Reference>
+  <Reference Include="FastBatchPlot.Core"><HintPath>../../../artifacts/FastBatchPlot-20260920-213046-884/ZWCAD2026/Contents/FastBatchPlot.Core.dll</HintPath><Private>false</Private></Reference>
+  <Reference Include="FastBatchPlot.CadBridge"><HintPath>../../../artifacts/FastBatchPlot-20260920-213046-884/ZWCAD2026/Contents/FastBatchPlot.CadBridge.dll</HintPath><Private>false</Private></Reference>
+  <Reference Include="FastBatchPlot.ZWCAD"><HintPath>../../../artifacts/FastBatchPlot-20260920-213046-884/ZWCAD2026/Contents/FastBatchPlot.ZWCAD.dll</HintPath><Private>false</Private></Reference>
+ </ItemGroup>
+</Project>

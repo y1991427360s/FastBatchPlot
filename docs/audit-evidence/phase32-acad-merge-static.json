@@ -1,0 +1,94 @@
+{
+  "method": "只读磁盘静态核验，未加载驱动或操作 CAD",
+  "files": [
+    {
+      "path": "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\plotcfg14.dll",
+      "sha256": "db9ae74759ccf1447c6bcb03400c1f072a9120a9656600b73227997be809fd8a"
+    },
+    {
+      "path": "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\pc3edit.dll",
+      "sha256": "3b9b7f2f0274830fc602e108442b7247c1505ab96d2f1013309c74c58e443dd6"
+    },
+    {
+      "path": "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\zh-CN\\pc3EditRes.dll",
+      "sha256": "c6d1730857d5b42e9e6e69eda4cf601c8888aa75910d8850cd2315df586ba00f"
+    },
+    {
+      "path": "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\AutoCAD PDF (General Documentation).pc3",
+      "sha256": "e127083cc6b21c939c7b4a0bee171c3c3f98f3260667e2dfa07009aba3a01843"
+    }
+  ],
+  "resources": {
+    "0x115": "直线覆盖",
+    "0x116": "直线合并"
+  },
+  "getter": [
+    "0x799b0: movzx eax, byte ptr [rcx + 0x6c]",
+    "0x799b4: ret "
+  ],
+  "setter": [
+    "0x79f60: push rbx",
+    "0x79f62: sub rsp, 0x20",
+    "0x79f66: mov rax, qword ptr [rcx]",
+    "0x79f69: mov rbx, rcx",
+    "0x79f6c: mov byte ptr [rcx + 0x6c], dl"
+  ],
+  "editor_summary": [
+    "0x2a266: mov rax, qword ptr [rcx]",
+    "0x2a269: call qword ptr [rax + 0xa0]",
+    "0x2a26f: movzx esi, al",
+    "0x2a272: movzx ecx, al",
+    "0x2a275: neg cl",
+    "0x2a277: sbb rdx, rdx",
+    "0x2a27a: add rdx, 0x116",
+    "0x2a281: lea rcx, [rsp + 0x28]",
+    "0x2a286: call qword ptr [rip + 0x26164]",
+    "0x2a28c: nop ",
+    "0x2a28d: mov r8, qword ptr [rax]",
+    "0x2a290: mov edx, 0x6e"
+  ],
+  "editor_model": [
+    "0x2fb8b: mov rdx, qword ptr [rax]",
+    "0x2fb8e: mov rcx, rax",
+    "0x2fb91: call qword ptr [rdx + 0xa0]",
+    "0x2fb97: xor ecx, ecx",
+    "0x2fb99: test al, al",
+    "0x2fb9b: sete cl",
+    "0x2fb9e: mov dword ptr [r14 + 0x28], ecx"
+  ],
+  "editor_choices": [
+    "0x32ec0: mov r8d, 0x115",
+    "0x32ec6: mov rdx, qword ptr [rip + 0x4bd63]",
+    "0x32ecd: lea rcx, [rsp + 0x28]",
+    "0x32ed2: call qword ptr [rip + 0x1cf38]",
+    "0x32ed8: mov r9, qword ptr [rsp + 0x28]",
+    "0x32edd: xor r8d, r8d",
+    "0x32ee0: mov edx, 0x143",
+    "0x32ee5: mov rcx, qword ptr [rbx + 0x6d0]",
+    "0x32eec: call qword ptr [rip + 0x1c406]",
+    "0x32ef2: lea rcx, [rsp + 0x28]",
+    "0x32ef7: call qword ptr [rip + 0x1cee3]",
+    "0x32efd: mov r8d, 0x116",
+    "0x32f03: mov rdx, qword ptr [rip + 0x4bd26]",
+    "0x32f0a: lea rcx, [rsp + 0x28]",
+    "0x32f0f: call qword ptr [rip + 0x1cefb]",
+    "0x32f15: mov r9, qword ptr [rsp + 0x28]",
+    "0x32f1a: xor r8d, r8d",
+    "0x32f1d: mov edx, 0x143",
+    "0x32f22: mov rcx, qword ptr [rbx + 0x6d0]",
+    "0x32f29: call qword ptr [rip + 0x1c3c9]",
+    "0x32f2f: mov rax, qword ptr [rbx + 0x8b0]",
+    "0x32f36: movsxd r8, dword ptr [rax + 0x28]",
+    "0x32f3a: xor r9d, r9d",
+    "0x32f3d: mov edx, 0x14e",
+    "0x32f42: mov rcx, qword ptr [rbx + 0x6d0]",
+    "0x32f49: call qword ptr [rip + 0x1c3a9]",
+    "0x32f4f: mov rax, qword ptr [rbx + 0x8b0]",
+    "0x32f56: mov edx, dword ptr [rax + 0x28]",
+    "0x32f59: mov rcx, rbx"
+  ],
+  "mapping": {
+    "FALSE": "直线合并",
+    "TRUE": "直线覆盖"
+  }
+}

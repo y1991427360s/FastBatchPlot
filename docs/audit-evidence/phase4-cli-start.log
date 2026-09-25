@@ -1,0 +1,10 @@
+==================================================
+ FastBatchPlot PDF Merger & Processor (Open Edition)
+==================================================
+用法:
+  1. 合并PDF并生成书签大纲:
+     PlotMerger.exe -o "输出.pdf" -i "图纸1.pdf" "标题1" -i "图纸2.pdf" "标题2"
+  2. 处理旧版 MSteel 任务文件:
+     PlotMerger.exe -f "path\to\plot2.tm"
+  3. 旋转PDF文件页面:
+     PlotMerger.exe -r "图纸.pdf" --angle 90

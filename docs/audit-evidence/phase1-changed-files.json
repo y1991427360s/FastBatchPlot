@@ -1,0 +1,122 @@
+[
+  {
+    "path": "src\\FastBatchPlot.AutoCAD\\AcadAdapter.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.AutoCAD\\AcadPlotEngine.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.CadBridge\\DocumentSessionIdentity.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.CadBridge\\ICadContextHost.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Cli\\Program.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\AciColorHelperTests.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\CatalogExporterTests.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\DetectionRegressionTests.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\DocumentSessionIdentityTests.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\DrawingNameFormatterTests.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\GeometryUtilsTests.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\PdfSafetyTests.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Tests\\PlotPlanningTests.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.UiChecks\\FastBatchPlot.UiChecks.csproj",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.UiChecks\\Program.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.ZWCAD\\ZwCadAdapter.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.ZWCAD\\ZwCadPlotEngine.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.UI\\Views\\BatchPlotForm.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Common\\AciColorHelper.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Common\\GeometryUtils.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Detection\\BlockFrameDetector.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Detection\\PolylineFrameDetector.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Export\\CatalogExporter.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Models\\PaperSize.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Models\\PlotFrame.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Naming\\DrawingNameFormatter.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Paper\\PaperSizeDetector.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Pdf\\PdfMerger.cs",
+    "status": "modified"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Planning\\PlotOutputCommitter.cs",
+    "status": "added"
+  },
+  {
+    "path": "src\\FastBatchPlot.Core\\Planning\\PlotPlanBuilder.cs",
+    "status": "added"
+  }
+]

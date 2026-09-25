@@ -1,0 +1,50 @@
+[
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.AutoCAD.dll",
+    "lastWriteTime": "2026-09-20T21:55:18.2326544+08:00",
+    "bytes": 64512,
+    "sha256": "2D9C87528D908D57BE77FE5C373FC353E1A0A15B543E0C5D9AFEFE3CA91F802B"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.CadBridge.dll",
+    "lastWriteTime": "2026-09-20T21:55:17.5681588+08:00",
+    "bytes": 11776,
+    "sha256": "DEC57AC8681B207CBCE0B794E2202FDA9461919B15DBCEFC273C20ADE91D083E"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.Core.dll",
+    "lastWriteTime": "2026-09-20T21:55:17.3893879+08:00",
+    "bytes": 239104,
+    "sha256": "FBD7E21D66F4A178AA89DA2548E5F10F7FB3F998CF3048D6FBD26849DA8BABA7"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.UI.dll",
+    "lastWriteTime": "2026-09-20T21:55:17.9920041+08:00",
+    "bytes": 185344,
+    "sha256": "3EE99E7B3991EA03934FCECE1793F6F37D17AF249DB89BD3B60488AAB6E757DB"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\ZWCAD2026\\Contents\\FastBatchPlot.CadBridge.dll",
+    "lastWriteTime": "2026-09-20T21:55:20.0380595+08:00",
+    "bytes": 11776,
+    "sha256": "DEC57AC8681B207CBCE0B794E2202FDA9461919B15DBCEFC273C20ADE91D083E"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\ZWCAD2026\\Contents\\FastBatchPlot.Core.dll",
+    "lastWriteTime": "2026-09-20T21:55:19.9279411+08:00",
+    "bytes": 239104,
+    "sha256": "FBD7E21D66F4A178AA89DA2548E5F10F7FB3F998CF3048D6FBD26849DA8BABA7"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\ZWCAD2026\\Contents\\FastBatchPlot.UI.dll",
+    "lastWriteTime": "2026-09-20T21:55:20.5049333+08:00",
+    "bytes": 185344,
+    "sha256": "3EE99E7B3991EA03934FCECE1793F6F37D17AF249DB89BD3B60488AAB6E757DB"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-215515-561\\ZWCAD2026\\Contents\\FastBatchPlot.ZWCAD.dll",
+    "lastWriteTime": "2026-09-20T21:55:20.7229790+08:00",
+    "bytes": 64512,
+    "sha256": "78A038476CDEA86B3EA10E712DF785A8D4A0A77BF64B22FAE745782188537E58"
+  }
+]

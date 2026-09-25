@@ -1,0 +1,37 @@
+﻿[
+    {
+        "source":  "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\DWG To PDF.pc3",
+        "sha256":  "CDF9040F4E69C9189845E854F57B5B4EB1D29E354EC95CABD095E683215DD553",
+        "lastWriteTimeUtc":  "2014-10-11T04:39:20.0000000Z",
+        "fixture":  "offline generated PDF PMP with non-unit calibration",
+        "result":  "ACAD_PMP_INHERITANCE_OK"
+    },
+    {
+        "source":  "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\AutoCAD PDF (General Documentation).pc3",
+        "sha256":  "E127083CC6B21C939C7B4A0BEE171C3C3F98F3260667E2DFA07009ABA3A01843",
+        "lastWriteTimeUtc":  "2014-10-11T04:39:20.0000000Z",
+        "fixture":  "offline generated PDF PMP with non-unit calibration",
+        "result":  "ACAD_PMP_INHERITANCE_OK"
+    },
+    {
+        "source":  "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\AutoCAD PDF (High Quality Print).pc3",
+        "sha256":  "B102F18CF08031A127880C05CDAB28E09C00709EFCA773F37E5CF682C0D61603",
+        "lastWriteTimeUtc":  "2014-10-11T04:39:20.0000000Z",
+        "fixture":  "offline generated PDF PMP with non-unit calibration",
+        "result":  "ACAD_PMP_INHERITANCE_OK"
+    },
+    {
+        "source":  "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\AutoCAD PDF (Smallest File).pc3",
+        "sha256":  "ECFFBC3CFD421834BAECB102ABF0BC54DF3722C23095A634B76A443A9953EE3D",
+        "lastWriteTimeUtc":  "2014-10-11T04:39:20.0000000Z",
+        "fixture":  "offline generated PDF PMP with non-unit calibration",
+        "result":  "ACAD_PMP_INHERITANCE_OK"
+    },
+    {
+        "source":  "D:\\Autodesk\\CAD2018\\AutoCAD 2018\\UserDataCache\\Plotters\\AutoCAD PDF (Web and Mobile).pc3",
+        "sha256":  "D47C693E2C0BFDF1996D1D820D6E2CD06C883110E46088A66994109798387F27",
+        "lastWriteTimeUtc":  "2014-10-11T04:39:20.0000000Z",
+        "fixture":  "offline generated PDF PMP with non-unit calibration",
+        "result":  "ACAD_PMP_INHERITANCE_OK"
+    }
+]

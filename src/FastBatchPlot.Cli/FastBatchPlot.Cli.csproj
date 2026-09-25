@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>PlotMerger</AssemblyName>
+    <RootNamespace>FastBatchPlot.Cli</RootNamespace>
+    <Description>Standalone PDF Merge CLI and Utility (Mpr2 compatible + modern features)</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastBatchPlot.Core\FastBatchPlot.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+包：E:\366256\vibecoding\批打印-new\artifacts\FastBatchPlot-20260920-215515-561
+AutoCAD2018 与 ZWCAD2026 两套包，各在独立 powershell.exe/net48 进程运行：
+check-package-ui.ps1: PACKAGE_NET48_UI_OK
+check-page-consistency-package.ps1: PACKAGE_NET48_PAGE_CONSISTENCY_OK
+check-single-pdf-package.ps1: PACKAGE_NET48_SINGLE_PDF_OK
+check-pdf-package.ps1: PACKAGE_NET48_PDF_OK
+8 个 DLL 时间/大小/hash 验证：phase43-artifact-verification.json。
+未加载新包到 CAD；原生 PDF 输出不通过验收。

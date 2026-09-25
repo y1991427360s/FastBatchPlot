@@ -1,0 +1,19 @@
+2026-09-20T22:14:23.6046843+08:00 DEVICES None | 导出为WPS PDF | ZWCAD Virtual Eps Plotter 1.0 | OneNote for Windows 10 | RICOH IM C4500 PCL 6 | RICOH IM C3000 PCL 6 | OneNote (Desktop) | Microsoft XPS Document Writer | Microsoft Print to PDF | IM C3000  创新中心 | HwPrinter | Fax | 6楼东彩机C3503 | 6楼东MP 3054_1 | 6F西MP 5054 | 6F西 租赁事业部 2554 | Default Windows System Printer | DWF6 ePlot.pc5 | DWFx ePlot (XPS Compatible).pc5 | DWG to PDF.pc5 | M_PDF.pc5 | SVG.pc5 | ZWCAD PDF(General Documentation).pc5 | ZWCAD PDF(High Quality Print).pc5 | ZWCAD PDF(Smallest File).pc5 | ZWCAD PDF(Web and Mobile).pc5 | ZWCAD Virtual JPEG Plotter.pc5 | ZWCAD Virtual PNG Plotter.pc5 | ZWPLOT_DWF.pc5 | ZWPLOT_EPS.pc5 | ZWPLOT_JPG.pc5 | ZWPLOT_PDF.pc5 | ZWPLOT_PNG.pc5
+2026-09-20T22:14:23.6061980+08:00 STYLES Monochrome.stb | zwcad-Color.stb | zwcad.stb | Grayscale.ctb | Monochrome.ctb | zwcad.ctb | 彩色.ctb | 蓝白.ctb | 黑白.ctb
+2026-09-20T22:14:23.6061980+08:00 DEVICE DWG to PDF.pc5
+2026-09-20T22:14:23.6061980+08:00 BEGIN Model
+2026-09-20T22:14:23.6105737+08:00 READ +rknwJ8OOlHWs7Lu68Wn/TAWppBRsOorMkp5oAprhxE=
+2026-09-20T22:14:23.6105737+08:00 READ +rknwJ8OOlHWs7Lu68Wn/TAWppBRsOorMkp5oAprhxE=
+2026-09-20T22:14:23.6105737+08:00 READ +rknwJ8OOlHWs7Lu68Wn/TAWppBRsOorMkp5oAprhxE=
+2026-09-20T22:14:23.6151445+08:00 BEFORE +rknwJ8OOlHWs7Lu68Wn/TAWppBRsOorMkp5oAprhxE=
+2026-09-20T22:14:24.2558790+08:00 PLOT True 
+2026-09-20T22:14:24.2573975+08:00 AFTER +rknwJ8OOlHWs7Lu68Wn/TAWppBRsOorMkp5oAprhxE=
+2026-09-20T22:14:24.2610009+08:00 VERIFY OK
+2026-09-20T22:14:24.2697638+08:00 FAIL System.InvalidOperationException: 对象的当前状态使该操作无效。
+   在 ZwSoft.ZwCAD.DatabaseServices.Transaction.CheckTopTransaction()
+   在 ZwSoft.ZwCAD.DatabaseServices.Transaction.DeleteUnmanagedObject()
+   在 ZwSoft.ZwCAD.Runtime.DisposableWrapper.!DisposableWrapper()
+   在 ZwSoft.ZwCAD.Runtime.DisposableWrapper.Dispose(Boolean A_0)
+   在 ZwSoft.ZwCAD.Runtime.DisposableWrapper.Dispose()
+   在 Phase45ProbeD.Run()
+2026-09-20T22:14:24.2697638+08:00 DONE layout=Model

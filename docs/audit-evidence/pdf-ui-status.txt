@@ -1,0 +1,8 @@
+UI 代理状态：已新增 PdfParametersForm.cs 并接入 BatchPlotForm.cs/Output.cs 和默认设置保存加载。
+当前所有 collaboration 收到 MESSAGE Payload 均为空；请将契约/指令写 docs/audit-evidence/pdf-contract.txt，我读取。
+当前实际 Core 新文件 PdfOutputOptions 仍为 nullable API：VectorResolutionDpi, RasterResolutionDpi, TextToGeometry, IncludeLayers, MergeLines；UI 已按当前 API 实现，等待映射契约。
+注意：最初工具操作误修改 Core PlotConfig、Preferences、UserSettingsStore、PdfTaskHistory；其中 UserSettingsStore ValidatePdfOptions 使用 Contains 缺 System.Linq，父代理可统一替换最终验证。UI 代理已停止 Core 修改。
+界面按当前调查：AutoCAD 支持矢量/光栅/文字/图层，中望支持矢量/文字，直线合并只默认。未进行构建或 CAD 操作。
+UI 已完成：新增 PdfParametersForm.cs、PdfParametersChecks.cs；改 BatchPlotForm.cs（参数按钮、编辑副本、默认设置保存恢复）、BatchPlotForm.Output.cs（非 PDF 禁用）、UiChecks/Program.cs。
+Release UI 构建 0 警告 0 错误；独立 UiChecks 进程成功完成 286 项。日志 docs/audit-evidence/phase27-ui-agent.log，截图 phase27-pdf-parameters.png 与 ui-minimum-window.png 已人工查看，内容完整。
+仍按当前 nullable API。若宿主映射支持边界变化请修改 UpdateSupport。未连接/操作 CAD。父代理需统一最终包构建记录与产物检查。

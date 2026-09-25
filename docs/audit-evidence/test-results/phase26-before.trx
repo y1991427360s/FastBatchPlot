@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a21829f3-f764-443c-8ace-8db74c288d16" name="ys199@SJY-14000048 2026-09-20 18:05:02" runUser="SJY-14000048\ys199" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-09-20T18:05:02.8067625+08:00" queuing="2026-09-20T18:05:02.8067631+08:00" start="2026-09-20T18:05:01.7189815+08:00" finish="2026-09-20T18:05:02.8138656+08:00" />
+  <TestSettings name="default" id="d78bc049-efe4-417e-98d1-7ee18a07297f">
+    <Deployment runDeploymentRoot="ys199_SJY-14000048_2026-09-20_18_05_02" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e373eaf0-0c9a-4016-9eb8-8086dae2d34d" testId="57677574-bc2e-03e9-095b-c88f4319134d" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;missing.pmp&quot;)" computerName="SJY-14000048" duration="00:00:00.0943646" startTime="2026-09-20T18:05:02.4387835+08:00" endTime="2026-09-20T18:05:02.4387938+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e373eaf0-0c9a-4016-9eb8-8086dae2d34d">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_efa9fd53a15e4591b9ce7a189a2aa7e6.pc5' because it is being used by another process.)&#xD;
+---- Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)&#xD;
+---- System.IO.IOException : The process cannot access the file 'FBP_efa9fd53a15e4591b9ce7a189a2aa7e6.pc5' because it is being used by another process.</Message>
+          <StackTrace>&#xD;
+----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 58&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+   at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+   at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose() in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 230&#xD;
+   at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource) in /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs:line 79</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fda18aa5-3b77-492f-ad22-5fa6b2efcf1f" testId="d7fb431d-7e35-1717-8119-a85e0e446a39" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(Smallest File)&quot;, dpi: 400)" computerName="SJY-14000048" duration="00:00:00.0018417" startTime="2026-09-20T18:05:02.6434046+08:00" endTime="2026-09-20T18:05:02.6434048+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fda18aa5-3b77-492f-ad22-5fa6b2efcf1f">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName</Message>
+          <StackTrace>   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 143&#xD;
+   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 50&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 36&#xD;
+   at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="260dac47-0c5c-4555-8f54-0d5e17378295" testId="f543f3f5-f0aa-e098-60ff-c95699c23594" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(Web and Mobile)&quot;, dpi: 400)" computerName="SJY-14000048" duration="00:00:00.0014009" startTime="2026-09-20T18:05:02.6448526+08:00" endTime="2026-09-20T18:05:02.6448528+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="260dac47-0c5c-4555-8f54-0d5e17378295">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName</Message>
+          <StackTrace>   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 143&#xD;
+   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 50&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 36&#xD;
+   at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9db84e06-e9b2-4670-ae36-cdadbaf97eaf" testId="b214f07f-e971-2e57-7d3e-f06a6099c21c" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;C:\\Plotters\\calibration.pmp&quot;)" computerName="SJY-14000048" duration="00:00:00.1326283" startTime="2026-09-20T18:05:02.6390270+08:00" endTime="2026-09-20T18:05:02.6390272+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9db84e06-e9b2-4670-ae36-cdadbaf97eaf">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_ba6430f82022412bbaa7cbeb978595fe.pc5' because it is being used by another process.)&#xD;
+---- Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)&#xD;
+---- System.IO.IOException : The process cannot access the file 'FBP_ba6430f82022412bbaa7cbeb978595fe.pc5' because it is being used by another process.</Message>
+          <StackTrace>&#xD;
+----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 58&#xD;
+   at InvokeStub_ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+   at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+   at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose() in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 230&#xD;
+   at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource) in /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs:line 79</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3790cc3e-21f5-44b0-8e9e-9c1cab9dc4b7" testId="8f1e8c20-0c0a-1e8b-3f33-634fc9e6614f" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(General Documentation)&quot;, dpi: 1000)" computerName="SJY-14000048" duration="00:00:00.0016756" startTime="2026-09-20T18:05:02.7239175+08:00" endTime="2026-09-20T18:05:02.7239177+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3790cc3e-21f5-44b0-8e9e-9c1cab9dc4b7">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName</Message>
+          <StackTrace>   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 143&#xD;
+   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 50&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 36&#xD;
+   at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c2aa4fb2-5ade-4113-8255-63c1d573f0e1" testId="8178806c-8c98-27ca-0f6c-e6de175a4b97" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(High Quality Print)&quot;, dpi: 2000)" computerName="SJY-14000048" duration="00:00:00.0018698" startTime="2026-09-20T18:05:02.6419454+08:00" endTime="2026-09-20T18:05:02.6419457+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c2aa4fb2-5ade-4113-8255-63c1d573f0e1">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName</Message>
+          <StackTrace>   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 143&#xD;
+   at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs:line 50&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 36&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="49155d6c-a1fa-4d5c-8022-369872ef0de8" testId="1280d9de-87d9-9abd-91d3-4c7f17222309" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;calibration.pmp&quot;)" computerName="SJY-14000048" duration="00:00:00.0702415" startTime="2026-09-20T18:05:02.5062324+08:00" endTime="2026-09-20T18:05:02.5062326+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49155d6c-a1fa-4d5c-8022-369872ef0de8">
+      <Output>
+        <ErrorInfo>
+          <Message>System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_739a2cf6a042433585622b574e77fad1.pc5' because it is being used by another process.)&#xD;
+---- Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.IO.InvalidDataException)&#xD;
+---- System.IO.IOException : The process cannot access the file 'FBP_739a2cf6a042433585622b574e77fad1.pc5' because it is being used by another process.</Message>
+          <StackTrace>&#xD;
+----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference) in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 58&#xD;
+   at InvokeStub_ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+   at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+   at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+   at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose() in E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs:line 230&#xD;
+   at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource) in /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs:line 79</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="af45eb03-4aa1-4db5-b9f4-c0840f2fbc2d" testId="e86454bb-f867-21a5-fa0d-eb07fd9889cd" testName="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;DWG to PDF&quot;, dpi: 500)" computerName="SJY-14000048" duration="00:00:00.0765247" startTime="2026-09-20T18:05:02.7219310+08:00" endTime="2026-09-20T18:05:02.7219315+08:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af45eb03-4aa1-4db5-b9f4-c0840f2fbc2d" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(Web and Mobile)&quot;, dpi: 400)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="f543f3f5-f0aa-e098-60ff-c95699c23594">
+      <Execution id="260dac47-0c5c-4555-8f54-0d5e17378295" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="OfficialPresetNamesKeepTheirDriverOptions" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(Smallest File)&quot;, dpi: 400)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="d7fb431d-7e35-1717-8119-a85e0e446a39">
+      <Execution id="fda18aa5-3b77-492f-ad22-5fa6b2efcf1f" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="OfficialPresetNamesKeepTheirDriverOptions" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;missing.pmp&quot;)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="57677574-bc2e-03e9-095b-c88f4319134d">
+      <Execution id="e373eaf0-0c9a-4016-9eb8-8086dae2d34d" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="ExistingPmpCannotBeSilentlyReplaced" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;DWG to PDF&quot;, dpi: 500)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="e86454bb-f867-21a5-fa0d-eb07fd9889cd">
+      <Execution id="af45eb03-4aa1-4db5-b9f4-c0840f2fbc2d" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="OfficialPresetNamesKeepTheirDriverOptions" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(High Quality Print)&quot;, dpi: 2000)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="8178806c-8c98-27ca-0f6c-e6de175a4b97">
+      <Execution id="c2aa4fb2-5ade-4113-8255-63c1d573f0e1" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="OfficialPresetNamesKeepTheirDriverOptions" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;C:\\Plotters\\calibration.pmp&quot;)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="b214f07f-e971-2e57-7d3e-f06a6099c21c">
+      <Execution id="9db84e06-e9b2-4670-ae36-cdadbaf97eaf" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="ExistingPmpCannotBeSilentlyReplaced" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: &quot;calibration.pmp&quot;)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="1280d9de-87d9-9abd-91d3-4c7f17222309">
+      <Execution id="49155d6c-a1fa-4d5c-8022-369872ef0de8" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="ExistingPmpCannotBeSilentlyReplaced" />
+    </UnitTest>
+    <UnitTest name="FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: &quot;ZWCAD PDF(General Documentation)&quot;, dpi: 1000)" storage="e:\366256\vibecoding\批打印-new\src\fastbatchplot.tests\bin\release\net8.0\fastbatchplot.tests.dll" id="8f1e8c20-0c0a-1e8b-3f33-634fc9e6614f">
+      <Execution id="3790cc3e-21f5-44b0-8e9e-9c1cab9dc4b7" />
+      <TestMethod codeBase="E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner2/netcoreapp" className="FastBatchPlot.Tests.ZwPdfMediaFilesTests" name="OfficialPresetNamesKeepTheirDriverOptions" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="57677574-bc2e-03e9-095b-c88f4319134d" executionId="e373eaf0-0c9a-4016-9eb8-8086dae2d34d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d7fb431d-7e35-1717-8119-a85e0e446a39" executionId="fda18aa5-3b77-492f-ad22-5fa6b2efcf1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f543f3f5-f0aa-e098-60ff-c95699c23594" executionId="260dac47-0c5c-4555-8f54-0d5e17378295" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b214f07f-e971-2e57-7d3e-f06a6099c21c" executionId="9db84e06-e9b2-4670-ae36-cdadbaf97eaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f1e8c20-0c0a-1e8b-3f33-634fc9e6614f" executionId="3790cc3e-21f5-44b0-8e9e-9c1cab9dc4b7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8178806c-8c98-27ca-0f6c-e6de175a4b97" executionId="c2aa4fb2-5ade-4113-8255-63c1d573f0e1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1280d9de-87d9-9abd-91d3-4c7f17222309" executionId="49155d6c-a1fa-4d5c-8022-369872ef0de8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e86454bb-f867-21a5-fa0d-eb07fd9889cd" executionId="af45eb03-4aa1-4db5-b9f4-c0840f2fbc2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="列表中未列出的结果" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="所有已加载的结果" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="8" executed="8" passed="1" failed="7" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.6+bf9b858c26 (64-bit .NET 8.0.25)&#xD;
+[xUnit.net 00:00:00.06]   Discovering: FastBatchPlot.Tests&#xD;
+[xUnit.net 00:00:00.13]   Discovered:  FastBatchPlot.Tests&#xD;
+[xUnit.net 00:00:00.14]   Starting:    FastBatchPlot.Tests&#xD;
+[xUnit.net 00:00:00.27]       System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.27]       Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_efa9fd53a15e4591b9ce7a189a2aa7e6.pc5' because it is being used by another process.)&#xD;
+[xUnit.net 00:00:00.27]       ---- Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.27]       Expected: typeof(System.IO.InvalidDataException)&#xD;
+[xUnit.net 00:00:00.27]       ---- System.IO.IOException : The process cannot access the file 'FBP_efa9fd53a15e4591b9ce7a189a2aa7e6.pc5' because it is being used by another process.&#xD;
+[xUnit.net 00:00:00.27]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.27]         &#xD;
+[xUnit.net 00:00:00.27]         ----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+[xUnit.net 00:00:00.27]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(58,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference)&#xD;
+[xUnit.net 00:00:00.27]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.27]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.27]         ----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+[xUnit.net 00:00:00.27]            at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+[xUnit.net 00:00:00.27]            at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+[xUnit.net 00:00:00.27]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(230,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose()&#xD;
+[xUnit.net 00:00:00.27]         /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs(79,0): at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource)&#xD;
+[xUnit.net 00:00:00.34]       System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.34]       Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_739a2cf6a042433585622b574e77fad1.pc5' because it is being used by another process.)&#xD;
+[xUnit.net 00:00:00.34]       ---- Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.34]       Expected: typeof(System.IO.InvalidDataException)&#xD;
+[xUnit.net 00:00:00.34]       ---- System.IO.IOException : The process cannot access the file 'FBP_739a2cf6a042433585622b574e77fad1.pc5' because it is being used by another process.&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         &#xD;
+[xUnit.net 00:00:00.34]         ----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+[xUnit.net 00:00:00.34]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(58,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference)&#xD;
+[xUnit.net 00:00:00.34]            at InvokeStub_ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.34]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.34]         ----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+[xUnit.net 00:00:00.34]            at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+[xUnit.net 00:00:00.34]            at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+[xUnit.net 00:00:00.34]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(230,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose()&#xD;
+[xUnit.net 00:00:00.34]         /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs(79,0): at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource)&#xD;
+[xUnit.net 00:00:00.48]       System.AggregateException : One or more errors occurred. (Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.48]       Expected: typeof(System.IO.InvalidDataException)) (The process cannot access the file 'FBP_ba6430f82022412bbaa7cbeb978595fe.pc5' because it is being used by another process.)&#xD;
+[xUnit.net 00:00:00.48]       ---- Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.48]       Expected: typeof(System.IO.InvalidDataException)&#xD;
+[xUnit.net 00:00:00.48]       ---- System.IO.IOException : The process cannot access the file 'FBP_ba6430f82022412bbaa7cbeb978595fe.pc5' because it is being used by another process.&#xD;
+[xUnit.net 00:00:00.48]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.48]         &#xD;
+[xUnit.net 00:00:00.48]         ----- Inner Stack Trace #1 (Xunit.Sdk.ThrowsException) -----&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(58,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(String reference)&#xD;
+[xUnit.net 00:00:00.48]            at InvokeStub_ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.48]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.48]         ----- Inner Stack Trace #2 (System.IO.IOException) -----&#xD;
+[xUnit.net 00:00:00.48]            at System.IO.FileSystem.RemoveDirectoryRecursive(String fullPath, WIN32_FIND_DATA&amp; findData, Boolean topLevel)&#xD;
+[xUnit.net 00:00:00.48]            at System.IO.FileSystem.RemoveDirectory(String fullPath, Boolean recursive)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(230,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.Dispose()&#xD;
+[xUnit.net 00:00:00.48]         /_/src/xunit.execution/Extensions/ReflectionAbstractionExtensions.cs(79,0): at ReflectionAbstractionExtensions.DisposeTestClass(ITest test, Object testClass, IMessageBus messageBus, ExecutionTimer timer, CancellationTokenSource cancellationTokenSource)&#xD;
+[xUnit.net 00:00:00.48]       System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName&#xD;
+[xUnit.net 00:00:00.48]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(143,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(50,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(36,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi)&#xD;
+[xUnit.net 00:00:00.48]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.48]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.48]       System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName&#xD;
+[xUnit.net 00:00:00.48]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(143,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(50,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(36,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi)&#xD;
+[xUnit.net 00:00:00.48]            at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.48]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.48]       System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName&#xD;
+[xUnit.net 00:00:00.48]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(143,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(50,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot)&#xD;
+[xUnit.net 00:00:00.48]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(36,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi)&#xD;
+[xUnit.net 00:00:00.48]            at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.48]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.56]       System.IO.InvalidDataException : 源 PC5 驱动配置不受支持：Standard/DriverName&#xD;
+[xUnit.net 00:00:00.56]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.56]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(143,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Require(Ini ini, String section, String key, String expected)&#xD;
+[xUnit.net 00:00:00.56]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\Printing\ZwPdfMediaFiles.cs(50,0): at FastBatchPlot.Core.Printing.ZwPdfMediaFiles.Create(String sourcePc5Path, Double widthMm, Double heightMm, String temporaryRoot)&#xD;
+[xUnit.net 00:00:00.56]         E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\ZwPdfMediaFilesTests.cs(36,0): at FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(String driver, Int32 dpi)&#xD;
+[xUnit.net 00:00:00.56]            at InvokeStub_ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.56]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.56]   Finished:    FastBatchPlot.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.4372368+08:00">
+        <Text>[xUnit.net 00:00:00.27]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: "missing.pmp") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.5060847+08:00">
+        <Text>[xUnit.net 00:00:00.34]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: "calibration.pmp") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.6405402+08:00">
+        <Text>[xUnit.net 00:00:00.47]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.ExistingPmpCannotBeSilentlyReplaced(reference: "C:\\Plotters\\calibration.pmp") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.6415419+08:00">
+        <Text>[xUnit.net 00:00:00.48]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: "ZWCAD PDF(High Quality Print)", dpi: 2000) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.6433037+08:00">
+        <Text>[xUnit.net 00:00:00.48]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: "ZWCAD PDF(Smallest File)", dpi: 400) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.6453699+08:00">
+        <Text>[xUnit.net 00:00:00.48]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: "ZWCAD PDF(Web and Mobile)", dpi: 400) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="SJY-14000048" outcome="Error" timestamp="2026-09-20T18:05:02.7236219+08:00">
+        <Text>[xUnit.net 00:00:00.56]     FastBatchPlot.Tests.ZwPdfMediaFilesTests.OfficialPresetNamesKeepTheirDriverOptions(driver: "ZWCAD PDF(General Documentation)", dpi: 1000) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

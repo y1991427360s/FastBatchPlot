@@ -1,0 +1,81 @@
+2026-09-20T22:28:52.9415320+08:00 === PROBE J START ===
+2026-09-20T22:28:52.9460986+08:00 [Initial State] DumpDbState ERR: 未实现该方法或操作。
+2026-09-20T22:28:52.9460986+08:00 Target DBText Id=(6179275159112), OriginalText='CHANGED FOR REVISION CHECK'
+2026-09-20T22:28:52.9460986+08:00 [After .NET Transaction Edit] DumpDbState ERR: 未实现该方法或操作。
+2026-09-20T22:28:52.9460986+08:00 [After .NET Transaction Restore] DumpDbState ERR: 未实现该方法或操作。
+2026-09-20T22:28:52.9476328+08:00 TransactionManager Type: ZwSoft.ZwCAD.ApplicationServices.TransactionManager
+2026-09-20T22:28:52.9476328+08:00 Document Events:
+2026-09-20T22:28:52.9481657+08:00   Doc Event: ModelessOperationWillStart
+2026-09-20T22:28:52.9547739+08:00   Doc Event: ModelessOperationEnded
+2026-09-20T22:28:52.9547739+08:00   Doc Event: LayoutSwitching
+2026-09-20T22:28:52.9547739+08:00   Doc Event: LayoutSwitched
+2026-09-20T22:28:52.9547739+08:00   Doc Event: UnknownCommand
+2026-09-20T22:28:52.9547739+08:00   Doc Event: LispWillStart
+2026-09-20T22:28:52.9562889+08:00   Doc Event: LispEnded
+2026-09-20T22:28:52.9562889+08:00   Doc Event: LispCancelled
+2026-09-20T22:28:52.9562889+08:00   Doc Event: EndDwgOpen
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CommandWillStart
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CommandFailed
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CommandEnded
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CommandCancelled
+2026-09-20T22:28:52.9562889+08:00   Doc Event: ViewChanged
+2026-09-20T22:28:52.9562889+08:00   Doc Event: ImpliedSelectionChanged
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CloseWillStart
+2026-09-20T22:28:52.9562889+08:00   Doc Event: CloseAborted
+2026-09-20T22:28:52.9578056+08:00   Doc Event: BeginDocumentClose
+2026-09-20T22:28:52.9578056+08:00   Doc Event: BeginDwgOpen
+2026-09-20T22:28:52.9578056+08:00 Database Events:
+2026-09-20T22:28:52.9578056+08:00   DB Event: XrefSubCommandEnd
+2026-09-20T22:28:52.9578056+08:00   DB Event: XrefSubCommandStart
+2026-09-20T22:28:52.9578056+08:00   DB Event: XrefSubCommandAborted
+2026-09-20T22:28:52.9578056+08:00   DB Event: XrefRestoreEnded
+2026-09-20T22:28:52.9578056+08:00   DB Event: XrefRestoreAborted
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefRedirected
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefPreXrefLockFile
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefComandeered
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefBeginRestore
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefBeginOtherAttached
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefBeginAttached
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefAttachEnded
+2026-09-20T22:28:52.9593245+08:00   DB Event: XrefAttachAborted
+2026-09-20T22:28:52.9593245+08:00   DB Event: WblockNotice
+2026-09-20T22:28:52.9593245+08:00   DB Event: WblockMappingAvailable
+2026-09-20T22:28:52.9608647+08:00   DB Event: WblockEnded
+2026-09-20T22:28:52.9608647+08:00   DB Event: WblockAborted
+2026-09-20T22:28:52.9608647+08:00   DB Event: SystemVariableWillChange
+2026-09-20T22:28:52.9608647+08:00   DB Event: SystemVariableChanged
+2026-09-20T22:28:52.9608647+08:00   DB Event: SaveComplete
+2026-09-20T22:28:52.9608647+08:00   DB Event: ProxyResurrectionCompleted
+2026-09-20T22:28:52.9619508+08:00   DB Event: PartialOpenNotice
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectUnappended
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectReappended
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectOpenedForModify
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectModified
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectErased
+2026-09-20T22:28:52.9619508+08:00   DB Event: ObjectAppended
+2026-09-20T22:28:52.9619508+08:00   DB Event: InsertMappingAvailable
+2026-09-20T22:28:52.9619508+08:00   DB Event: InsertEnded
+2026-09-20T22:28:52.9619508+08:00   DB Event: InsertAborted
+2026-09-20T22:28:52.9634621+08:00   DB Event: InitialDwgFileOpenComplete
+2026-09-20T22:28:52.9634621+08:00   DB Event: DxfOutComplete
+2026-09-20T22:28:52.9634621+08:00   DB Event: DxfInComplete
+2026-09-20T22:28:52.9634621+08:00   DB Event: DwgFileOpened
+2026-09-20T22:28:52.9634621+08:00   DB Event: Disposed
+2026-09-20T22:28:52.9644674+08:00   DB Event: DeepCloneEnded
+2026-09-20T22:28:52.9644674+08:00   DB Event: DeepCloneAborted
+2026-09-20T22:28:52.9644674+08:00   DB Event: DatabaseToBeDestroyed
+2026-09-20T22:28:52.9644674+08:00   DB Event: DatabaseConstructed
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginWblockSelectedObjects
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginWblockObjects
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginWblockEntireDatabase
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginWblockBlock
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginSave
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginInsert
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginDxfOut
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginDxfIn
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginDeepCloneTranslation
+2026-09-20T22:28:52.9649710+08:00   DB Event: BeginDeepClone
+2026-09-20T22:28:52.9649710+08:00   DB Event: AbortSave
+2026-09-20T22:28:52.9664840+08:00   DB Event: AbortDxfOut
+2026-09-20T22:28:52.9664840+08:00   DB Event: AbortDxfIn
+2026-09-20T22:28:52.9664840+08:00 === PROBE J END ===

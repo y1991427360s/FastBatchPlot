@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup>
+  <TargetFramework>net48</TargetFramework>
+  <Nullable>enable</Nullable>
+  <LangVersion>latest</LangVersion>
+  <AssemblyName>Phase45ProbeM</AssemblyName>
+  <OutputPath>m-bin</OutputPath>
+  <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+ </PropertyGroup>
+ <ItemGroup>
+  <Reference Include="ZwManaged"><HintPath>D:/ZWCAD2026/ZwManaged.dll</HintPath><Private>false</Private></Reference>
+  <Reference Include="ZwDatabaseMgd"><HintPath>D:/ZWCAD2026/ZwDatabaseMgd.dll</HintPath><Private>false</Private></Reference>
+ </ItemGroup>
+ <ItemGroup>
+  <Compile Include="ProbeStateM.cs"/>
+ </ItemGroup>
+</Project>

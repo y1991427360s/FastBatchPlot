@@ -1,0 +1,19 @@
+  正在确定要还原的项目…
+  所有项目均是最新的，无法还原。
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\bin\Release\netstandard2.0\FastBatchPlot.Core.dll
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\bin\Release\net8.0\FastBatchPlot.Core.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.CadBridge\bin\Release\net8.0\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.Cli -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Cli\bin\Release\net8.0\PlotMerger.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.CadBridge\bin\Release\netstandard2.0\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.Tests -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\bin\Release\net8.0-windows\FastBatchPlot.UI.dll
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\bin\Release\net48\FastBatchPlot.UI.dll
+  FastBatchPlot.ZWCAD -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.ZWCAD\bin\Release\net48\FastBatchPlot.ZWCAD.dll
+  FastBatchPlot.AutoCAD -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.AutoCAD\bin\Release\net48\FastBatchPlot.AutoCAD.dll
+  FastBatchPlot.UiChecks -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UiChecks\bin\Release\net8.0-windows\FastBatchPlot.UiChecks.dll
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:02.54

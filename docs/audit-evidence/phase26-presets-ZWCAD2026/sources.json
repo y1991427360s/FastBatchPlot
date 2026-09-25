@@ -1,0 +1,42 @@
+﻿[
+    {
+        "source":  "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\DWG to PDF.pc5",
+        "sha256":  "7FFC743CA062E79494388E81FD70EDB10D416AA93B9407F49E6EE8CC8790E812",
+        "lastWriteTimeUtc":  "2025-12-01T13:11:00.0000000Z",
+        "configuration":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-852f58ece653498cbe763ac8d8bb81fc\\FBP_852f58ece653498cbe763ac8d8bb81fc.pc5",
+        "pmp":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-852f58ece653498cbe763ac8d8bb81fc\\FBP_852f58ece653498cbe763ac8d8bb81fc.pmp",
+        "mediaName":  "FBP_852f58ece653498cbe763ac8d8bb81fc"
+    },
+    {
+        "source":  "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(General Documentation).pc5",
+        "sha256":  "1D83D6D33F616C9F6B421FC0A4972F06F67ABE82D876BC3E54AA98E441D9166B",
+        "lastWriteTimeUtc":  "2025-10-31T06:42:20.0000000Z",
+        "configuration":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-a2d2acc4e29645289bb6de093ed167db\\FBP_a2d2acc4e29645289bb6de093ed167db.pc5",
+        "pmp":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-a2d2acc4e29645289bb6de093ed167db\\FBP_a2d2acc4e29645289bb6de093ed167db.pmp",
+        "mediaName":  "FBP_a2d2acc4e29645289bb6de093ed167db"
+    },
+    {
+        "source":  "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(High Quality Print).pc5",
+        "sha256":  "929B696D4EF83034672DC01DCE9DE86F5ADC4C3726DDA1E54FAA8E42872306DB",
+        "lastWriteTimeUtc":  "2025-10-31T06:42:20.0000000Z",
+        "configuration":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-1503e9af9d66463898321e82fd01f6b3\\FBP_1503e9af9d66463898321e82fd01f6b3.pc5",
+        "pmp":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-1503e9af9d66463898321e82fd01f6b3\\FBP_1503e9af9d66463898321e82fd01f6b3.pmp",
+        "mediaName":  "FBP_1503e9af9d66463898321e82fd01f6b3"
+    },
+    {
+        "source":  "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Smallest File).pc5",
+        "sha256":  "555F64EB8CEB4B163F3E8E2904A8229BE6484648C7E509A4A2311D888A72243C",
+        "lastWriteTimeUtc":  "2025-10-31T06:42:20.0000000Z",
+        "configuration":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-aff102bfd7b348f88e044b94c0f5bc4d\\FBP_aff102bfd7b348f88e044b94c0f5bc4d.pc5",
+        "pmp":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-aff102bfd7b348f88e044b94c0f5bc4d\\FBP_aff102bfd7b348f88e044b94c0f5bc4d.pmp",
+        "mediaName":  "FBP_aff102bfd7b348f88e044b94c0f5bc4d"
+    },
+    {
+        "source":  "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Web and Mobile).pc5",
+        "sha256":  "B1BD8951E352C230511773114C7F606CE183A94C666A018C957114079408DAB2",
+        "lastWriteTimeUtc":  "2025-10-31T06:42:20.0000000Z",
+        "configuration":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-37d118e1b8b74b31838a417793e4dae1\\FBP_37d118e1b8b74b31838a417793e4dae1.pc5",
+        "pmp":  "D:\\Users\\ys199\\Temp\\FbpPresets-639163a7837b4f6aa30e31db16f0ace5\\fbp-pdf-37d118e1b8b74b31838a417793e4dae1\\FBP_37d118e1b8b74b31838a417793e4dae1.pmp",
+        "mediaName":  "FBP_37d118e1b8b74b31838a417793e4dae1"
+    }
+]

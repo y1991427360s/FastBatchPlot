@@ -1,0 +1,11 @@
+{
+  "PrinterDevice": "DWG To PDF.pc3",
+  "PlotStyleTable": "monochrome.ctb",
+  "MergeToSinglePdf": true,
+  "MergedFileName": "CAD图纸合集.pdf",
+  "MarginMm": 0.0,
+  "PrintOuterBorderLine": true,
+  "AutoOrientation": true,
+  "SortRule": 0,
+  "NamingTemplate": "{Index:D2}_{DwgNo}_{DwgName}"
+}

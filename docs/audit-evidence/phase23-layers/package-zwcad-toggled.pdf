@@ -1,0 +1,154 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Type /Catalog
+/PageMode /UseOutlines
+/Pages 2 0 R
+/Outlines 9 0 R
+/OCProperties <<
+/OCGs [ 4 0 R 7 0 R ]
+/D <<
+/Name (\376\377T\010\136vV\376\176\270V\376\134B)
+/BaseState /ON
+/ON [ 4 0 R ]
+/OFF [ 7 0 R ]
+/Order [ [ (\376\377\000D\000r\000a\000w\000i\000n\000g\000 \0001) (Drawing 1) 4 0 R ] [ (\376\377\000D\000r\000a\000w\000i\000n\000g\000 \0002) (Drawing 2) 7 0 R ] ]
+/Intent /View
+/ListMode /AllPages
+>>
+>>
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 2
+/Kids [ 3 0 R 6 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Parent 2 0 R
+/Type /Page
+/MediaBox [ 0 0 300 200 ]
+/Resources <<
+/Properties <<
+/L1 4 0 R
+>>
+>>
+/Contents 5 0 R
+/Group <<
+/CS /DeviceRGB
+/S /Transparency
+>>
+>>
+endobj
+4 0 obj
+<<
+/Type /OCG
+/Name (Hidden CAD layer)
+>>
+endobj
+5 0 obj
+<<
+/Length 69
+>>
+stream
+0 0 1 rg 20 20 70 70 re f
+/OC /L1 BDC
+1 0 0 rg 160 20 70 70 re f
+EMC
+
+endstream
+endobj
+6 0 obj
+<<
+/Parent 2 0 R
+/Type /Page
+/MediaBox [ 0 0 300 200 ]
+/Resources <<
+/Properties <<
+/L1 7 0 R
+>>
+>>
+/Contents 8 0 R
+/Group <<
+/CS /DeviceRGB
+/S /Transparency
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /OCG
+/Name (Hidden CAD layer)
+>>
+endobj
+8 0 obj
+<<
+/Length 69
+>>
+stream
+0 0 1 rg 20 20 70 70 re f
+/OC /L1 BDC
+1 0 0 rg 160 20 70 70 re f
+EMC
+
+endstream
+endobj
+9 0 obj
+<<
+/First 10 0 R
+/Last 11 0 R
+/Count 2
+>>
+endobj
+10 0 obj
+<<
+/Next 11 0 R
+/Title (\376\377\000D\000r\000a\000w\000i\000n\000g\000 \0001)
+/Parent 9 0 R
+/Dest [ 3 0 R /XYZ null null null ]
+>>
+endobj
+11 0 obj
+<<
+/Prev 10 0 R
+/Title (\376\377\000D\000r\000a\000w\000i\000n\000g\000 \0002)
+/Parent 9 0 R
+/Dest [ 6 0 R /XYZ null null null ]
+>>
+endobj
+12 0 obj
+<<
+/CreationDate (D\07220260920173531\05308\04700\047)
+/Creator (\376\377\000P\000D\000F\000s\000h\000a\000r\000p\000 \0001\000\056\0005\0000\000\056\0004\0000\0000\0000\000\055\000n\000e\000t\000s\000t\000a\000n\000d\000a\000r\000d\000 \000\050\000h\000t\000t\000p\000s\000\072\000\057\000\057\000g\000i\000t\000h\000u\000b\000\056\000c\000o\000m\000\057\000s\000t\000s\000t\000e\000i\000g\000e\000r\000\057\000P\000d\000f\000S\000h\000a\000r\000p\000C\000o\000r\000e\000\051)
+/Producer (PDFsharp 1\05650\0564000\055netstandard \050https\072\057\057github\056com\057ststeiger\057PdfSharpCore\051)
+>>
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000015 00000 n 
+0000000449 00000 n 
+0000000514 00000 n 
+0000000693 00000 n 
+0000000750 00000 n 
+0000000869 00000 n 
+0000001048 00000 n 
+0000001105 00000 n 
+0000001224 00000 n 
+0000001281 00000 n 
+0000001429 00000 n 
+0000001577 00000 n 
+trailer
+<<
+/Size 13
+/Root 1 0 R
+/Info 12 0 R
+/ID [ <1870e18a5ab8384eae06b38b857104d7> <1870e18a5ab8384eae06b38b857104d7> ]
+>>
+startxref
+2194
+%%EOF

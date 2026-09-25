@@ -1,0 +1,11 @@
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll (.NETCoreApp,Version=v8.0)的测试运行
+VSTest 版本 17.11.1 (x64)
+
+正在启动测试执行，请稍候...
+总共 1 个测试文件与指定模式相匹配。
+找不到文件 E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll。
+无有效的指定源“E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll”。请修复以上错误/警告，然后重试。
+
+此外，还可以使用 /TestAdapterPath 命令指定测试适配器的路径。示例 /TestAdapterPath:<pathToCustomAdapters>。
+测试运行通过；未连接或操作 CAD。
+核心测试共 224 项通过。

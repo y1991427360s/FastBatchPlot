@@ -1,0 +1,26 @@
+  正在确定要还原的项目…
+  所有项目均是最新的，无法还原。
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\bin\Release\netstandard2.0\FastBatchPlot.Core.dll
+  FastBatchPlot.Core -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Core\bin\Release\net8.0\FastBatchPlot.Core.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.CadBridge\bin\Release\net8.0\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.CadBridge -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.CadBridge\bin\Release\netstandard2.0\FastBatchPlot.CadBridge.dll
+  FastBatchPlot.Cli -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Cli\bin\Release\net8.0\PlotMerger.dll
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(43,22): warning CS0108: “CatalogOptionsForm.Move(int)”隐藏继承的成员“Control.Move”。如果是有意隐藏，请使用关键字 new。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net48]
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\bin\Release\net48\FastBatchPlot.UI.dll
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(43,22): warning CS0108: “CatalogOptionsForm.Move(int)”隐藏继承的成员“Control.Move”。如果是有意隐藏，请使用关键字 new。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net8.0-windows]
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(61,60): warning CS8605: 取消装箱可能为 null 的值。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net8.0-windows]
+  FastBatchPlot.UI -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\bin\Release\net8.0-windows\FastBatchPlot.UI.dll
+  FastBatchPlot.Tests -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.Tests\bin\Release\net8.0\FastBatchPlot.Tests.dll
+  FastBatchPlot.AutoCAD -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.AutoCAD\bin\Release\net48\FastBatchPlot.AutoCAD.dll
+  FastBatchPlot.ZWCAD -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.ZWCAD\bin\Release\net48\FastBatchPlot.ZWCAD.dll
+  FastBatchPlot.UiChecks -> E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UiChecks\bin\Release\net8.0-windows\FastBatchPlot.UiChecks.dll
+
+已成功生成。
+
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(43,22): warning CS0108: “CatalogOptionsForm.Move(int)”隐藏继承的成员“Control.Move”。如果是有意隐藏，请使用关键字 new。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net48]
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(43,22): warning CS0108: “CatalogOptionsForm.Move(int)”隐藏继承的成员“Control.Move”。如果是有意隐藏，请使用关键字 new。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net8.0-windows]
+E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\Views\CatalogOptionsForm.cs(61,60): warning CS8605: 取消装箱可能为 null 的值。 [E:\366256\vibecoding\批打印-new\src\FastBatchPlot.UI\FastBatchPlot.UI.csproj::TargetFramework=net8.0-windows]
+    3 个警告
+    0 个错误
+
+已用时间 00:00:02.64

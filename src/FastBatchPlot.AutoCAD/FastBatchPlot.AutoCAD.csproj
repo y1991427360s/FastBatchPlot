@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FastBatchPlot.AutoCAD</AssemblyName>
+    <RootNamespace>FastBatchPlot.AutoCAD</RootNamespace>
+    <AutoCADSdkPath Condition="'$(AutoCADSdkPath)' == ''">$(AUTOCAD2018_SDK)</AutoCADSdkPath>
+    <AutoCADSdkPath Condition="'$(AutoCADSdkPath)' == '' and Exists('$(ProgramW6432)\Autodesk\AutoCAD 2018\acmgd.dll')">$(ProgramW6432)\Autodesk\AutoCAD 2018</AutoCADSdkPath>
+    <AutoCADSdkPath Condition="'$(AutoCADSdkPath)' == ''">D:\Autodesk\CAD2018\AutoCAD 2018</AutoCADSdkPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastBatchPlot.Core\FastBatchPlot.Core.csproj" />
+    <ProjectReference Include="..\FastBatchPlot.CadBridge\FastBatchPlot.CadBridge.csproj" />
+    <ProjectReference Include="..\FastBatchPlot.UI\FastBatchPlot.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="acdbmgd">
+      <HintPath>$(AutoCADSdkPath)\acdbmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="acmgd">
+      <HintPath>$(AutoCADSdkPath)\acmgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="accoremgd">
+      <HintPath>$(AutoCADSdkPath)\accoremgd.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="ValidateAutoCAD2018Sdk" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(AutoCADSdkPath)\acmgd.dll') or !Exists('$(AutoCADSdkPath)\acdbmgd.dll') or !Exists('$(AutoCADSdkPath)\accoremgd.dll')" Text="缺少 AutoCAD 2018 SDK；请设置 AutoCADSdkPath 或 AUTOCAD2018_SDK 指向包含 acmgd/acdbmgd/accoremgd.dll 的目录。" />
+    <GetAssemblyIdentity AssemblyFiles="$(AutoCADSdkPath)\acmgd.dll">
+      <Output TaskParameter="Assemblies" ItemName="AutoCADSdkIdentity" />
+    </GetAssemblyIdentity>
+    <Error Condition="'%(AutoCADSdkIdentity.Version)' != '22.0.0.0'" Text="当前发布目标仅支持 AutoCAD 2018（acmgd 程序集 22.0.0.0），请检查 AutoCADSdkPath。" />
+  </Target>
+
+</Project>

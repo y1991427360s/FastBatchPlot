@@ -1,0 +1,29 @@
+2026-09-20T22:25:08.1856566+08:00 === PROBE F START ===
+2026-09-20T22:25:08.1856566+08:00 Doc: E:\366256\vibecoding\批打印-new\docs\audit-evidence\phase43-native\independent-test.dwg, DB Unmanaged: 6178959064112, DB HashCode: -1498874832
+2026-09-20T22:25:08.1919061+08:00 Baseline Revision: ESiBXwrw8dh60YMpqFpyjkvuGbMMy4XslOzdpkTCkvs=
+2026-09-20T22:25:08.1919061+08:00 Current Space Handle: 1F, Name: *Model_Space
+2026-09-20T22:25:08.1919061+08:00   Ent #1: Polyline Handle=241 Id=(6179275159088)
+2026-09-20T22:25:08.1934204+08:00   Ent #2: DBText Handle=242 Id=(6179275159112) TextString='CHANGED FOR REVISION CHECK'
+2026-09-20T22:25:08.1934204+08:00 Found DBText to edit. Id=(6179275159112), OriginalText='CHANGED FOR REVISION CHECK'
+2026-09-20T22:25:08.2032258+08:00 Initial Consistency Verify: PASSED
+2026-09-20T22:25:08.2032258+08:00 Step 2: Modifying DBText to 'PROBE_F_MODIFIED_639255399082032258' within Transaction...
+2026-09-20T22:25:08.2032258+08:00 Before TextString assignment: textObj.TextString='CHANGED FOR REVISION CHECK'
+2026-09-20T22:25:08.2032258+08:00 After TextString assignment: textObj.TextString='PROBE_F_MODIFIED_639255399082032258'
+2026-09-20T22:25:08.2032258+08:00 Transaction Committed.
+2026-09-20T22:25:08.2047428+08:00 Step 3: Read back from DB: TextString='PROBE_F_MODIFIED_639255399082032258' (Matches expected modified: True)
+2026-09-20T22:25:08.2065918+08:00 Step 4: Revision after edit: ESiBXwrw8dh60YMpqFpyjkvuGbMMy4XslOzdpkTCkvs=
+2026-09-20T22:25:08.2065918+08:00 Is revision changed? False
+2026-09-20T22:25:08.2108865+08:00 Verify after edit: PASSED (FAILED TO REJECT EDIT!)
+2026-09-20T22:25:08.2108865+08:00 Step 5: Restoring DBText back to original: 'CHANGED FOR REVISION CHECK'...
+2026-09-20T22:25:08.2114058+08:00 Restore Transaction Committed.
+2026-09-20T22:25:08.2114058+08:00 Step 6: Read back restored text: TextString='CHANGED FOR REVISION CHECK' (Matches original: True)
+2026-09-20T22:25:08.2119630+08:00 Step 6: Revision after restore: ESiBXwrw8dh60YMpqFpyjkvuGbMMy4XslOzdpkTCkvs=
+2026-09-20T22:25:08.2119630+08:00 Step 7: Testing Append & Erase entity...
+2026-09-20T22:25:08.2135780+08:00 [EVENT ObjectOpenedForModify] BlockTableRecord Handle=1F
+2026-09-20T22:25:08.2146721+08:00 [EVENT ObjectAppended] Line Handle=257 Id=(6179275159616)
+2026-09-20T22:25:08.2151905+08:00 [EVENT ObjectModified] Line Handle=257 Id=(6179275159616)
+2026-09-20T22:25:08.2157374+08:00 Appended temp line. Id=(6179275159616)
+2026-09-20T22:25:08.2162918+08:00 Revision after AppendEntity: LGWwroJYEChOnXhSVJAXJywu4kae/4ma9LnzAO7qReQ= (Changed from baseline: True)
+2026-09-20T22:25:08.2168119+08:00 Erased temp line.
+2026-09-20T22:25:08.2168119+08:00 Revision after Erase: LGWwroJYEChOnXhSVJAXJywu4kae/4ma9LnzAO7qReQ=
+2026-09-20T22:25:08.2168119+08:00 === PROBE F FINISHED SUCCESSFULLY ===

@@ -1,0 +1,26 @@
+[
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.ZWCAD\\bin\\Release\\net48\\FastBatchPlot.ZWCAD.dll",
+    "lastWriteTimeUtc": "2026-09-20T09:19:12.4362496Z",
+    "bytes": 61440,
+    "sha256": "16E313ADD02303DFE5D8B10E88D06D11C86A05349B7B1F3685F7006FD90E764D"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.AutoCAD\\bin\\Release\\net48\\FastBatchPlot.AutoCAD.dll",
+    "lastWriteTimeUtc": "2026-09-20T09:19:12.4568998Z",
+    "bytes": 56320,
+    "sha256": "70E65B5A8F4CF4513CDC1C4B9A6FD151AFC11F8125A6585839107C094B4D5BB0"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.FrameworkChecks\\bin\\Release\\net48\\FastBatchPlot.FrameworkChecks.exe",
+    "lastWriteTimeUtc": "2026-09-20T09:19:11.1277796Z",
+    "bytes": 14848,
+    "sha256": "4C19D9A8B507368304B526B01B412D10B63FFE11755A3EC18A7840E431CFC2B0"
+  },
+  {
+    "path": "E:\\366256\\vibecoding\\批打印-new\\src\\FastBatchPlot.UiChecks\\bin\\Release\\net8.0-windows\\FastBatchPlot.UiChecks.exe",
+    "lastWriteTimeUtc": "2026-09-20T09:19:12.8335539Z",
+    "bytes": 151552,
+    "sha256": "B8B85E8A54C3C2E9D81D4264CC61B5752960F5EF0D0EC338B9793D73802E39C5"
+  }
+]

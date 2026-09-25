@@ -1,0 +1,42 @@
+[
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWPLOT_PDF.pc5",
+    "sha256": "4bf89788c47e8a8c5ff7b740360356389e1a4b90cdcf4195b06887596912accd",
+    "bytes": 1816,
+    "mtime_ns": 1765351106000000000,
+    "content": "[Meta]\r\nPrinterType=2\r\nSource=\r\nsource_entry=\r\npmp_filepath=ZWPLOT_PDF.pmp\r\ndefault_source=0\r\npaper_name=ISO_A3_(297.00_x_420.00_MM)\r\npaper_size_x=297.000000\r\npaper_size_y=420.000000\r\nactual_printable_bounds_llx=5.000000\r\nactual_printable_bounds_lly=17.000000\r\nactual_printable_bounds_urx=292.000000\r\nactual_printable_bounds_ury=403.000000\r\nphysical_offsetx=0.000000\r\nphysical_offsety=0.000000\r\nactual_x=297.000000\r\nactual_y=420.000000\r\nactual_area=110782.000000\r\npaper_unit=1\r\ndestination_name=\r\nduplexing_mode=0\r\nconfig_description=\r\n[res_color_mem]\r\ndm_color=32\r\ncolor_depth=16777216\r\nresolution_x=500\r\nresolution_y=500\r\ncolor_system=2\r\ncolor_device=1\r\nism_max=6\r\nole_max=6\r\npreference=50\r\ndm_ICMIntent=0\r\ndm_ICMMethod=0\r\ntruetype_as_text=1\r\ndm_TTOption=0\r\nlines_overwrite=1\r\ncolor_monochrome=1\r\nphysicalpen_color=\r\nphysicalpen_speed=\r\nphysicalpen_lineweight=LW0.25,1;LW0.25,2;LW0.25,3;LW0.25,4;LW0.25,5;LW0.25,6;LW0.25,7;LW0.25,8;\r\nformat=0\r\nbgColor=0\r\nraster_resolution_x=72\r\nraster_resolution_y=72\r\n[Standard]\r\nDeviceName=PDF\r\nDevicePath=\r\nDriverVersion=1.0.0.0.0.0 [p001-1]\r\nDriverName=DWG to PDF\r\nDriverPath=ZwPDFDriver.dll\r\nDriverCfgPath=PDF.ini\r\nPortName=FILE:\r\nDeviceComment=\r\nServerName=\r\nLocationName=DWG to PDF\r\nNetPrinterUSE=0\r\nNetPrinterName=\r\n[Port]\r\nplot_to_file=1\r\nconfig_autospool=0\r\ndmDriverExtra=17\r\nprivatedata=0000000000000000\r\n[Retain]\r\ndmorientation=1\r\ndmcopies=1\r\ndccopies=1\r\ndmscale=0\r\ndmprintquality=100\r\nmediatype=0\r\npre_init=0\r\npost_init=0\r\ntermination=\r\nlayerinclude=1\r\nautoopenfile=1\r\ncreatebookmark=1\r\nplotprecise=0\r\nplothyperlink=1\r\n[Caps]\r\ndefinepapersize_caps=1\r\nlw_caps=1\r\nclip_caps=1\r\npathfill_caps=1\r\nboundarylw_caps=1\r\ngrating_caps=1\r\ntruetypetext_caps=1\r\nresolution_caps=1\r\nunitctrl_caps=1\r\nphysicalpen_caps=0\r\npathreverseout_caps=0\r\nshadedrender_caps=1\r\nerrfilepath_caps=\r\n"
+  },
+  {
+    "path": "D:\\ZWCAD2026\\ZwPlotConfig.dll",
+    "sha256": "8b4fe79081679bd9abd75844bf2275d629c1be4b986a2901e695192e8c408d55",
+    "bytes": 456056,
+    "mtime_ns": 1765352828000000000,
+    "utf16le_offsets": {
+      "raster_resolution_x": "0x4b500",
+      "raster_resolution_y": "0x4b528",
+      "layerinclude": "0x4b9b8",
+      "lines_overwrite": "0x4b690"
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\zh-CN\\ZwPDFDriverRes.dll",
+    "sha256": "4204ba0f5d899c1f053eceff648d0b64670e685130957d8bf5384b7da974be3e",
+    "bytes": 122744,
+    "mtime_ns": 1765352664000000000,
+    "utf16le_offsets": {
+      "线条覆盖": "0x1af22",
+      "线条合并": "0x1af2c",
+      "包含图层信息": "0x1ab04"
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\zh-CN\\ZwPlotConfigEditorRes.dll",
+    "sha256": "d6bc8dc881a98815ad327c4328de14225c74d2761307c9aaa0bb41853243ba2b",
+    "bytes": 1093496,
+    "mtime_ns": 1765352426000000000,
+    "utf16le_offsets": {
+      "光栅分辨率不能超出当前矢量分辨率的设置": "0x106eb0",
+      "包含图层信息": "0x106ae4"
+    }
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\DWG to PDF.pc5",
+    "sha256": "7ffc743ca062e79494388e81fd70edb10d416aa93b9407f49e6ee8cc8790e812",
+    "driver": {
+      "devicename": "PDF",
+      "devicepath": "",
+      "driverversion": "1.0.0.0.0.0 [p001-1]",
+      "drivername": "DWG to PDF",
+      "driverpath": "ZwPDFDriver.dll",
+      "drivercfgpath": "PDF.ini",
+      "portname": "FILE:",
+      "devicecomment": "",
+      "servername": "",
+      "locationname": "DWG to PDF"
+    },
+    "options": {
+      "dm_color": "32",
+      "color_depth": "16777216",
+      "resolution_x": "500",
+      "resolution_y": "500",
+      "color_system": "2",
+      "color_device": "1",
+      "ism_max": "6",
+      "ole_max": "6",
+      "preference": "50",
+      "dm_icmintent": "0",
+      "dm_icmmethod": "0",
+      "truetype_as_text": "1",
+      "dm_ttoption": "0",
+      "lines_overwrite": "1"
+    },
+    "pmp": ""
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(General Documentation).pc5",
+    "sha256": "1d83d6d33f616c9f6b421fc0a4972f06f67abe82d876bc3e54aa98e441d9166b",
+    "driver": {
+      "devicename": "PDF",
+      "devicepath": "",
+      "driverversion": "1.0.0.0.0.0 [p001-1]",
+      "drivername": "ZWCAD PDF(General Documentation)",
+      "driverpath": "ZwPDFDriver.dll",
+      "drivercfgpath": "PDF.ini",
+      "portname": "FILE:",
+      "devicecomment": "",
+      "servername": "",
+      "locationname": "ZWCAD PDF(General Documentation)"
+    },
+    "options": {
+      "dm_color": "32",
+      "color_depth": "16777216",
+      "resolution_x": "1000",
+      "resolution_y": "1000",
+      "color_system": "2",
+      "color_device": "1",
+      "ism_max": "6",
+      "ole_max": "6",
+      "preference": "50",
+      "dm_icmintent": "0",
+      "dm_icmmethod": "0",
+      "truetype_as_text": "1",
+      "dm_ttoption": "0",
+      "lines_overwrite": "1"
+    },
+    "pmp": ""
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(High Quality Print).pc5",
+    "sha256": "929b696d4ef83034672dc01dce9de86f5adc4c3726dda1e54faa8e42872306db",
+    "driver": {
+      "devicename": "PDF",
+      "devicepath": "",
+      "driverversion": "1.0.0.0.0.0 [p001-1]",
+      "drivername": "ZWCAD PDF(High Quality Print)",
+      "driverpath": "ZwPDFDriver.dll",
+      "drivercfgpath": "PDF.ini",
+      "portname": "FILE:",
+      "devicecomment": "",
+      "servername": "",
+      "locationname": "ZWCAD PDF(High Quality Print)"
+    },
+    "options": {
+      "dm_color": "32",
+      "color_depth": "16777216",
+      "resolution_x": "2000",
+      "resolution_y": "2000",
+      "color_system": "2",
+      "color_device": "1",
+      "ism_max": "6",
+      "ole_max": "6",
+      "preference": "50",
+      "dm_icmintent": "0",
+      "dm_icmmethod": "0",
+      "truetype_as_text": "1",
+      "dm_ttoption": "0",
+      "lines_overwrite": "1"
+    },
+    "pmp": ""
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Smallest File).pc5",
+    "sha256": "555f64eb8ceb4b163f3e8e2904a8229be6484648c7e509a4a2311d888a72243c",
+    "driver": {
+      "devicename": "PDF",
+      "devicepath": "",
+      "driverversion": "1.0.0.0.0.0 [p001-1]",
+      "drivername": "ZWCAD PDF(Smallest File)",
+      "driverpath": "ZwPDFDriver.dll",
+      "drivercfgpath": "PDF.ini",
+      "portname": "FILE:",
+      "devicecomment": "",
+      "servername": "",
+      "locationname": "ZWCAD PDF(Smallest File)"
+    },
+    "options": {
+      "dm_color": "32",
+      "color_depth": "16777216",
+      "resolution_x": "300",
+      "resolution_y": "300",
+      "color_system": "2",
+      "color_device": "1",
+      "ism_max": "6",
+      "ole_max": "6",
+      "preference": "50",
+      "dm_icmintent": "0",
+      "dm_icmmethod": "0",
+      "truetype_as_text": "1",
+      "dm_ttoption": "0",
+      "lines_overwrite": "1"
+    },
+    "pmp": ""
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Web and Mobile).pc5",
+    "sha256": "b1bd8951e352c230511773114c7f606ce183a94c666a018c957114079408dab2",
+    "driver": {
+      "devicename": "PDF",
+      "devicepath": "",
+      "driverversion": "1.0.0.0.0.0 [p001-1]",
+      "drivername": "ZWCAD PDF(Web and Mobile)",
+      "driverpath": "ZwPDFDriver.dll",
+      "drivercfgpath": "PDF.ini",
+      "portname": "FILE:",
+      "devicecomment": "",
+      "servername": "",
+      "locationname": "ZWCAD PDF(Web and Mobile)"
+    },
+    "options": {
+      "dm_color": "32",
+      "color_depth": "16777216",
+      "resolution_x": "300",
+      "resolution_y": "300",
+      "color_system": "2",
+      "color_device": "1",
+      "ism_max": "6",
+      "ole_max": "6",
+      "preference": "50",
+      "dm_icmintent": "0",
+      "dm_icmmethod": "0",
+      "truetype_as_text": "1",
+      "dm_ttoption": "0",
+      "lines_overwrite": "1"
+    },
+    "pmp": ""
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.AutoCAD.dll",
+    "LastWriteTime": "2026-09-20T13:32:10.7557823+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:10.7557823Z",
+    "Length": 38400
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.CadBridge.dll",
+    "LastWriteTime": "2026-09-20T13:32:10.2169008+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:10.2169008Z",
+    "Length": 9216
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.Core.dll",
+    "LastWriteTime": "2026-09-20T13:32:10.0100711+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:10.0100711Z",
+    "Length": 109568
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\AutoCAD2018\\FastBatchPlot.bundle\\Contents\\FastBatchPlot.UI.dll",
+    "LastWriteTime": "2026-09-20T13:32:10.4444894+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:10.4444894Z",
+    "Length": 63488
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\ZWCAD2026\\Contents\\FastBatchPlot.CadBridge.dll",
+    "LastWriteTime": "2026-09-20T13:32:13.3512626+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:13.3512626Z",
+    "Length": 9216
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\ZWCAD2026\\Contents\\FastBatchPlot.Core.dll",
+    "LastWriteTime": "2026-09-20T13:32:13.1212356+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:13.1212356Z",
+    "Length": 109568
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\ZWCAD2026\\Contents\\FastBatchPlot.UI.dll",
+    "LastWriteTime": "2026-09-20T13:32:13.6121413+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:13.6121413Z",
+    "Length": 63488
+  },
+  {
+    "FullName": "E:\\366256\\vibecoding\\批打印-new\\artifacts\\FastBatchPlot-20260920-133208-459\\ZWCAD2026\\Contents\\FastBatchPlot.ZWCAD.dll",
+    "LastWriteTime": "2026-09-20T13:32:13.9551748+08:00",
+    "LastWriteTimeUtc": "2026-09-20T05:32:13.9551748Z",
+    "Length": 37888
+  }
+]

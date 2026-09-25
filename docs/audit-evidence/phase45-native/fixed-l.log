@@ -1,0 +1,86 @@
+2026-09-20T22:30:39.9608249+08:00 === PROBE L START ===
+2026-09-20T22:30:39.9613291+08:00 Sending MOVE command via SendStringToExecute...
+2026-09-20T22:30:39.9613291+08:00 === PROBE L SENT COMMAND ===
+2026-09-20T22:30:39.9639636+08:00 [EVENT Doc.CommandEnded] BP45L
+2026-09-20T22:30:39.9939890+08:00 [EVENT Doc.CommandWillStart] MOVE
+2026-09-20T22:30:40.0444234+08:00 [EVENT Doc.CommandEnded] MOVE
+2026-09-20T22:30:41.1839875+08:00 [EVENT Doc.CommandWillStart] BP45LCHECK
+2026-09-20T22:30:41.1860732+08:00 BP45LCHECK: Current DBText Position=(30,100,0), TextString='CHANGED FOR REVISION CHECK'
+2026-09-20T22:30:41.1865808+08:00 BP45LCHECK: Restored position.
+2026-09-20T22:30:41.1887126+08:00 [EVENT Doc.CommandEnded] BP45LCHECK
+2026-09-20T22:31:27.3649930+08:00 [EVENT Doc.CommandWillStart] NETLOAD
+2026-09-20T22:31:27.5566714+08:00 [EVENT Doc.CommandEnded] NETLOAD
+2026-09-20T22:31:27.6612406+08:00 [EVENT Doc.CommandWillStart] BP45M
+2026-09-20T22:31:27.6711787+08:00 [EVENT Doc.CommandEnded] BP45M
+2026-09-20T22:32:43.0145760+08:00 [EVENT Doc.CommandWillStart] NETLOAD
+2026-09-20T22:32:43.2239967+08:00 [EVENT Doc.CommandEnded] NETLOAD
+2026-09-20T22:32:43.3449767+08:00 [EVENT Doc.CommandWillStart] BP45N
+2026-09-20T22:32:44.0312582+08:00 [EVENT Doc.CommandEnded] BP45N
+2026-09-20T22:33:42.9401157+08:00 [EVENT DB.ObjectOpenedForModify] TableStyle Handle=93
+2026-09-20T22:33:42.9427587+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=22B
+2026-09-20T22:33:42.9438300+08:00 [EVENT DB.ObjectErased] DBDictionary Handle=22B Erased=False
+2026-09-20T22:33:42.9459573+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=22B
+2026-09-20T22:33:42.9470206+08:00 [EVENT DB.ObjectAppended] ImpDBObject Handle=25A
+2026-09-20T22:33:42.9485475+08:00 [EVENT DB.ObjectModified] ImpDBObject Handle=25A
+2026-09-20T22:33:42.9485475+08:00 [EVENT DB.ObjectModified] DBDictionary Handle=22B
+2026-09-20T22:33:42.9501259+08:00 [EVENT DB.ObjectModified] TableStyle Handle=93
+2026-09-20T22:33:42.9501259+08:00 [EVENT DB.ObjectModified] Material Handle=12D
+2026-09-20T22:33:42.9523411+08:00 [EVENT DB.ObjectModified] Material Handle=135
+2026-09-20T22:33:42.9528649+08:00 [EVENT DB.ObjectModified] Material Handle=13D
+2026-09-20T22:33:42.9539323+08:00 [EVENT DB.ObjectOpenedForModify] SectionViewStyle Handle=1D6
+2026-09-20T22:33:42.9550031+08:00 [EVENT DB.ObjectModified] SectionViewStyle Handle=1D6
+2026-09-20T22:33:42.9555431+08:00 [EVENT DB.ObjectOpenedForModify] DetailViewStyle Handle=1D8
+2026-09-20T22:33:42.9566364+08:00 [EVENT DB.ObjectModified] DetailViewStyle Handle=1D8
+2026-09-20T22:33:42.9577591+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=C
+2026-09-20T22:33:42.9588032+08:00 [EVENT DB.ObjectAppended] Xrecord Handle=25B
+2026-09-20T22:33:42.9593302+08:00 [EVENT DB.ObjectModified] Xrecord Handle=25B
+2026-09-20T22:33:42.9603976+08:00 [EVENT DB.ObjectModified] DBDictionary Handle=59
+2026-09-20T22:33:42.9619971+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=23E
+2026-09-20T22:33:42.9630490+08:00 [EVENT DB.ObjectOpenedForModify] Xrecord Handle=249
+2026-09-20T22:33:42.9641508+08:00 [EVENT DB.ObjectErased] Xrecord Handle=249 Erased=True
+2026-09-20T22:33:42.9652016+08:00 [EVENT DB.ObjectAppended] Xrecord Handle=25C
+2026-09-20T22:33:42.9657181+08:00 [EVENT DB.ObjectModified] Xrecord Handle=25C
+2026-09-20T22:33:42.9668455+08:00 [EVENT DB.ObjectModified] DBDictionary Handle=23E
+2026-09-20T22:33:43.0348744+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=23E
+2026-09-20T22:33:43.0364175+08:00 [EVENT DB.ObjectModified] DBDictionary Handle=23E
+2026-09-20T22:33:43.0364175+08:00 [EVENT DB.ObjectOpenedForModify] Xrecord Handle=25C
+2026-09-20T22:33:43.0395116+08:00 [EVENT DB.ObjectErased] Xrecord Handle=25C Erased=True
+2026-09-20T22:33:43.0395116+08:00 [EVENT DB.ObjectOpenedForModify] Xrecord Handle=249
+2026-09-20T22:33:43.0410374+08:00 [EVENT DB.ObjectErased] Xrecord Handle=249 Erased=False
+2026-09-20T22:33:43.0410374+08:00 [EVENT DB.ObjectOpenedForModify] Xrecord Handle=25B
+2026-09-20T22:33:43.0425503+08:00 [EVENT DB.ObjectErased] Xrecord Handle=25B Erased=True
+2026-09-20T22:33:43.0440658+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=C
+2026-09-20T22:33:43.0440658+08:00 [EVENT DB.ObjectOpenedForModify] Xrecord Handle=25B
+2026-09-20T22:33:43.0455808+08:00 [EVENT DB.ObjectModified] Xrecord Handle=25B
+2026-09-20T22:33:43.0455808+08:00 [EVENT DB.ObjectOpenedForModify] DetailViewStyle Handle=1D8
+2026-09-20T22:33:43.0470957+08:00 [EVENT DB.ObjectModified] DetailViewStyle Handle=1D8
+2026-09-20T22:33:43.0470957+08:00 [EVENT DB.ObjectOpenedForModify] SectionViewStyle Handle=1D6
+2026-09-20T22:33:43.0486367+08:00 [EVENT DB.ObjectModified] SectionViewStyle Handle=1D6
+2026-09-20T22:33:43.0486367+08:00 [EVENT DB.ObjectOpenedForModify] TableStyle Handle=93
+2026-09-20T22:33:43.0499622+08:00 [EVENT DB.ObjectModified] TableStyle Handle=93
+2026-09-20T22:33:43.0510067+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=22B
+2026-09-20T22:33:43.0510067+08:00 [EVENT DB.ObjectOpenedForModify] ImpDBObject Handle=25A
+2026-09-20T22:33:43.0525299+08:00 [EVENT DB.ObjectModified] ImpDBObject Handle=25A
+2026-09-20T22:33:43.0525299+08:00 [EVENT DB.ObjectModified] DBDictionary Handle=22B
+2026-09-20T22:33:43.0540977+08:00 [EVENT DB.ObjectOpenedForModify] ImpDBObject Handle=25A
+2026-09-20T22:33:43.0540977+08:00 [EVENT DB.ObjectErased] ImpDBObject Handle=25A Erased=True
+2026-09-20T22:33:43.0556142+08:00 [EVENT DB.ObjectOpenedForModify] DBDictionary Handle=22B
+2026-09-20T22:33:43.0556142+08:00 [EVENT DB.ObjectErased] DBDictionary Handle=22B Erased=True
+2026-09-20T23:13:10.6911173+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:10.6911173+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:10.6982128+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:10.6997591+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:10.6997591+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:10.7013080+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3303361+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3318873+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3318873+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3334222+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3334222+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.3349516+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9916188+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9921225+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9934103+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9934103+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9949435+08:00 [EVENT DB.ObjectOpenedForModify] ViewportTableRecord Handle=1BA
+2026-09-20T23:13:11.9949435+08:00 [EVENT DB.ObjectModified] ViewportTableRecord Handle=1BA

@@ -1,0 +1,2 @@
+﻿$app=[Runtime.InteropServices.Marshal]::GetActiveObject('ZWCAD.Application')
+$app.ActiveDocument.SendCommand('(command "_.NETLOAD" "E:/366256/vibecoding/批打印-new/docs/audit-evidence/phase45-native/c-bin/Phase45ProbeC.dll")'+[char]10)

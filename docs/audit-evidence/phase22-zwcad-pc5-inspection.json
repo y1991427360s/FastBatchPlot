@@ -1,0 +1,682 @@
+[
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\DWG to PDF.pc5",
+    "bytes": 1243,
+    "sha256": "7ffc743ca062e79494388e81fd70edb10d416aa93b9407f49e6ee8cc8790e812",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 66,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "",
+        "default_source": "0",
+        "paper_name": "ISO_A4_(210.00_x_297.00_MM)",
+        "paper_size_x": "210.000000",
+        "paper_size_y": "297.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "10.000000",
+        "actual_printable_bounds_urx": "205.000000",
+        "actual_printable_bounds_ury": "287.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "200.000000",
+        "actual_y": "277.000000",
+        "actual_area": "55400.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "500",
+        "resolution_y": "500",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "DWG to PDF",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "DWG to PDF"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "0",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": "",
+        "plothyperlink": "1"
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWPLOT_PDF.pc5",
+    "bytes": 1816,
+    "sha256": "4bf89788c47e8a8c5ff7b740360356389e1a4b90cdcf4195b06887596912accd",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 92,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "ZWPLOT_PDF.pmp",
+        "default_source": "0",
+        "paper_name": "ISO_A3_(297.00_x_420.00_MM)",
+        "paper_size_x": "297.000000",
+        "paper_size_y": "420.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "17.000000",
+        "actual_printable_bounds_urx": "292.000000",
+        "actual_printable_bounds_ury": "403.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "297.000000",
+        "actual_y": "420.000000",
+        "actual_area": "110782.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "500",
+        "resolution_y": "500",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1",
+        "color_monochrome": "1",
+        "physicalpen_color": "",
+        "physicalpen_speed": "",
+        "physicalpen_lineweight": "LW0.25,1;LW0.25,2;LW0.25,3;LW0.25,4;LW0.25,5;LW0.25,6;LW0.25,7;LW0.25,8;",
+        "format": "0",
+        "bgColor": "0",
+        "raster_resolution_x": "72",
+        "raster_resolution_y": "72"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "DWG to PDF",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "DWG to PDF",
+        "NetPrinterUSE": "0",
+        "NetPrinterName": ""
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "17",
+        "privatedata": "0000000000000000"
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": "",
+        "layerinclude": "1",
+        "autoopenfile": "1",
+        "createbookmark": "1",
+        "plotprecise": "0",
+        "plothyperlink": "1"
+      },
+      "Caps": {
+        "definepapersize_caps": "1",
+        "lw_caps": "1",
+        "clip_caps": "1",
+        "pathfill_caps": "1",
+        "boundarylw_caps": "1",
+        "grating_caps": "1",
+        "truetypetext_caps": "1",
+        "resolution_caps": "1",
+        "unitctrl_caps": "1",
+        "physicalpen_caps": "0",
+        "pathreverseout_caps": "0",
+        "shadedrender_caps": "1",
+        "errfilepath_caps": ""
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\PMP Files\\ZWPLOT_PDF.pmp",
+    "bytes": 20338,
+    "sha256": "e57232680266bf9d05a214b6caab5750b624b111e689a2867422eb7054a8252d",
+    "strict_decoding": {
+      "ascii": false,
+      "utf-8": false,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 873,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "pmpfilepath": "",
+        "driver_path": "",
+        "calibration_x": "1.000000",
+        "calibration_y": "1.000000",
+        "mod_num": "0",
+        "del_num": "0",
+        "userdef_num": "72",
+        "hide_num": "0"
+      },
+      "user": {
+        "count": 72,
+        "field_count": 864,
+        "exact_indexed_fields": true,
+        "first": {
+          "paper_name": "UserDefinedMetric (210.00 x 297.00 毫米)",
+          "paper_local_name": "A4(210X297)",
+          "size_x": "210.000000",
+          "size_y": "297.000000",
+          "llx": "0.000000",
+          "lly": "0.000000",
+          "urx": "210.000000",
+          "ury": "297.000000",
+          "actual_x": "210.000000",
+          "actual_y": "297.000000",
+          "area": "62370.000000",
+          "Unit": "1"
+        },
+        "last": {
+          "paper_name": "UserDefinedMetric (2378.00 x 841.00 毫米)",
+          "paper_local_name": "A0+1(2378X841)",
+          "size_x": "2378.000000",
+          "size_y": "841.000000",
+          "llx": "0.000000",
+          "lly": "0.000000",
+          "urx": "2378.000000",
+          "ury": "841.000000",
+          "actual_x": "2378.000000",
+          "actual_y": "841.000000",
+          "area": "1999898.000000",
+          "Unit": "1"
+        },
+        "all_units_1": true,
+        "all_zero_margins": true,
+        "all_area_products": true
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(General Documentation).pc5",
+    "bytes": 1272,
+    "sha256": "1d83d6d33f616c9f6b421fc0a4972f06f67abe82d876bc3e54aa98e441d9166b",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 65,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "",
+        "default_source": "0",
+        "paper_name": "ISO_A4_(210.00_x_297.00_MM)",
+        "paper_size_x": "210.000000",
+        "paper_size_y": "297.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "10.000000",
+        "actual_printable_bounds_urx": "205.000000",
+        "actual_printable_bounds_ury": "287.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "200.000000",
+        "actual_y": "277.000000",
+        "actual_area": "55400.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "1000",
+        "resolution_y": "1000",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "ZWCAD PDF(General Documentation)",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "ZWCAD PDF(General Documentation)"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "0",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": ""
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(High Quality Print).pc5",
+    "bytes": 1266,
+    "sha256": "929b696d4ef83034672dc01dce9de86f5adc4c3726dda1e54faa8e42872306db",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 65,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "",
+        "default_source": "0",
+        "paper_name": "ISO_A4_(210.00_x_297.00_MM)",
+        "paper_size_x": "210.000000",
+        "paper_size_y": "297.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "10.000000",
+        "actual_printable_bounds_urx": "205.000000",
+        "actual_printable_bounds_ury": "287.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "200.000000",
+        "actual_y": "277.000000",
+        "actual_area": "55400.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "2000",
+        "resolution_y": "2000",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "ZWCAD PDF(High Quality Print)",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "ZWCAD PDF(High Quality Print)"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "0",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": ""
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Smallest File).pc5",
+    "bytes": 1254,
+    "sha256": "555f64eb8ceb4b163f3e8e2904a8229be6484648c7e509a4a2311d888a72243c",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 65,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "",
+        "default_source": "0",
+        "paper_name": "ISO_A4_(210.00_x_297.00_MM)",
+        "paper_size_x": "210.000000",
+        "paper_size_y": "297.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "10.000000",
+        "actual_printable_bounds_urx": "205.000000",
+        "actual_printable_bounds_ury": "287.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "200.000000",
+        "actual_y": "277.000000",
+        "actual_area": "55400.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "300",
+        "resolution_y": "300",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "ZWCAD PDF(Smallest File)",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "ZWCAD PDF(Smallest File)"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "0",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": ""
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\UserDataCache\\zh-CN\\Plotters\\ZWCAD PDF(Web and Mobile).pc5",
+    "bytes": 1256,
+    "sha256": "b1bd8951e352c230511773114c7f606ce183a94c666a018c957114079408dab2",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 65,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "pmp_filepath": "",
+        "default_source": "0",
+        "paper_name": "ISO_A4_(210.00_x_297.00_MM)",
+        "paper_size_x": "210.000000",
+        "paper_size_y": "297.000000",
+        "actual_printable_bounds_llx": "5.000000",
+        "actual_printable_bounds_lly": "10.000000",
+        "actual_printable_bounds_urx": "205.000000",
+        "actual_printable_bounds_ury": "287.000000",
+        "physical_offsetx": "0.000000",
+        "physical_offsety": "0.000000",
+        "actual_x": "200.000000",
+        "actual_y": "277.000000",
+        "actual_area": "55400.000000",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": "0",
+        "config_description": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "300",
+        "resolution_y": "300",
+        "color_system": "2",
+        "color_device": "1",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "0",
+        "dm_ICMMethod": "0",
+        "truetype_as_text": "1",
+        "dm_TTOption": "0",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DevicePath": "",
+        "DriverVersion": "1.0.0.0.0.0 [p001-1]",
+        "DriverName": "ZWCAD PDF(Web and Mobile)",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "FILE:",
+        "DeviceComment": "",
+        "ServerName": "",
+        "LocationName": "ZWCAD PDF(Web and Mobile)"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "config_autospool": "0",
+        "dmDriverExtra": "0",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "1",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "0",
+        "dmprintquality": "100",
+        "mediatype": "0",
+        "pre_init": "0",
+        "post_init": "0",
+        "termination": ""
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  },
+  {
+    "path": "D:\\ZWCAD2026\\Support\\zh-CN\\drivercfg\\PDF.ini",
+    "bytes": 963,
+    "sha256": "9d564ed26522f1c33ccbcafe83b000d48a8b82418127529e920c5d6d322f849a",
+    "strict_decoding": {
+      "ascii": true,
+      "utf-8": true,
+      "gbk": true
+    },
+    "utf8_bom": false,
+    "crlf_count": 53,
+    "bare_lf_count": 0,
+    "sections": {
+      "Meta": {
+        "PrinterType": "2",
+        "Source": "",
+        "source_entry": "",
+        "default_source": "",
+        "paper_name": "\"PDF_A4(210.00_x_297.00_MM)\"",
+        "paper_size_x": "210.00",
+        "paper_size_y": "297.00",
+        "actual_printable_bounds_llx": "5.0",
+        "actual_printable_bounds_lly": "10.0",
+        "actual_printable_bounds_urx": "205.0",
+        "actual_printable_bounds_ury": "287.0",
+        "actual_x": "200.0",
+        "actual_y": "277.0",
+        "actual_area": "55400.0",
+        "paper_unit": "1",
+        "destination_name": "",
+        "duplexing_mode": ""
+      },
+      "res_color_mem": {
+        "dm_color": "32",
+        "color_depth": "16777216",
+        "resolution_x": "500",
+        "resolution_y": "500",
+        "color_system": "2",
+        "ism_max": "6",
+        "ole_max": "6",
+        "preference": "50",
+        "dm_ICMIntent": "",
+        "dm_ICMMethod": "",
+        "truetype_as_text": "1",
+        "dm_TTOption": "",
+        "lines_overwrite": "1"
+      },
+      "Standard": {
+        "DeviceName": "PDF",
+        "DriverPath": "ZwPDFDriver.dll",
+        "DriverVersion": "\"1.0.0.0.0.0 [p001-1]\"",
+        "DriverCfgPath": "PDF.ini",
+        "PortName": "\"File:\"",
+        "PaperIni": "PDFPaper.ini"
+      },
+      "Port": {
+        "plot_to_file": "1",
+        "dmDriverExtra": "",
+        "privatedata": ""
+      },
+      "Retain": {
+        "dmorientation": "",
+        "dmcopies": "1",
+        "dccopies": "1",
+        "dmscale": "",
+        "mediatype": "",
+        "pre_init": "-",
+        "post_init": "",
+        "termination": ""
+      },
+      "Caps": {
+        "definepapersize_caps": "1"
+      }
+    }
+  }
+]

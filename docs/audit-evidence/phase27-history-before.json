@@ -1,0 +1,34 @@
+﻿[
+    {
+        "pages":  10,
+        "createMs":  15.469100000000001,
+        "firstSaveMs":  116.7279,
+        "loadMs":  4.5196000000000005,
+        "updateMs":  36.3804,
+        "bytes":  6563
+    },
+    {
+        "pages":  100,
+        "createMs":  105.3109,
+        "firstSaveMs":  66.31,
+        "loadMs":  25.172600000000003,
+        "updateMs":  74.9615,
+        "bytes":  59756
+    },
+    {
+        "pages":  500,
+        "createMs":  2145.8168,
+        "firstSaveMs":  217.46470000000002,
+        "loadMs":  164.6448,
+        "updateMs":  410.156,
+        "bytes":  297356
+    },
+    {
+        "pages":  1000,
+        "createMs":  7430.4688000000006,
+        "firstSaveMs":  369.52860000000004,
+        "loadMs":  290.149,
+        "updateMs":  591.8174,
+        "bytes":  594359
+    }
+]

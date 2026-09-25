@@ -1,0 +1,10 @@
+{"Case":"按表头排序后修改第一行","VisibleDrawingNumber":"A-01","ActuallyEditedDrawingNumber":"B-02"}
+{"Case":"刷新列表丢失手工文件名","Before":"手工文件名","After":"01_B-02_编辑第一行"}
+{"Case":"分开摆放的A0和A4","Input":2,"Output":1,"Papers":["A4"]}
+{"Case":"两次检测共用可变图幅对象","SameReference":true}
+{"Case":"修改一张纸影响另一张及标准库","OtherPaperName":"A3","StandardCatalogName":"A3"}
+{"Case":"默认窗口工具栏裁剪","ExportButtonRight":1007,"ToolbarWidth":1100,"FullyVisible":true}
+{"Case":"默认窗口底部控件","Control":"btnStartPlot","BottomInForm":873,"FormClientHeight":701,"InsideForm":false}
+{"Case":"默认窗口底部控件","Control":"txtNamingTemplate","BottomInForm":692,"FormClientHeight":701,"InsideForm":true}
+{"Case":"默认窗口底部控件","Control":"txtMergedFileName","BottomInForm":695,"FormClientHeight":701,"InsideForm":true}
+{"Case":"最小允许窗口工具栏裁剪","ExportButtonRight":1007,"ToolbarWidth":940,"FullyVisible":false}

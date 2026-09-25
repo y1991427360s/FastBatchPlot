@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>FastBatchPlot.CadBridge</AssemblyName>
+    <RootNamespace>FastBatchPlot.CadBridge</RootNamespace>
+    <Description>CAD host abstraction bridge interfaces for AutoCAD and ZWCAD</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FastBatchPlot.Core\FastBatchPlot.Core.csproj" />
+  </ItemGroup>
+
+</Project>
