@@ -35,6 +35,9 @@ namespace FastBatchPlot.UI.Views
         private async Task ShowSinglePdfOptions()
         {
             if (_isPlotting) return;
+            int selectedRangeIndex;
+            string? destination = null;
+            bool replaceExisting = false;
             using (var dialog = new Form { Text="单张 PDF", ClientSize=new Size(460,200), FormBorderStyle=FormBorderStyle.FixedDialog,
                 StartPosition=FormStartPosition.CenterParent, Font=Font, MaximizeBox=false, MinimizeBox=false })
             {
@@ -46,8 +49,7 @@ namespace FastBatchPlot.UI.Views
                 var cancel = new Button { Left=340,Top=150,Width=100,Text="取消",DialogResult=DialogResult.Cancel };
                 dialog.Controls.AddRange(new Control[]{range,save,note,ok,cancel});dialog.AcceptButton=ok;dialog.CancelButton=cancel;
                 if (dialog.ShowDialog(this)!=DialogResult.OK) return;
-                string? destination=null;
-                bool replaceExisting=false;
+                selectedRangeIndex = range.SelectedIndex;
                 if (save.Checked)
                 {
                     using (var picker=new SaveFileDialog {Filter="PDF 文件 (*.pdf)|*.pdf",DefaultExt="pdf",AddExtension=true,FileName="图纸.pdf",OverwritePrompt=true})
@@ -57,31 +59,32 @@ namespace FastBatchPlot.UI.Views
                         destination=picker.FileName;
                     }
                 }
-                try
-                {
-                    string? path=await ExecuteSinglePdf(range.SelectedIndex,replaceExisting?null:destination);
-                    if(path==null)return;
-                    if(replaceExisting)
-                    {
-                        try
-                        {
-                            SinglePdfFile.SaveCopy(path,destination!,true);
-                            path=destination!;
-                            _lastSinglePdfPath=path;
-                            lblStatus.Text="单张 PDF 已生成并另存为："+path;
-                        }
-                        catch(Exception ex)
-                        {
-                            lblStatus.Text="另存失败，原始临时文件已保留："+path+"；错误："+ex.Message;
-                            MessageBox.Show(this,"另存失败，原始成果已保留："+ex.Message,"单张 PDF",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                            return;
-                        }
-                    }
-                    if (btnOpenSinglePdf != null) btnOpenSinglePdf.Enabled = true;
-                    if (btnSaveSinglePdfAs != null) btnSaveSinglePdfAs.Enabled = true;
-                }
-                catch(Exception ex){lblStatus.Text="单张 PDF 未完成："+ex.Message;MessageBox.Show(this,ex.Message,"单张 PDF",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
             }
+
+            try
+            {
+                string? path=await ExecuteSinglePdf(selectedRangeIndex,replaceExisting?null:destination);
+                if(path==null)return;
+                if(replaceExisting)
+                {
+                    try
+                    {
+                        SinglePdfFile.SaveCopy(path,destination!,true);
+                        path=destination!;
+                        _lastSinglePdfPath=path;
+                        lblStatus.Text="单张 PDF 已生成并另存为："+path;
+                    }
+                    catch(Exception ex)
+                    {
+                        lblStatus.Text="另存失败，原始临时文件已保留："+path+"；错误："+ex.Message;
+                        MessageBox.Show(this,"另存失败，原始成果已保留："+ex.Message,"单张 PDF",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                if (btnOpenSinglePdf != null) btnOpenSinglePdf.Enabled = true;
+                if (btnSaveSinglePdfAs != null) btnSaveSinglePdfAs.Enabled = true;
+            }
+            catch(Exception ex){lblStatus.Text="单张 PDF 未完成："+ex.Message;MessageBox.Show(this,ex.Message,"单张 PDF",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
         }
 
         // 可离线替换宿主验证；此方法只生成文件，打开查看器由交互入口负责。
@@ -127,7 +130,7 @@ namespace FastBatchPlot.UI.Views
                 config.OutputDirectory=Path.GetDirectoryName(path)!;config.MergedFileName="";
                 var run=new BatchPlotRun(new[]{new BatchPage(prepared,path)},config);
                 BeginPdfTaskRecord(run,"");
-                Hide();
+                if (!wasVisible) Show();
                 // 单张也使用统一任务调度、历史和来源核验；原列表状态不被临时任务覆盖。
                 await RunValidatedPlotPages(run,new[]{prepared},host,plotter,p=>PlotOutputCommitter.Validate(p,plan));
                 await YieldToUiMessageLoopAsync();
