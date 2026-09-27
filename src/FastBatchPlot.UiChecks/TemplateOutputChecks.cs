@@ -21,12 +21,12 @@ internal static partial class Program
         var f=new PlotFrame{Type=FrameType.BlockReference,SourceBlockName="A",TitleInfo=new TitleBlockInfo{DrawingNo="001"}};Field<List<PlotFrame>>(form,"_frames").Add(f);Call(form,"RefreshGrid");
         Check(f.CustomOutputFileName=="专用_001","图框专用命名自动覆盖通用命名规则");
         var grid=Field<DataGridView>(form,"dgvDrawings");grid.Rows[0].Cells[7].Value="人工文件名";Call(form,"RefreshGrid");Check(f.CustomOutputFileName=="人工文件名","人工文件名在模板命名联动后仍优先保留");
-        using(var editor=new TitleTemplateForm(library,null,()=>null,frame=>null))
+        using(var editor=new FrameEntryForm(TitleTemplateService.Clone(library.Templates[0]),Array.Empty<TitleBlockTemplate>(),null,_=>null,()=>null,_=>null))
         {
-            Check(Field<TextBox>(editor,"naming").Text=="专用_{DwgNo}","模板编辑器读取专用命名规则");Field<TextBox>(editor,"naming").Text="新_{DwgNo}";
-            typeof(TitleTemplateForm).GetMethod("CommitEditor",PrivateInstance)!.Invoke(editor,null);Check(editor.Library.Templates[0].NamingTemplate=="新_{DwgNo}"&&editor.Library.Templates[0].Catalog!.Title=="专用工程目录","模板编辑提交保留目录并更新命名");
-            editor.ShowInTaskbar=false;editor.StartPosition=FormStartPosition.Manual;editor.Location=new System.Drawing.Point(-32000,-32000);editor.Show();editor.Size=editor.MinimumSize;
-            using var image=new System.Drawing.Bitmap(editor.Width,editor.Height);editor.DrawToBitmap(image,new System.Drawing.Rectangle(0,0,image.Width,image.Height));image.Save(Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"..","..","..","..","..","docs","audit-evidence","ui-template-output.png")));
+            Check(Field<Label>(editor,"naming").Text=="专用_A","图框录入窗口按原版字母显示专用命名规则");
+            InvokePrivate(editor,"ApplyNamingRule","新_A");
+            Check(editor.Template.NamingTemplate=="新_{图号}"&&editor.Template.Catalog!.Title=="专用工程目录","图框录入按字母规则更新命名并保留专用目录");
+            ShowFrameLibraryOffscreen(editor);RenderFrameLibraryWindow(editor,"ui-template-output.png");
         }
         string dir=Path.Combine(Path.GetTempPath(),"catalog-pref-ui-"+Guid.NewGuid().ToString("N")),path=Path.Combine(dir,"prefs.json");
         try

@@ -43,13 +43,15 @@ namespace FastBatchPlot.UI.Views
                 if (!(CadHostProvider.Host is ICadTitleTemplateHost host))
                     throw new InvalidOperationException("当前 CAD 宿主不支持区域拾取。");
                 return host.PromptTemplateRegion(sample, out var region) ? region : null;
-            }))
+            }, sample =>
+                // 宿主不支持时不登记打印范围，出图按整个图块识别。
+                CadHostProvider.Host is ICadTemplateFrameHost host && host.TryGetTemplateFrameRegion(sample, out var region) ? region : null))
             {
                 if (editor.ShowDialog(this) == DialogResult.OK)
                 {
                     _titleTemplates = editor.Library;
                     RefreshFileNames();
-                    lblStatus.Text = TitleTemplatePath == null ? "模板已更新到本次内存；可导出文件保存。" : "模板库已保存。请点击提取图框信息应用规则。";
+                    lblStatus.Text = TitleTemplatePath == null ? "图框信息库已更新到本次内存；可导出文件保存。" : "图框信息库已保存。请重新搜索图框或点击提取图框信息应用。";
                 }
             }
         }

@@ -38,43 +38,23 @@ internal static partial class Program
             byte[] beforeEditor = File.ReadAllBytes(path);
             using (var editor = new TitleTemplateForm(library, path, () => null, frame => null))
             {
-                var mainDraft = Field<TemplateRegion>(editor, "stampRegion");
-                var registrationDraft = Field<TemplateRegion>(editor, "registrationStampRegion");
-                Check(!ReferenceEquals(mainDraft, first.StampRegion) && !ReferenceEquals(registrationDraft, first.RegistrationStampRegion) &&
-                    !ReferenceEquals(mainDraft, registrationDraft), "双章编辑器的两个区域草稿互不共享，也不共享原始库");
-                mainDraft.X1 = -145; registrationDraft.Y1 = 25;
-                Check(first.StampRegion.X1 == -150 && first.RegistrationStampRegion.Y1 == 20 && File.ReadAllBytes(path).SequenceEqual(beforeEditor),
-                    "修改双章编辑草稿不提前写磁盘或污染调用方模板");
-                InvokeStampEditor(editor, "CommitEditor");
-                Check(editor.Library.Templates[0].StampRegion!.X1 == -145 && editor.Library.Templates[0].RegistrationStampRegion!.Y1 == 25,
-                    "提交模板同时保存主章与注册章区域");
-                mainDraft.X1 = -135; registrationDraft.Y1 = 30;
-                Check(editor.Library.Templates[0].StampRegion!.X1 == -145 && editor.Library.Templates[0].RegistrationStampRegion!.Y1 == 25,
-                    "提交后草稿仍与双章模板对象隔离");
-                Field<ListBox>(editor, "templates").SelectedIndex = 1;
-                Check(Field<TemplateRegion>(editor, "registrationStampRegion").X1 == -50 &&
-                    typeof(TitleTemplateForm).GetField("stampRegion", PrivateInstance)!.GetValue(editor) == null,
-                    "切换模板载入注册章并清除缺省主章，不继承上一模板区域");
-                Field<ListBox>(editor, "templates").SelectedIndex = 0;
-                Check(Field<TemplateRegion>(editor, "stampRegion").X1 == -135 &&
-                    Field<TemplateRegion>(editor, "registrationStampRegion").Y1 == 30,
-                    "切回模板保留已提交的两个区域草稿");
-                InvokeStampEditor(editor, "CopyTemplate");
-                var duplicate = editor.Library.Templates.Last();
-                Field<TemplateRegion>(editor, "registrationStampRegion").X1 = -55;
-                InvokeStampEditor(editor, "CommitEditor");
-                Check(editor.Library.Templates.Last().RegistrationStampRegion!.X1 == -55 &&
-                    editor.Library.Templates[0].RegistrationStampRegion!.X1 == -65 && duplicate.Id != first.Id,
-                    "界面复制模板后的注册章编辑不会改动原模板");
-                editor.Size = editor.MinimumSize;
-                RenderStampWindow(editor, "ui-dual-stamp-template.png");
-                var panel = editor.Controls.OfType<FlowLayoutPanel>().Single();
-                var buttons = panel.Controls.OfType<Button>().Where(b => b.Text.Contains("印章区域") || b.Text.Contains("注册章区域")).ToList();
-                Check(buttons.Count == 2 && buttons.All(b => b.Visible && panel.ClientRectangle.Contains(b.Bounds)),
-                    "最小模板窗口完整显示主印章区域与注册章区域两个独立按钮");
-                InvokeStampEditor(editor, "SaveLibrary");
-                Check(editor.DialogResult == DialogResult.OK && TitleTemplateStore.Load(path).Templates.Last().RegistrationStampRegion!.X1 == -55,
-                    "保存并关闭实际持久化双章模板编辑结果");
+                SetPrivate(editor, "showEntry", new Func<FrameEntryForm, DialogResult>(entry =>
+                {
+                    InvokePrivate(entry, "ApplyNamingRule", "A-C");
+                    InvokePrivate(entry, "Accept");
+                    return entry.DialogResult;
+                }));
+                InvokePrivate(editor, "EditFrame", 0);
+                Check(File.ReadAllBytes(path).SequenceEqual(beforeEditor) && first.NamingTemplate == null,
+                    "修改双章图框草稿不提前写磁盘或污染调用方模板");
+                var edited = editor.Library.Templates[0];
+                Check(edited.NamingTemplate == "{图号}-{图名}" && edited.StampRegion!.X1 == -150 && edited.RegistrationStampRegion!.X1 == -65
+                    && !ReferenceEquals(edited.StampRegion, first.StampRegion) && !ReferenceEquals(edited.RegistrationStampRegion, first.RegistrationStampRegion),
+                    "图框信息库修改其他项目时保留双章区域的独立副本");
+                InvokePrivate(editor, "SaveAndClose");
+                var saved = TitleTemplateStore.Load(path);
+                Check(editor.DialogResult == DialogResult.OK && saved.Templates[0].StampRegion!.X1 == -150 && saved.Templates[1].RegistrationStampRegion!.X1 == -50,
+                    "确定保存后双章区域原样持久化");
             }
             Check(first.StampRegion.X1 == -150 && first.RegistrationStampRegion.Y1 == 20,
                 "整个编辑保存流程不修改传入的原始模板对象");

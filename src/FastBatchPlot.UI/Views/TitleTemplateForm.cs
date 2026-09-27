@@ -1,37 +1,37 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using FastBatchPlot.Core.Templates;
 using FastBatchPlot.Core.Models;
-using FastBatchPlot.Core.Export;
+using FastBatchPlot.Core.Templates;
 
 namespace FastBatchPlot.UI.Views
 {
+    /// <summary>
+    /// 图框信息库管理（仿原版）：每行一个已录图框，双击空白处录入新图框、双击记录修改、点“删除”移除；
+    /// 底部只保留录入新图框、导出设置、导入设置、确定、取消。区域坐标与字段提取规则不变。
+    /// </summary>
     public sealed class TitleTemplateForm : Form
     {
+        private const int DeleteColumn = 4, NamingColumn = 5;
         public TitleTemplateLibrary Library { get; private set; }
-        private readonly ListBox templates = new ListBox { Dock = DockStyle.Left, Width = 205 };
-        private readonly TextBox name = new TextBox { Width = 170 };
-        private readonly TextBox block = new TextBox { Width = 170 };
-        private readonly NumericUpDown priority = new NumericUpDown { Minimum = 0, Maximum = 10000, Width = 70 };
-        private readonly DataGridView fields = new DataGridView { Dock = DockStyle.Fill, AllowUserToAddRows = false, RowHeadersVisible = false, SelectionMode = DataGridViewSelectionMode.FullRowSelect };
-        private readonly Label status = new Label { Dock = DockStyle.Bottom, Height = 45, AutoEllipsis = true };
+        private readonly DataGridView frames = new DataGridView { Dock = DockStyle.Fill, ReadOnly = true, AllowUserToAddRows = false, AllowUserToDeleteRows = false,
+            AllowUserToResizeRows = false, RowHeadersVisible = false, SelectionMode = DataGridViewSelectionMode.FullRowSelect, MultiSelect = false,
+            BackgroundColor = SystemColors.Window, ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize, ShowCellToolTips = false };
+        private readonly Label status = new Label { Dock = DockStyle.Bottom, Height = 26, AutoEllipsis = true, ForeColor = SystemColors.GrayText,
+            Padding = new Padding(12, 5, 12, 0), Text = "双击空白处录入新图框，双击已有行修改，点“删除”移除；修改在点击“确定”后保存。" };
+        private readonly ToolTip tips = new ToolTip();
         private readonly Func<string, PlotFrame?> findSampleFrame;
         private readonly Func<PlotFrame?> pickSampleFrame;
         private readonly Func<PlotFrame, TemplateRegion?> pickRegion;
+        private readonly Func<PlotFrame, TemplateRegion?> frameRegion;
         private readonly string? savePath;
-        private PlotFrame? sampleFrame;
-        private TitleBlockTemplate? editing;
-        private bool selecting;
-        private readonly TextBox naming=new TextBox{Width=335};
-        private CatalogOptions? catalog;
-        private TemplateRegion? printRegion;
-        private TemplateRegion? stampRegion;
-        private TemplateRegion? registrationStampRegion;
-        private double printScale;
+        private bool dirty;
+        // 模态交互集中于此，离线检查可替换，避免阻塞。
+        private Func<FrameEntryForm, DialogResult> showEntry;
+        private Func<string, bool> confirm;
 
         public TitleTemplateForm(TitleTemplateLibrary library, string? savePath, Func<PlotFrame?> pickSampleFrame,
             Func<PlotFrame, TemplateRegion?> pickRegion)
@@ -40,284 +40,219 @@ namespace FastBatchPlot.UI.Views
         }
 
         public TitleTemplateForm(TitleTemplateLibrary library, string? savePath, Func<string, PlotFrame?> findSampleFrame,
-            Func<PlotFrame?> pickSampleFrame, Func<PlotFrame, TemplateRegion?> pickRegion)
+            Func<PlotFrame?> pickSampleFrame, Func<PlotFrame, TemplateRegion?> pickRegion, Func<PlotFrame, TemplateRegion?>? frameRegion = null)
         {
             Library = TitleTemplateService.CopyLibrary(library);
-            this.findSampleFrame = findSampleFrame; this.pickSampleFrame = pickSampleFrame; this.pickRegion = pickRegion; this.savePath = savePath;
-            Text = "图框模板库"; Size = new Size(1050, 640); MinimumSize = new Size(920, 580);
+            this.findSampleFrame = findSampleFrame; this.pickSampleFrame = pickSampleFrame; this.pickRegion = pickRegion;
+            this.frameRegion = frameRegion ?? (_ => null); this.savePath = savePath;
+            showEntry = entry => entry.ShowDialog(this);
+            confirm = message => MessageBox.Show(this, message, Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
+            Text = "图框信息库管理"; Size = new Size(960, 520); MinimumSize = new Size(760, 380);
             StartPosition = FormStartPosition.CenterParent; Font = new Font("Microsoft YaHei UI", 9);
-            var actions = new FlowLayoutPanel { Dock = DockStyle.Top, Height = 148, AutoScroll = true };
-            AddButton(actions, "新增", NewTemplate); AddButton(actions, "复制", CopyTemplate);
-            AddButton(actions, "删除", DeleteTemplate); AddButton(actions, "导入", ImportLibrary);
-            AddButton(actions, "导出", ExportLibrary); AddButton(actions, "拾取字段区域", PickRegion);
-            AddButton(actions, "拾取样本图框", PickSampleFrame);
-            AddButton(actions, "保存并关闭", SaveLibrary);
-            actions.SetFlowBreak(actions.Controls[actions.Controls.Count - 1], true);
-            actions.Controls.Add(new Label { Text = "名称", AutoSize = true }); actions.Controls.Add(name);
-            actions.Controls.Add(new Label { Text = "块名", AutoSize = true }); actions.Controls.Add(block);
-            actions.Controls.Add(new Label { Text = "优先级", AutoSize = true }); actions.Controls.Add(priority);
-            actions.SetFlowBreak(priority,true);
-            actions.Controls.Add(new Label{Text="文件命名（空白用通用）",AutoSize=true});actions.Controls.Add(naming);
-            AddButton(actions,"编辑专用目录",EditCatalog);AddButton(actions,"清除专用目录",()=>{catalog=null;status.Text="改用通用目录设置，保存后生效。";});
-            actions.SetFlowBreak(actions.Controls[actions.Controls.Count-1],true);AddButton(actions,"调整打印范围",EditPrintRegion);
-            fields.Columns.Add(new DataGridViewCheckBoxColumn { HeaderText = "启用", Width = 45 });
-            fields.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "字段", Width = 80, ReadOnly = true });
-            fields.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "属性标签（优先）", Width = 150 });
-            foreach (string coordinate in new[] { "X1", "Y1", "X2", "Y2" }) fields.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = coordinate, Width = 85 });
-            foreach (DataGridViewColumn column in fields.Columns) column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            for (int i = 0; i < TitleTemplateService.FieldLabels.Length; i++) fields.Rows.Add(false, TitleTemplateService.FieldLabels[i], "", 0, 0, 0, 0);
-            var panel = new Panel { Dock = DockStyle.Fill, Padding = new Padding(8) };
-            panel.Controls.Add(fields); panel.Controls.Add(status);
-            panel.Controls.Add(new Label { Dock = DockStyle.Bottom, Height = 42,
-                Text = "选字段行后点【拾取字段区域】，程序会按模板块名在当前 CAD 空间自动找样本，再直接框选文字区域；找不到时可用【拾取样本图框】手动指定。\n区域坐标以图框本地坐标为基准（有线框时取右下角，纯文字块取块原点）。属性标签非空时优先按标签提取；此处不写回 DWG。" });
-            Controls.Add(panel); Controls.Add(templates); Controls.Add(actions);
-            templates.SelectedIndexChanged += (s,e) => SelectTemplate();
-            RefreshList(null);
-        }
-        private void EditPrintRegion()
-        {
-            if(editing==null)throw new InvalidOperationException("请先选择图框模板。");
-            EnsureSampleFrame();
-            using(var dialog=new TemplateCropForm(printRegion,()=>
+
+            string[] headers = { "序号", "图框对应的图块", "对应纸张", "排序优先级别", "删除", "文件命名规则" };
+            int[] widths = { 48, 150, 90, 90, 52, 100 };
+            for (int i = 0; i < headers.Length; i++)
+                frames.Columns.Add(i == DeleteColumn
+                    ? new DataGridViewLinkColumn { HeaderText = headers[i], Width = widths[i], Text = "删除", UseColumnTextForLinkValue = true, LinkColor = Color.Firebrick,
+                        ActiveLinkColor = Color.Red, VisitedLinkColor = Color.Firebrick, TrackVisitedState = false, LinkBehavior = LinkBehavior.HoverUnderline }
+                    : (DataGridViewColumn)new DataGridViewTextBoxColumn { HeaderText = headers[i], Width = widths[i] });
+            foreach (var slot in FrameLibrary.Slots) frames.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = slot.Caption, Width = 62 });
+            frames.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; frames.Columns[1].MinimumWidth = 110;
+            foreach (DataGridViewColumn column in frames.Columns)
             {
-                return PickRegionFromSample();
-            },printScale))
-                if(dialog.ShowDialog(this)==DialogResult.OK){printScale=dialog.PrintScale;printRegion=dialog.PrintRegion;status.Text="打印范围已更新；保存模板后，在列表右键应用模板打印范围。";}
-        }
-        private void EditCatalog()
-        {
-            if(editing==null)throw new InvalidOperationException("请先选择图框模板。");
-            using(var dialog=new CatalogOptionsForm(catalog,"应用到当前图框模板"))
-                if(dialog.ShowDialog(this)==DialogResult.OK){catalog=dialog.Options.Copy();status.Text="专用目录设置已更新，保存模板后生效。";}
-        }
-        private void EditStampRegion()
-        {
-            if(editing==null)throw new InvalidOperationException("请先选择图框模板。");
-            EnsureSampleFrame();
-            using(var dialog=new TemplateCropForm(stampRegion,()=>
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            frames.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            frames.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(236, 236, 236);
+            frames.RowTemplate.Height = 24;
+            frames.CellClick += (s, e) => Run(() => { if (e.RowIndex >= 0 && e.ColumnIndex == DeleteColumn) DeleteFrame(e.RowIndex); });
+            frames.CellDoubleClick += (s, e) => Run(() => { if (e.RowIndex >= 0 && e.ColumnIndex != DeleteColumn) EditFrame(e.RowIndex); });
+            frames.MouseDoubleClick += (s, e) => Run(() => { if (frames.HitTest(e.X, e.Y).Type == DataGridViewHitTestType.None) NewFrame(); });
+            frames.KeyDown += (s, e) => Run(() =>
             {
-                return PickRegionFromSample();
-            },stampMode:true){Text="图框模板主印章区域"})
-                if(dialog.ShowDialog(this)==DialogResult.OK){stampRegion=dialog.PrintRegion==null?null:TemplateCropGeometry.Copy(dialog.PrintRegion);status.Text="主印章区域已更新；保存模板并选择主印章后，输出时按此区域放置。";}
+                if (e.KeyCode != Keys.Delete || frames.CurrentRow == null) return;
+                e.Handled = true; DeleteFrame(frames.CurrentRow.Index);
+            });
+            tips.SetToolTip(frames, "双击空白处录入新图框；双击已有行修改该图框");
+
+            var body = new Panel { Dock = DockStyle.Fill, Padding = new Padding(12, 12, 12, 0) };
+            body.Controls.Add(frames);
+            var buttons = new TableLayoutPanel { Dock = DockStyle.Bottom, Height = 54, ColumnCount = 5, RowCount = 1, Padding = new Padding(8, 4, 8, 6) };
+            for (int i = 0; i < 5; i++) buttons.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20));
+            AddButton(buttons, "录入新图框", FrameLibraryStyle.ActionIcon, NewFrame, "在 CAD 中选择图框对应的图块，录入纸张、命名规则和信息框");
+            AddButton(buttons, "导出设置", FrameLibraryStyle.ActionIcon, ExportSettings, "导出为图框信息配置文件（.tk）或 JSON，供其他电脑导入");
+            AddButton(buttons, "导入设置", FrameLibraryStyle.ActionIcon, ImportSettings, "导入 .tk 或 JSON 图框信息");
+            AddButton(buttons, "确  定", FrameLibraryStyle.OkIcon, SaveAndClose, "保存图框信息库并关闭");
+            var cancel = FrameLibraryStyle.CreateButton("取  消", FrameLibraryStyle.CancelIcon);
+            cancel.DialogResult = DialogResult.Cancel; cancel.Anchor = AnchorStyles.None;
+            buttons.Controls.Add(cancel);
+            CancelButton = cancel;
+            Controls.Add(body); Controls.Add(status); Controls.Add(buttons);
+            RefreshRows();
         }
-        private void EditRegistrationStampRegion()
+
+        private void AddButton(TableLayoutPanel panel, string text, Image icon, Action action, string tip)
         {
-            if(editing==null)throw new InvalidOperationException("请先选择图框模板。");
-            EnsureSampleFrame();
-            using(var dialog=new TemplateCropForm(registrationStampRegion,()=>
-            {
-                return PickRegionFromSample();
-            },stampMode:true){Text="图框模板注册章区域"})
-                if(dialog.ShowDialog(this)==DialogResult.OK){registrationStampRegion=dialog.PrintRegion==null?null:TemplateCropGeometry.Copy(dialog.PrintRegion);status.Text="注册章区域已更新；保存模板并选择注册章后，输出时按此区域放置。";}
-        }
-        private void AddButton(FlowLayoutPanel panel, string caption, Action action)
-        {
-            var button = new Button { Text = caption, AutoSize = true, Height = 29 };
-            button.Click += (s,e) => { try { action(); } catch (Exception ex) { status.Text = ex.Message; } };
+            var button = FrameLibraryStyle.CreateButton(text, icon);
+            button.Anchor = AnchorStyles.None;
+            button.Click += (s, e) => Run(action);
+            tips.SetToolTip(button, tip);
             panel.Controls.Add(button);
         }
-        private void PickSampleFrame()
+
+        private void Run(Action action)
         {
-            if (editing == null) throw new InvalidOperationException("请先选择或新增一个图框模板。");
-            Hide();
-            try { sampleFrame = pickSampleFrame(); }
-            finally { Show(); Activate(); }
-            if (sampleFrame == null) { status.Text = "已取消样本图框拾取。"; return; }
-            var previousName = block.Text.Trim();
-            block.Text = sampleFrame.SourceBlockName;
-            if (string.IsNullOrWhiteSpace(name.Text) || name.Text.Trim() == "新图框" || string.Equals(name.Text.Trim(), previousName, StringComparison.OrdinalIgnoreCase))
-                name.Text = sampleFrame.SourceBlockName;
-            status.Text = "已从 CAD 拾取样本图框：" + sampleFrame.SourceBlockName + "。现在可直接拾取图号、图名等字段区域。";
+            try { action(); }
+            catch (Exception ex) { status.ForeColor = Color.Firebrick; status.Text = ex.Message; return; }
+            status.ForeColor = SystemColors.GrayText;
         }
-        private void EnsureSampleFrame()
+
+        private void RefreshRows(TitleBlockTemplate? select = null)
         {
-            if (sampleFrame != null && string.Equals(block.Text.Trim(), sampleFrame.SourceBlockName.Trim(), StringComparison.OrdinalIgnoreCase)) return;
-            string blockName = block.Text.Trim();
-            if (string.IsNullOrWhiteSpace(blockName)) throw new InvalidOperationException("请先选择或填写图框模板的块名。");
-            sampleFrame = findSampleFrame(blockName);
-            if (sampleFrame == null)
-                throw new InvalidOperationException($"当前 CAD 空间找不到块名“{blockName}”的图框。请切换到包含此图框的图纸/空间，或点【拾取样本图框】手动指定。");
-            if (!string.Equals(blockName, sampleFrame.SourceBlockName, StringComparison.OrdinalIgnoreCase))
-                throw new InvalidOperationException($"自动找到的图框块名“{sampleFrame.SourceBlockName}”与模板块名“{blockName}”不一致。");
-            status.Text = "已使用图框样本 " + sampleFrame.HandleOrId + "（" + sampleFrame.SourceBlockName + "）；现在直接框选字段区域。";
-        }
-        private TemplateRegion? PickRegionFromSample()
-        {
-            EnsureSampleFrame();
-            var owner = Owner;
-            bool restoreOwner = owner != null && owner.Visible;
-            Hide();
-            if (restoreOwner) owner!.Hide();
-            try { return pickRegion(sampleFrame!); }
-            finally
+            frames.Rows.Clear();
+            for (int i = 0; i < Library.Templates.Count; i++)
             {
-                if (restoreOwner && !owner!.IsDisposed) owner.Show();
-                Show(); Activate();
+                var template = Library.Templates[i];
+                string rule = FrameLibrary.NamingRuleText(template.NamingTemplate);
+                var cells = new List<object> { i + 1, template.BlockName, FrameLibrary.PaperLabel(template.PaperWidth, template.PaperHeight),
+                    template.Priority, "删除", rule.Length > 0 ? rule : "通用" };
+                cells.AddRange(FrameLibrary.Slots.Select(slot => (object)(FrameLibrary.HasField(template, slot.Field) ? "√" : "")));
+                var row = frames.Rows[frames.Rows.Add(cells.ToArray())];
+                row.Tag = template;
+                if (rule.Length == 0) row.Cells[NamingColumn].Style.ForeColor = SystemColors.GrayText;
             }
+            var target = frames.Rows.Cast<DataGridViewRow>().FirstOrDefault(r => select != null && ReferenceEquals(r.Tag, select));
+            if (target != null) frames.CurrentCell = target.Cells[1];
+            else frames.ClearSelection();
         }
-        private void CommitEditor()
+
+        /// <summary>录入新图框：先在 CAD 中选择图框对应的图块，按图框自动识别纸张；同块同纸张已录入时改为修改原记录。</summary>
+        private void NewFrame()
         {
-            fields.EndEdit();
-            if (editing == null) return;
-            var copy = TitleTemplateService.Clone(editing); copy.Id = editing.Id;
-            copy.PrintScale=printScale;copy.PrintRegion=printRegion==null?null:TemplateCropGeometry.Copy(printRegion);
-            copy.StampRegion=stampRegion==null?null:TemplateCropGeometry.Copy(stampRegion);
-            copy.RegistrationStampRegion=registrationStampRegion==null?null:TemplateCropGeometry.Copy(registrationStampRegion);
-            copy.NamingTemplate=string.IsNullOrWhiteSpace(naming.Text)?null:naming.Text.Trim();copy.Catalog=catalog?.Copy();
-            copy.Name = name.Text.Trim(); copy.BlockName = block.Text.Trim(); copy.Priority = (int)priority.Value; copy.Fields.Clear();
-            for (int i = 0; i < fields.Rows.Count; i++)
+            var sample = FrameLibraryStyle.HiddenWhile(this, pickSampleFrame);
+            if (sample == null) { status.Text = "已取消录入新图框。"; return; }
+            if (sample.Type != FrameType.BlockReference || string.IsNullOrWhiteSpace(sample.SourceBlockName))
+                throw new InvalidOperationException("请选择图框对应的图块。");
+            TemplateRegion? region = null;
+            string notice = "";
+            try { region = frameRegion(sample); }
+            catch (Exception ex) { notice = "未能读取图框范围（" + ex.Message + "），将按整个图块打印。"; }
+            var paper = (region == null ? null : FrameLibrary.ProposePaper(region.X2 - region.X1, region.Y2 - region.Y1))
+                ?? FrameLibrary.ProposePaper(sample.Width, sample.Height);
+            var recorded = FrameLibrary.FindRecorded(Library, sample.SourceBlockName, paper?.WidthMm ?? 0, paper?.HeightMm ?? 0);
+            if (recorded != null)
             {
-                var cells = fields.Rows[i].Cells;
-                if (!Convert.ToBoolean(cells[0].Value)) continue;
-                var coords = new double[4];
-                for (int c = 0; c < 4; c++)
-                    if (!double.TryParse(Convert.ToString(cells[c+3].Value), NumberStyles.Float, CultureInfo.CurrentCulture, out coords[c]))
-                        throw new InvalidDataException("区域坐标必须是数字。");
-                copy.Fields.Add(new TitleFieldRule { Field = (TitleField)i, AttributeTag = Convert.ToString(cells[2].Value)?.Trim() ?? "",
-                    Region = new TemplateRegion { X1 = coords[0], Y1 = coords[1], X2 = coords[2], Y2 = coords[3] } });
-            }
-            var proposed = new TitleTemplateLibrary { Templates = Library.Templates.Select(t => ReferenceEquals(t, editing) ? copy : t).ToList() };
-            TitleTemplateService.Validate(proposed);
-            int index = Library.Templates.IndexOf(editing); Library.Templates[index] = copy; editing = copy;
-        }
-        private void SelectTemplate()
-        {
-            if (selecting) return;
-            var next = templates.SelectedItem as TitleBlockTemplate;
-            try { CommitEditor(); }
-            catch (Exception ex)
-            {
-                status.Text = ex.Message; selecting = true;
-                try { templates.SelectedItem = templates.Items.Cast<TitleBlockTemplate>().FirstOrDefault(t => t.Id == editing?.Id); }
-                finally { selecting = false; }
+                var existing = Draft(recorded);
+                if (!(existing.PaperWidth > 0 && existing.PaperHeight > 0) && paper != null) { existing.PaperWidth = paper.WidthMm; existing.PaperHeight = paper.HeightMm; }
+                OpenEntry(existing, sample, "图块“" + recorded.BlockName + "”已录入，已打开原记录修改。");
                 return;
             }
-            if (!string.Equals(next?.Id, editing?.Id, StringComparison.Ordinal)) sampleFrame = null;
-            Display(next == null ? null : Library.Templates.FirstOrDefault(t => t.Id == next.Id));
+            if (paper == null) notice = "未能自动识别纸张，请点“选择对应纸张”。" + notice;
+            OpenEntry(FrameLibrary.CreateDraft(Library, sample.SourceBlockName, paper, region), sample, notice);
         }
-        private void Display(TitleBlockTemplate? template)
+
+        private void EditFrame(int rowIndex)
         {
-            printScale=template?.PrintScale??0;printRegion=template?.PrintRegion==null?null:TemplateCropGeometry.Copy(template.PrintRegion);
-            stampRegion=template?.StampRegion==null?null:TemplateCropGeometry.Copy(template.StampRegion);
-            registrationStampRegion=template?.RegistrationStampRegion==null?null:TemplateCropGeometry.Copy(template.RegistrationStampRegion);
-            naming.Text=template?.NamingTemplate??"";catalog=template?.Catalog?.Copy();naming.Enabled=template!=null;
-            editing = template; name.Text = template?.Name ?? ""; block.Text = template?.BlockName ?? ""; priority.Value = template?.Priority ?? 100;
-            name.Enabled = block.Enabled = priority.Enabled = fields.Enabled = template != null;
-            foreach (DataGridViewRow row in fields.Rows)
+            if (frames.Rows[rowIndex].Tag is TitleBlockTemplate template) OpenEntry(Draft(template), null, "");
+        }
+
+        private static TitleBlockTemplate Draft(TitleBlockTemplate source)
+        {
+            var copy = TitleTemplateService.Clone(source); copy.Id = source.Id;
+            return copy;
+        }
+
+        private void OpenEntry(TitleBlockTemplate draft, PlotFrame? sample, string notice)
+        {
+            bool isNew = !Library.Templates.Any(t => t.Id == draft.Id);
+            var others = Library.Templates.Where(t => t.Id != draft.Id).ToList();
+            using (var entry = new FrameEntryForm(draft, others, sample, findSampleFrame, pickSampleFrame, pickRegion))
             {
-                var rule = template?.Fields.FirstOrDefault(f => (int)f.Field == row.Index);
-                row.Cells[0].Value = rule != null; row.Cells[2].Value = rule?.AttributeTag ?? "";
-                var r = rule?.Region ?? new TemplateRegion();
-                row.Cells[3].Value = r.X1; row.Cells[4].Value = r.Y1; row.Cells[5].Value = r.X2; row.Cells[6].Value = r.Y2;
+                entry.Text = isNew ? "录入新图框" : "修改图框 - " + draft.BlockName;
+                if (notice.Length > 0) entry.ShowNotice(notice);
+                if (showEntry(entry) != DialogResult.OK) { status.Text = isNew ? "已取消录入新图框。" : "已取消修改，原记录不变。"; return; }
+                int index = Library.Templates.FindIndex(t => t.Id == draft.Id);
+                if (index >= 0) Library.Templates[index] = entry.Template; else Library.Templates.Add(entry.Template);
+                dirty = true; RefreshRows(entry.Template);
+                status.Text = (isNew ? "已录入图框“" : "已修改图框“") + draft.BlockName + "”，点击“确定”后保存。";
             }
         }
-        private void RefreshList(TitleBlockTemplate? selected)
+
+        private void DeleteFrame(int rowIndex)
         {
-            selecting = true;
-            try
-            {
-                templates.Items.Clear(); templates.Items.AddRange(Library.Templates.Cast<object>().ToArray());
-                templates.SelectedItem = selected ?? Library.Templates.FirstOrDefault();
-                Display(templates.SelectedItem as TitleBlockTemplate);
-            }
-            finally { selecting = false; }
+            if (!(frames.Rows[rowIndex].Tag is TitleBlockTemplate template)) return;
+            string label = template.BlockName + "（" + FrameLibrary.PaperLabel(template.PaperWidth, template.PaperHeight) + "）";
+            if (!confirm("确定删除图框“" + label + "”吗？")) return;
+            Library.Templates.Remove(template); dirty = true; RefreshRows();
+            status.Text = "已删除图框“" + label + "”，点击“确定”后保存。";
         }
-        private void NewTemplate()
+
+        private void ExportSettings()
         {
-            CommitEditor();
-            string candidate = string.IsNullOrWhiteSpace(sampleFrame?.SourceBlockName) ? "新图框" : sampleFrame!.SourceBlockName;
-            string unique = candidate; int suffix = 2;
-            while (Library.Templates.Any(t => string.Equals(t.BlockName, unique, StringComparison.OrdinalIgnoreCase))) unique = candidate + "_" + suffix++;
-            var t = new TitleBlockTemplate { Name = unique, BlockName = unique };
-            Library.Templates.Add(t); RefreshList(t);
+            if (Library.Templates.Count == 0) throw new InvalidOperationException("图框信息库为空，没有可导出的图框。");
+            using (var dialog = new SaveFileDialog { Title = "导出设置", Filter = "图框信息配置文件 (*.tk)|*.tk|JSON 图框库 (*.json)|*.json", FileName = "图框信息配置文件.tk" })
+                if (dialog.ShowDialog(this) == DialogResult.OK) ExportTo(dialog.FileName);
         }
-        private void CopyTemplate()
+
+        private void ExportTo(string path)
         {
-            CommitEditor(); if (editing == null) return;
-            var t = TitleTemplateService.Clone(editing); t.Name += " 副本";
-            string root = t.BlockName; int suffix = 2;
-            do { t.BlockName = root + "_副本" + suffix++; } while (Library.Templates.Any(x => string.Equals(x.BlockName,t.BlockName,StringComparison.OrdinalIgnoreCase)));
-            Library.Templates.Add(t); RefreshList(t);
+            if (IsTk(path)) TkFormatService.Save(path, Library); else TitleTemplateStore.Save(path, Library);
+            status.Text = "已导出 " + Library.Templates.Count + " 个图框到 " + Path.GetFileName(path) + "。";
         }
-        private void DeleteTemplate() { if (editing == null) return; Library.Templates.Remove(editing); editing = null; RefreshList(null); }
-        private void PickRegion()
+
+        private void ImportSettings()
         {
-            if (editing == null || fields.CurrentRow == null) throw new InvalidOperationException("请先选择模板和字段行。");
-            EnsureSampleFrame();
-            int index = fields.CurrentRow.Index; TemplateRegion? r;
-            r = PickRegionFromSample();
-            if (r == null) { status.Text = "已取消区域拾取。"; return; }
-            var cells = fields.Rows[index].Cells;
-            cells[0].Value = true; cells[2].Value = ""; cells[3].Value = r.X1; cells[4].Value = r.Y1; cells[5].Value = r.X2; cells[6].Value = r.Y2;
-            status.Text = "字段区域已录入，保存后生效。";
-        }
-        private void ImportLibrary()
-        {
-            CommitEditor();
-            using (var dialog = new OpenFileDialog { Filter = "图框配置文件 (*.tk)|*.tk|JSON 模板库 (*.json)|*.json|所有支持的模板文件 (*.tk;*.json)|*.tk;*.json" })
+            using (var dialog = new OpenFileDialog { Title = "导入设置", Filter = "图框信息配置文件 (*.tk;*.json)|*.tk;*.json|所有文件 (*.*)|*.*" })
             {
                 if (dialog.ShowDialog(this) != DialogResult.OK) return;
-                bool isTk = string.Equals(Path.GetExtension(dialog.FileName), ".tk", StringComparison.OrdinalIgnoreCase);
-                TitleTemplateLibrary imported;
-                if (isTk)
+                var imported = LoadSettings(dialog.FileName);
+                bool keepCurrent = false;
+                if (Library.Templates.Count > 0)
                 {
-                    imported = TkFormatService.Load(dialog.FileName);
+                    var choice = MessageBox.Show(this, "文件中有 " + imported.Templates.Count + " 个图框。\n\n【是】保留现有图框并合并（同一图块同一纸张的图框由导入内容替换）\n【否】清空现有图框，只使用导入的图框\n【取消】放弃导入",
+                        "导入设置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (choice == DialogResult.Cancel) return;
+                    keepCurrent = choice == DialogResult.Yes;
                 }
-                else
-                {
-                    imported = TitleTemplateStore.Load(dialog.FileName);
-                }
-
-                var choice = MessageBox.Show(this, "是否保留当前已有的图框模板？\n\n【是】合并导入（同名模板将被覆盖更新）\n【否】清空当前模板并完全替换为导入的图框配置\n【取消】放弃导入", "导入图框配置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (choice == DialogResult.Cancel) return;
-
-                var merged = choice == DialogResult.Yes ? TitleTemplateService.CopyLibrary(Library) : new TitleTemplateLibrary();
-                foreach (var t in imported.Templates)
-                {
-                    var existing = merged.Templates.FirstOrDefault(x => string.Equals(x.Name.Trim(), t.Name.Trim(), StringComparison.OrdinalIgnoreCase));
-                    if (existing != null)
-                    {
-                        int idx = merged.Templates.IndexOf(existing);
-                        merged.Templates[idx] = t;
-                    }
-                    else
-                    {
-                        merged.Templates.Add(t);
-                    }
-                }
-                TitleTemplateService.Validate(merged);
-                Library = merged;
-                editing = null;
-                RefreshList(null);
-                status.Text = isTk ? $"已导入 {imported.Templates.Count} 个图框配置，保存后生效。" : "已导入到编辑列表，保存后生效。";
+                ApplyImport(imported, keepCurrent, Path.GetFileName(dialog.FileName));
             }
         }
-        private void ExportLibrary()
+
+        private static TitleTemplateLibrary LoadSettings(string path)
         {
-            CommitEditor();
-            using (var dialog = new SaveFileDialog { Filter = "图框配置文件 (*.tk)|*.tk|JSON 模板库 (*.json)|*.json", FileName = "图框信息配置文件.tk" })
-            {
-                if (dialog.ShowDialog(this) == DialogResult.OK)
-                {
-                    bool isTk = string.Equals(Path.GetExtension(dialog.FileName), ".tk", StringComparison.OrdinalIgnoreCase);
-                    if (isTk)
-                    {
-                        TkFormatService.Save(dialog.FileName, Library);
-                        status.Text = $"图框配置文件已导出为 .tk 文件（共 {Library.Templates.Count} 个模板）。";
-                    }
-                    else
-                    {
-                        TitleTemplateStore.Save(dialog.FileName, Library);
-                        status.Text = "模板库已导出为 JSON。";
-                    }
-                }
-            }
+            if (!File.Exists(path)) throw new FileNotFoundException("找不到导入文件：" + path, path);
+            return IsTk(path) ? TkFormatService.Load(path) : TitleTemplateStore.Load(path);
         }
-        private void SaveLibrary()
+
+        private void ApplyImport(TitleTemplateLibrary imported, bool keepCurrent, string source)
         {
-            CommitEditor(); TitleTemplateService.Validate(Library);
+            if (imported.Templates.Count == 0) throw new InvalidOperationException("导入文件中没有图框。");
+            Library = FrameLibrary.Merge(Library, imported, keepCurrent); dirty = true; RefreshRows();
+            status.Text = "已从 " + source + (keepCurrent ? " 合并导入 " : " 替换导入 ") + imported.Templates.Count + " 个图框，点击“确定”后保存。";
+        }
+
+        private static bool IsTk(string path) => string.Equals(Path.GetExtension(path), ".tk", StringComparison.OrdinalIgnoreCase);
+
+        private void SaveAndClose()
+        {
+            TitleTemplateService.Validate(Library);
             if (savePath != null) TitleTemplateStore.Save(savePath, Library);
-            DialogResult = DialogResult.OK; Close();
+            dirty = false; DialogResult = DialogResult.OK; Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (dirty && DialogResult != DialogResult.OK && e.CloseReason != CloseReason.WindowsShutDown
+                && !confirm("图框信息库有未保存的修改，确定放弃吗？")) e.Cancel = true;
+            base.OnFormClosing(e);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) tips.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

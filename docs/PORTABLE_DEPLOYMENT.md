@@ -21,7 +21,7 @@
 
 ## 用户数据
 
-模板库：`%APPDATA%\FastBatchPlot\title-templates.json`。变更前备份，原 TK 作为权威输入，不以测试图其他位置文字改写区域。字段试选只有“保存并关闭”后才持久化。
+模板库：`%APPDATA%\FastBatchPlot\title-templates.json`。变更前备份，原 TK 作为权威输入，不以测试图其他位置文字改写区域。图框信息库的修改只有点“确定”后才持久化。
 
 错误日志：`%LOCALAPPDATA%\FastBatchPlot\logs\plot-errors.log`，主窗“更多”可打开。历史失败页可在满足当前来源检查的同一会话中重试；跨 CAD 重启自动续打未实现。
 

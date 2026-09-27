@@ -9,4 +9,4 @@
 - 构建：`dotnet build FastBatchPlot.sln -c Release`；测试：`dotnet test src/FastBatchPlot.Tests/FastBatchPlot.Tests.csproj -c Release`。
 - 离线界面：`dotnet run --project src/FastBatchPlot.UiChecks/FastBatchPlot.UiChecks.csproj -c Release`。
 - 发布：`deploy/Build-Release.ps1`，默认仅 ZWCAD。不要分发源码 deploy 下的历史 DLL。
-- 当前事实以 README、docs/PDF_SCOPE.md 和 docs/PHASE47_TITLE_EXTRACTION.md 为准；PHASE1—46 为阶段历史。
+- 当前事实以 README、docs/PDF_SCOPE.md 和 docs/PHASE47_TITLE_EXTRACTION.md、docs/PHASE48_FRAME_LIBRARY.md 为准；PHASE1—46 为阶段历史。

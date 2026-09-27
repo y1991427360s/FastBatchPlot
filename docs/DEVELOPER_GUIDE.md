@@ -12,6 +12,6 @@ dotnet run --project src/FastBatchPlot.FrameworkChecks/FastBatchPlot.FrameworkCh
 
 测试和假宿主 UI 不连接 CAD。新宿主能力需要在 CadBridge 定义接口，再实现原生适配；编译通过不等于原生兼容。
 
-字段修复主要入口：Core/Templates/TitleTemplates.cs、ZWCAD/ZwCadAdapter.Templates.cs、UI/Views/TitleTemplateForm.cs。新增规则应覆盖歧义、邻字段和原配置保持不变的回归。先查原对象与变换，再改算法。
+字段修复主要入口：Core/Templates/TitleTemplates.cs、ZWCAD/ZwCadAdapter.Templates.cs、UI/Views/TitleTemplateForm.cs（图框信息库管理）与 FrameEntryForm.cs（录入新图框）；列、纸张、命名规则和导入合并规则在 Core/Templates/FrameLibrary.cs。新增规则应覆盖歧义、邻字段和原配置保持不变的回归。先查原对象与变换，再改算法。
 
 原生验证先核对实际加载 DLL 路径及 SHA256。新发布包的 NETLOAD 不能覆盖自动加载的旧 DLL，详见 [部署说明](PORTABLE_DEPLOYMENT.md)。结果须记录实际字段值、逐项比对、失败和限制，不能只记处理成功数。

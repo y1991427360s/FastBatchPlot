@@ -10,7 +10,7 @@ using ZwSoft.ZwCAD.Geometry;
 
 namespace FastBatchPlot.ZWCAD
 {
-    public partial class ZwCadAdapter
+    public partial class ZwCadAdapter : ICadTemplateFrameHost
     {
         public bool FindTemplateSample(string blockName, out PlotFrame? frame)
         {
@@ -139,6 +139,38 @@ namespace FastBatchPlot.ZWCAD
             if (!TitleTemplateService.Finite(maxX) || !TitleTemplateService.Finite(minY))
                 return Point3d.Origin; // 纯文字图框没有稳定的线框范围；块原点可在所有同定义实例间保持一致。
             return new Point3d(maxX, minY, 0);
+        }
+
+        public bool TryGetTemplateFrameRegion(PlotFrame frame, out TemplateRegion? region)
+        {
+            region = null;
+            var doc = Application.DocumentManager.MdiActiveDocument;
+            if (doc == null) throw new InvalidOperationException("没有活动文档。");
+            using (doc.LockDocument())
+            using (var tr = doc.Database.TransactionManager.StartTransaction())
+            {
+                var block = OpenTemplateBlock(doc, tr, frame);
+                var definition = (BlockTableRecord)tr.GetObject(block.BlockTableRecord, OpenMode.ForRead);
+                double minX = double.PositiveInfinity, minY = double.PositiveInfinity, maxX = double.NegativeInfinity, maxY = double.NegativeInfinity;
+                // 与 TemplateAnchor 相同的筛选：只取可见线框，不含文字、属性定义与无限长构造线。
+                foreach (ObjectId id in definition)
+                {
+                    var entity = tr.GetObject(id, OpenMode.ForRead) as Entity;
+                    if (entity == null || !entity.Visible || entity is DBText || entity is MText || entity is AttributeDefinition
+                        || entity is Xline || entity is Ray) continue;
+                    if (tr.GetObject(entity.LayerId, OpenMode.ForRead) is LayerTableRecord layer && (layer.IsFrozen || layer.IsOff)) continue;
+                    Extents3d extent;
+                    try { extent = entity.GeometricExtents; } catch { continue; }
+                    minX = Math.Min(minX, extent.MinPoint.X); minY = Math.Min(minY, extent.MinPoint.Y);
+                    maxX = Math.Max(maxX, extent.MaxPoint.X); maxY = Math.Max(maxY, extent.MaxPoint.Y);
+                }
+                var anchor = TemplateAnchor(block, tr);
+                tr.Commit();
+                if (!TitleTemplateService.Finite(minX) || !TitleTemplateService.Finite(minY) || !TitleTemplateService.Finite(maxX)
+                    || !TitleTemplateService.Finite(maxY) || maxX <= minX || maxY <= minY) return false;
+                region = new TemplateRegion { X1 = minX - anchor.X, Y1 = minY - anchor.Y, X2 = maxX - anchor.X, Y2 = maxY - anchor.Y };
+                return true;
+            }
         }
 
         public bool PromptTemplateRegion(PlotFrame frame, out TemplateRegion? region)

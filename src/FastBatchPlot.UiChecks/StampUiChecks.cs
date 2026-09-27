@@ -105,14 +105,16 @@ internal static partial class Program
             var titles = new TitleTemplateLibrary { Templates = new() { sourceTemplate } };
             using (var editor = new TitleTemplateForm(titles, null, () => null, frame => null))
             {
-                var draft = Field<TemplateRegion>(editor, "stampRegion");
-                Check(!ReferenceEquals(draft, sourceRegion) && draft.X1 == -90, "模板编辑器克隆印章区域，原始库不共享坐标对象");
-                draft.X1 = -80;
-                InvokeStampEditor(editor, "CommitEditor");
-                Check(editor.Library.Templates[0].StampRegion!.X1 == -80 && sourceRegion.X1 == -90,
-                    "模板提交保存印章区域而不污染原始库");
-                draft.X1 = -70;
-                Check(editor.Library.Templates[0].StampRegion!.X1 == -80, "已提交模板与编辑字段继续保持隔离");
+                SetPrivate(editor, "showEntry", new Func<FrameEntryForm, DialogResult>(entry =>
+                {
+                    Check(!ReferenceEquals(entry.Template.StampRegion, sourceRegion) && entry.Template.StampRegion!.X1 == -90,
+                        "图框录入草稿克隆印章区域，原始库不共享坐标对象");
+                    entry.Template.StampRegion!.X1 = -80;
+                    InvokePrivate(entry, "Accept");
+                    return entry.DialogResult;
+                }));
+                InvokePrivate(editor, "EditFrame", 0);
+                Check(editor.Library.Templates[0].StampRegion!.X1 == -80 && sourceRegion.X1 == -90, "图框提交保存印章区域而不污染原始库");
                 var copy = TitleTemplateService.Clone(editor.Library.Templates[0]); copy.StampRegion!.X1 = -60;
                 Check(editor.Library.Templates[0].StampRegion!.X1 == -80, "复制模板深复制印章区域");
             }

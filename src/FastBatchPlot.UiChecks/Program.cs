@@ -109,6 +109,7 @@ internal static partial class Program
             CheckFrameSelectionUi();
             CheckPreferencesUi();
             CheckTemplatesUi();
+            CheckFrameLibraryUi();
             CheckOutputUi();
             CheckCatalogUi();
             CheckListEditsUi();

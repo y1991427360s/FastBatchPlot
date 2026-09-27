@@ -21,7 +21,6 @@ internal static partial class Program
             var library = new TitleTemplateLibrary { Templates = new() { template } };
             string libraryPath = Path.Combine(directory, "title-templates.json");
             TitleTemplateStore.Save(libraryPath, library);
-            PlotFrame? pickedSample = null;
             using var form = new BatchPlotForm(Path.Combine(directory, "settings.json"));
             var frames = Field<List<PlotFrame>>(form, "_frames");
             var a = new PlotFrame { Type = FrameType.BlockReference, SourceBlockName = "A1框", HandleOrId = "1", TitleInfo = new TitleBlockInfo { DrawingName = "旧名称" } };
@@ -39,32 +38,6 @@ internal static partial class Program
             Check(ReferenceEquals(selectedFrameSample, b), "模板字段拾取优先使用打印列表当前行的同名图框");
             host.FailSecond = false; Call(form, "ExtractTitleTemplates");
             Check(b.CustomOutputFileName.Contains("配电平面") && b.CustomOutputFileName.Contains("电施-02"), "模板提取刷新非人工输出名");
-            using var editor = new TitleTemplateForm(library, libraryPath,
-                blockName => { pickedSample=new PlotFrame { Type=FrameType.BlockReference, SourceBlockName=blockName, HandleOrId="sample" }; return pickedSample; },
-                () => null,
-                frame => { pickedSample=frame; return new TemplateRegion { X1=-200,Y1=0,X2=-100,Y2=30 }; });
-            editor.StartPosition = FormStartPosition.Manual; editor.Location = new System.Drawing.Point(-32000,-32000); editor.ShowInTaskbar = false; editor.Show();
-            var editorFields = (DataGridView)typeof(TitleTemplateForm).GetField("fields", PrivateInstance)!.GetValue(editor)!;
-            editorFields.CurrentCell = editorFields.Rows[1].Cells[1];
-            typeof(TitleTemplateForm).GetMethod("PickRegion", PrivateInstance)!.Invoke(editor, null);
-            Check(Convert.ToDouble(editorFields.Rows[1].Cells[3].Value) == -200 && Convert.ToString(editorFields.Rows[1].Cells[2].Value) == "", "拾取区域更新选中字段并清除标签规则");
-            Check(pickedSample?.HandleOrId == "sample" && Field<TextBox>(editor,"block").Text == "A1框",
-                "模板库字段拾取使用同名图框样本并保留块名");
-            typeof(TitleTemplateForm).GetMethod("CommitEditor", PrivateInstance)!.Invoke(editor, null);
-            Check(editor.Library.Templates[0].Fields.Single(f => f.Field == TitleField.DrawingName).Region.X1 == -200, "模板编辑提交保留本地区域坐标");
-            Check(library.Templates[0].Fields[0].AttributeTag == "TITLE", "取消前模板编辑不污染调用方原库");
-            Check(editorFields.Columns.Cast<DataGridViewColumn>().All(c => c.SortMode == DataGridViewColumnSortMode.NotSortable), "字段表禁止排序，避免区域与字段错配");
-            editor.Size = editor.MinimumSize; editor.PerformLayout();
-            Check(editorFields.Width > 300 && editorFields.Height > 200, "模板最小窗口保留可用字段编辑区域");
-            string evidence = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory,"..","..","..","..","..","docs","audit-evidence"));
-            using var image = new System.Drawing.Bitmap(editor.Width,editor.Height);
-            editor.DrawToBitmap(image,new System.Drawing.Rectangle(0,0,editor.Width,editor.Height));
-            image.Save(Path.Combine(evidence,"ui-template-window.png"),System.Drawing.Imaging.ImageFormat.Png);
-            typeof(TitleTemplateForm).GetMethod("SaveLibrary", PrivateInstance)!.Invoke(editor, null);
-            var saved = TitleTemplateStore.Load(libraryPath);
-            Check(saved.Templates[0].Fields.Single(f => f.Field == TitleField.DrawingName).Region.X1 == -200 && editor.DialogResult == DialogResult.OK,
-                "编辑器保存操作实际写入模板库并返回成功");
-
             string desktopTk = @"D:\Users\ys199\Desktop\图框信息配置文件-new.tk";
             if (File.Exists(desktopTk))
             {
