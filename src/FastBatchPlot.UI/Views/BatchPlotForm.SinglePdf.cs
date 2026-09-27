@@ -52,8 +52,7 @@ namespace FastBatchPlot.UI.Views
                         try { SinglePdfFile.SaveCopy(path,destination!,true); path=destination!; _lastSinglePdfPath=path; }
                         catch(Exception ex) { ShowSinglePdfResult(path,"另存失败，原始成果保留："+ex.Message); return; }
                     }
-                    string openError=OpenSinglePdf(path);
-                    ShowSinglePdfResult(path,openError);
+                    ShowSinglePdfResult(path, null);
                 }
                 catch(Exception ex){lblStatus.Text="单张 PDF 未完成："+ex.Message;MessageBox.Show(this,ex.Message,"单张 PDF",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
             }
@@ -114,32 +113,104 @@ namespace FastBatchPlot.UI.Views
             }
         }
 
-        private static string OpenSinglePdf(string path)
+        /// <summary>测试可注入的外部打开委托，离线测试环境不实际调用外部进程。</summary>
+        internal static Func<string, string>? SinglePdfViewerLauncher { get; set; }
+
+        private static string TryOpenSinglePdfCore(string path)
         {
-            try {SinglePdfFile.Validate(path);Process.Start(new ProcessStartInfo(path){UseShellExecute=true});return "";}
-            catch(Exception ex){return "文件已保留，但打开查看器失败："+ex.Message;}
+            try
+            {
+                if (SinglePdfViewerLauncher != null) return SinglePdfViewerLauncher(path);
+                SinglePdfFile.Validate(path);
+                Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return "文件已保留，但打开查看器失败：" + ex.Message;
+            }
         }
 
-        private void ShowSinglePdfResult(string path,string openError)
+        private static Task<string> OpenSinglePdfAsync(string path)
+            => Task.Run(() => TryOpenSinglePdfCore(path));
+
+        private void ShowSinglePdfResult(string path, string? initialError)
         {
-            using(var dialog=new Form {Text="单张 PDF 已生成",ClientSize=new Size(580,190),StartPosition=FormStartPosition.CenterParent,Font=Font,MinimizeBox=false,MaximizeBox=false})
+            using (var dialog = new Form
             {
-                var label=new TextBox {Left=16,Top=16,Width=548,Height=100,Multiline=true,ReadOnly=true,ScrollBars=ScrollBars.Vertical,
-                    Text=path+Environment.NewLine+(openError.Length>0?openError:"已请求打开默认 PDF 查看器。")+Environment.NewLine+"临时文件可能被系统清理，请及时另存。"};
-                var open=new Button {Left=16,Top=140,Width=110,Text="再次打开"};
-                open.Click+=(s,e)=>{var error=OpenSinglePdf(path);if(error.Length>0)label.AppendText(Environment.NewLine+error);};
-                var save=new Button {Left=138,Top=140,Width=110,Text="另存为…"};
-                save.Click+=(s,e)=>
+                Text = "单张 PDF 已生成",
+                ClientSize = new Size(580, 190),
+                StartPosition = FormStartPosition.CenterParent,
+                Font = Font,
+                MinimizeBox = false,
+                MaximizeBox = false
+            })
+            {
+                var label = new TextBox
                 {
-                    using(var picker=new SaveFileDialog{Filter="PDF 文件 (*.pdf)|*.pdf",DefaultExt="pdf",AddExtension=true,FileName=Path.GetFileName(path),OverwritePrompt=true})
+                    Left = 16,
+                    Top = 16,
+                    Width = 548,
+                    Height = 100,
+                    Multiline = true,
+                    ReadOnly = true,
+                    ScrollBars = ScrollBars.Vertical,
+                    Text = path + Environment.NewLine +
+                           (string.IsNullOrEmpty(initialError) ? "已请求打开默认 PDF 查看器…" : initialError) +
+                           Environment.NewLine + "临时文件可能被系统清理，请及时另存。"
+                };
+                var open = new Button { Left = 16, Top = 140, Width = 110, Text = "再次打开" };
+                open.Click += async (s, e) =>
+                {
+                    open.Enabled = false;
+                    try
                     {
-                        if(picker.ShowDialog(dialog)!=DialogResult.OK)return;
-                        try{SinglePdfFile.SaveCopy(path,picker.FileName,true);label.AppendText(Environment.NewLine+"已另存："+picker.FileName);}
-                        catch(Exception ex){MessageBox.Show(dialog,ex.Message,"另存失败",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
+                        string err = await OpenSinglePdfAsync(path);
+                        if (!dialog.IsDisposed && !label.IsDisposed)
+                        {
+                            if (err.Length > 0) label.AppendText(Environment.NewLine + err);
+                            else label.AppendText(Environment.NewLine + "已再次请求打开 PDF 查看器。");
+                        }
+                    }
+                    finally
+                    {
+                        if (!dialog.IsDisposed && !open.IsDisposed) open.Enabled = true;
                     }
                 };
-                var close=new Button{Left=454,Top=140,Width=110,Text="关闭",DialogResult=DialogResult.OK};
-                dialog.Controls.AddRange(new Control[]{label,open,save,close});dialog.AcceptButton=close;dialog.CancelButton=close;dialog.ShowDialog(this);
+                var save = new Button { Left = 138, Top = 140, Width = 110, Text = "另存为…" };
+                save.Click += (s, e) =>
+                {
+                    using (var picker = new SaveFileDialog { Filter = "PDF 文件 (*.pdf)|*.pdf", DefaultExt = "pdf", AddExtension = true, FileName = Path.GetFileName(path), OverwritePrompt = true })
+                    {
+                        if (picker.ShowDialog(dialog) != DialogResult.OK) return;
+                        try { SinglePdfFile.SaveCopy(path, picker.FileName, true); label.AppendText(Environment.NewLine + "已另存：" + picker.FileName); }
+                        catch (Exception ex) { MessageBox.Show(dialog, ex.Message, "另存失败", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                    }
+                };
+                var close = new Button { Left = 454, Top = 140, Width = 110, Text = "关闭", DialogResult = DialogResult.OK };
+                dialog.Controls.AddRange(new Control[] { label, open, save, close });
+                dialog.AcceptButton = close;
+                dialog.CancelButton = close;
+
+                // 若没有明确提供错误，后台触发异步打开，完成时若有异常更新到窗口上
+                if (initialError == null)
+                {
+                    _ = OpenSinglePdfAsync(path).ContinueWith(t =>
+                    {
+                        if (t.IsFaulted || !string.IsNullOrEmpty(t.Result))
+                        {
+                            string err = t.IsFaulted ? t.Exception?.InnerException?.Message ?? "启动失败" : t.Result;
+                            try
+                            {
+                                if (!dialog.IsDisposed && dialog.IsHandleCreated)
+                                    dialog.BeginInvoke((Action)(() => label.AppendText(Environment.NewLine + err)));
+                            }
+                            catch { }
+                        }
+                    });
+                }
+
+                dialog.ShowDialog(this);
             }
         }
     }

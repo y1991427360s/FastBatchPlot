@@ -94,5 +94,49 @@ namespace FastBatchPlot.Tests
             Assert.Equal("A3", result100.Paper.StandardName);
             Assert.Equal(100, result100.Scale);
         }
+
+        [Fact]
+        public void Detect_CaseA_594x420_ShouldBeA2_Scale1_HighConfidence()
+        {
+            var res = PaperSizeDetector.Detect(594, 420);
+            Assert.Equal("A2", res.Paper.Name);
+            Assert.Equal(1.0, res.Scale);
+            Assert.True(res.MatchScore <= PaperSizeDetector.AcceptableMatchError);
+        }
+
+        [Fact]
+        public void Detect_CaseB_42000x29700_ShouldBeA3_Scale100_HighConfidence()
+        {
+            var res = PaperSizeDetector.Detect(42000, 29700);
+            Assert.Equal("A3", res.Paper.Name);
+            Assert.Equal(100.0, res.Scale);
+            Assert.True(res.MatchScore <= PaperSizeDetector.AcceptableMatchError);
+        }
+
+        [Fact]
+        public void Detect_CaseC_841x594_ShouldBeA1_Scale1_HighConfidence()
+        {
+            var res = PaperSizeDetector.Detect(841, 594);
+            Assert.Equal("A1", res.Paper.Name);
+            Assert.Equal(1.0, res.Scale);
+            Assert.True(res.MatchScore <= PaperSizeDetector.AcceptableMatchError);
+        }
+
+        [Fact]
+        public void Detect_CaseD_84100x59400_ShouldBeA1_Scale100_HighConfidence()
+        {
+            var res = PaperSizeDetector.Detect(84100, 59400);
+            Assert.Equal("A1", res.Paper.Name);
+            Assert.Equal(100.0, res.Scale);
+            Assert.True(res.MatchScore <= PaperSizeDetector.AcceptableMatchError);
+        }
+
+        [Fact]
+        public void Detect_CaseE_Nonstandard_50000x10000_ShouldNotBeHighConfidence()
+        {
+            var res = PaperSizeDetector.Detect(50000, 10000);
+            // 50000x10000 长宽比 5:1，非标准工程图纸比例，MatchScore 应大于 AcceptableMatchError
+            Assert.True(res.MatchScore > PaperSizeDetector.AcceptableMatchError);
+        }
     }
 }

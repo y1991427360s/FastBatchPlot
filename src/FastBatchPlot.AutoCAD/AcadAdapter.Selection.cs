@@ -101,23 +101,56 @@ namespace FastBatchPlot.AutoCAD
                 using (doc.LockDocument())
                 using (var tr = doc.Database.TransactionManager.StartTransaction())
                 {
+                    int skipped = 0;
                     foreach (SelectedObject selected in selection.Value)
                     {
                         if (selected == null) continue;
                         var entity = tr.GetObject(selected.ObjectId, OpenMode.ForRead) as Entity;
                         if (entity == null) continue;
-                        // 不静默丢掉无法取范围的实体，否则所选内容可能被裁掉。
-                        var extent = entity.GeometricExtents;
+                        if (entity is Xline || entity is Ray)
+                            throw new InvalidOperationException("所选图形包含无限长的构造线/射线，无法确定打印范围，请去掉后重选。");
+                        Extents3d extent;
+                        // 空文字、空块等没有范围的实体不影响打印范围，跳过并提示数量。
+                        try { extent = entity.GeometricExtents; } catch { skipped++; continue; }
                         minX = Math.Min(minX, extent.MinPoint.X); minY = Math.Min(minY, extent.MinPoint.Y);
                         maxX = Math.Max(maxX, extent.MaxPoint.X); maxY = Math.Max(maxY, extent.MaxPoint.Y);
                     }
                     tr.Commit();
+                    if (skipped > 0) ed.WriteMessage($"\n[FastBatchPlot] {skipped} 个实体没有几何范围，已忽略。");
                 }
+                if (!(maxX > minX && maxY > minY)) throw new InvalidOperationException("所选图形没有有效的二维范围。");
                 bounds = new Rect2D(minX,minY,maxX,maxY);
             }
-            var scale = ed.GetDouble(new PromptDoubleOptions("\n请输入打印比例的分母 1:<100>：") {
-                DefaultValue = 100, UseDefaultValue = true, AllowNegative = false, AllowZero = false
-            });
+
+            var detected = FastBatchPlot.Core.Paper.PaperSizeDetector.Detect(bounds.Width, bounds.Height);
+            bool isHighConfidence = detected.MatchScore <= FastBatchPlot.Core.Paper.PaperSizeDetector.AcceptableMatchError && detected.Scale > 0;
+
+            PromptDoubleOptions scaleOptions;
+            if (isHighConfidence)
+            {
+                string formattedScale = FastBatchPlot.Core.Paper.ScaleCalculator.FormatScale(detected.Scale);
+                ed.WriteMessage($"\n[FastBatchPlot] 自动识别：{detected.Paper.Name}，推荐比例 {formattedScale}。");
+                scaleOptions = new PromptDoubleOptions($"\n请输入打印比例分母 1:<{detected.Scale:0.##}>：")
+                {
+                    DefaultValue = detected.Scale,
+                    UseDefaultValue = true,
+                    AllowNegative = false,
+                    AllowZero = false
+                };
+            }
+            else
+            {
+                ed.WriteMessage("\n[FastBatchPlot] 当前范围无法可靠识别标准图幅和比例，请手工输入打印比例。");
+                scaleOptions = new PromptDoubleOptions("\n请输入打印比例分母 1:<100>：")
+                {
+                    DefaultValue = 100,
+                    UseDefaultValue = false,
+                    AllowNegative = false,
+                    AllowZero = false
+                };
+            }
+
+            var scale = ed.GetDouble(scaleOptions);
             if (scale.Status != PromptStatus.OK) return false;
             using (doc.LockDocument())
             using (var tr = doc.Database.TransactionManager.StartTransaction())

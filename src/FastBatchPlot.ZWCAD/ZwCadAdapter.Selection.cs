@@ -124,9 +124,36 @@ namespace FastBatchPlot.ZWCAD
                 if (!(maxX > minX && maxY > minY)) throw new InvalidOperationException("所选图形没有有效的二维范围。");
                 bounds = new Rect2D(minX,minY,maxX,maxY);
             }
-            scale = ed.GetDouble(new PromptDoubleOptions("\n请输入打印比例的分母 1:<100>：") {
-                DefaultValue = 100, UseDefaultValue = true, AllowNegative = false, AllowZero = false
-            });
+
+            var detected = FastBatchPlot.Core.Paper.PaperSizeDetector.Detect(bounds.Width, bounds.Height);
+            bool isHighConfidence = detected.MatchScore <= FastBatchPlot.Core.Paper.PaperSizeDetector.AcceptableMatchError && detected.Scale > 0;
+
+            PromptDoubleOptions scaleOptions;
+            if (isHighConfidence)
+            {
+                string formattedScale = FastBatchPlot.Core.Paper.ScaleCalculator.FormatScale(detected.Scale);
+                ed.WriteMessage($"\n[FastBatchPlot] 自动识别：{detected.Paper.Name}，推荐比例 {formattedScale}。");
+                scaleOptions = new PromptDoubleOptions($"\n请输入打印比例分母 1:<{detected.Scale:0.##}>：")
+                {
+                    DefaultValue = detected.Scale,
+                    UseDefaultValue = true,
+                    AllowNegative = false,
+                    AllowZero = false
+                };
+            }
+            else
+            {
+                ed.WriteMessage("\n[FastBatchPlot] 当前范围无法可靠识别标准图幅和比例，请手工输入打印比例。");
+                scaleOptions = new PromptDoubleOptions("\n请输入打印比例分母 1:<100>：")
+                {
+                    DefaultValue = 100,
+                    UseDefaultValue = false,
+                    AllowNegative = false,
+                    AllowZero = false
+                };
+            }
+
+            scale = ed.GetDouble(scaleOptions);
             if (scale.Status != PromptStatus.OK) return false;
             }
             using (doc.LockDocument())

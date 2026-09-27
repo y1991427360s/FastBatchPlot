@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using FastBatchPlot.Core.Models;
 using FastBatchPlot.Core.Planning;
@@ -193,5 +193,40 @@ namespace FastBatchPlot.Tests
             Name = name, WidthMm = width, HeightMm = height,
             PrintableWidthMm = width, PrintableHeightMm = height
         };
+
+        [Fact]
+        public void PlotPlanBuilderRejectsMicroPaperBypassingManualFrameFactory()
+        {
+            // 构造绕过 ManualFrameFactory 的微型纸张 PlotFrame
+            var badFrame = new PlotFrame
+            {
+                MinX = 0, MinY = 0, MaxX = 594, MaxY = 420,
+                CalculatedScale = 100,
+                DetectedPaper = new PaperSize("自定义", 5.94, 4.2),
+                IsLandscape = true
+            };
+
+            var ex = Assert.Throws<ArgumentException>(() => PlotPlanBuilder.Create(badFrame, new PlotConfig()));
+            Assert.Contains("异常纸张尺寸", ex.Message);
+            Assert.Contains("5.94", ex.Message);
+        }
+
+        [Fact]
+        public void PlotPlanBuilderAllowsLegitimateCustomPaper()
+        {
+            // 500x100mm 合法自定义长条图纸依然允许正常规划
+            var customFrame = new PlotFrame
+            {
+                MinX = 0, MinY = 0, MaxX = 50000, MaxY = 10000,
+                CalculatedScale = 100,
+                DetectedPaper = new PaperSize("自定义", 500, 100),
+                IsLandscape = true
+            };
+
+            var plan = PlotPlanBuilder.Create(customFrame, new PlotConfig());
+            Assert.Equal(500, plan.PaperWidthMm);
+            Assert.Equal(100, plan.PaperHeightMm);
+            Assert.Equal(100, plan.ScaleDenominator);
+        }
     }
 }

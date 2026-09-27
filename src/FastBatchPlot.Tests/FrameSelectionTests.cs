@@ -68,6 +68,17 @@ namespace FastBatchPlot.Tests
         public void ManualInvalidScaleIsRejected(double scale)
             => Assert.Throws<ArgumentException>(() => ManualFrameFactory.Create(new Rect2D(0,0,100,100),scale,"doc","space","Model"));
 
+        [Fact]
+        public void ManualMicroPaperIsRejected()
+        {
+            // 594x420 图框如果用户误输入 1:100，生成 5.94x4.2mm 微型纸张，必须被立即拒绝
+            var ex = Assert.Throws<ArgumentException>(() =>
+                ManualFrameFactory.Create(new Rect2D(0, 0, 594, 420), 100, "doc", "space", "Model"));
+            Assert.Contains("异常纸张尺寸", ex.Message);
+            Assert.Contains("5.94", ex.Message);
+            Assert.Contains("1:100", ex.Message);
+        }
+
         private static PlotFrame Frame(double x,double width,double height) => new PlotFrame {
             MinX=x,MinY=0,MaxX=x+width,MaxY=height,SourceDocumentId="doc",SourceLayoutId="model"
         };

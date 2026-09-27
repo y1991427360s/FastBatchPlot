@@ -57,6 +57,10 @@ namespace FastBatchPlot.Core.Planning
                 || !Finite(frame.DetectedPaper.HeightMm) || frame.DetectedPaper.WidthMm <= 0 || frame.DetectedPaper.HeightMm <= 0)
                 throw new ArgumentException("纸张宽高必须为有限正数。");
 
+            // 最终安全闸门：防止微型或极端图幅进入 CAD 打印引擎与驱动
+            FastBatchPlot.Core.Paper.PaperSizeSafety.ValidatePhysicalSize(
+                frame.DetectedPaper.WidthMm, frame.DetectedPaper.HeightMm, frame.CalculatedScale);
+
             bool landscape = config.AutoOrientation ? frame.IsLandscape : frame.DetectedPaper.IsLandscape;
             double width = landscape ? frame.DetectedPaper.LongerEdgeMm : frame.DetectedPaper.ShorterEdgeMm;
             double height = landscape ? frame.DetectedPaper.ShorterEdgeMm : frame.DetectedPaper.LongerEdgeMm;
