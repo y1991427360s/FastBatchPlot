@@ -112,13 +112,22 @@ namespace FastBatchPlot.UI.Views
                 {
                     if(!(host is ICadFrameSelectionHost selection))throw new NotSupportedException("当前宿主不支持手工范围。");
                     Hide();
-                    if(!selection.PromptManualFrame(rangeMode==1?ManualFrameSelectionMode.TwoCorners:ManualFrameSelectionMode.EntityGroup,out var picked)||picked==null)
+                    bool pickedOk = false;
+                    try
                     {
-                        lblStatus.Text="已取消单张 PDF，批量列表保留。";
-                        SinglePdfTrace.Write("ExecuteSinglePdf.Cancelled", "Manual selection cancelled");
-                        return null;
+                        pickedOk = selection.PromptManualFrame(rangeMode==1?ManualFrameSelectionMode.TwoCorners:ManualFrameSelectionMode.EntityGroup,out var picked) && picked!=null;
+                        if(!pickedOk)
+                        {
+                            lblStatus.Text="已取消单张 PDF，批量列表保留。";
+                            SinglePdfTrace.Write("ExecuteSinglePdf.Cancelled", "Manual selection cancelled");
+                            return null;
+                        }
+                        frame=picked!;
                     }
-                    frame=picked;
+                    finally
+                    {
+                        if(wasVisible){Show();BringToFront();}
+                    }
                 }
                 EnsureFrameContextsAccessible(new[]{frame});
                 var prepared=PrepareStampFrames(new[]{frame})[0];
@@ -130,7 +139,6 @@ namespace FastBatchPlot.UI.Views
                 config.OutputDirectory=Path.GetDirectoryName(path)!;config.MergedFileName="";
                 var run=new BatchPlotRun(new[]{new BatchPage(prepared,path)},config);
                 BeginPdfTaskRecord(run,"");
-                if (!wasVisible) Show();
                 // 单张也使用统一任务调度、历史和来源核验；原列表状态不被临时任务覆盖。
                 await RunValidatedPlotPages(run,new[]{prepared},host,plotter,p=>PlotOutputCommitter.Validate(p,plan));
                 await YieldToUiMessageLoopAsync();
@@ -147,7 +155,6 @@ namespace FastBatchPlot.UI.Views
             finally
             {
                 EndTaskHistoryRecording();FinishPlotTask();SetPlottingState(false);
-                if(wasVisible){Show();Activate();}
                 SinglePdfTrace.Write("ExecuteSinglePdf.Finally", "Cleaned up plotting state");
             }
         }
