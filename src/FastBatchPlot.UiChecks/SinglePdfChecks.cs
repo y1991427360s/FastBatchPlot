@@ -58,6 +58,26 @@ internal static partial class Program
             records=Directory.GetFiles(Path.Combine(root,"tasks"),"*.json").Select(PdfTaskHistory.Load).ToList();
             Check(records.Single(r=>r.Pages[0].OutputPath.EndsWith("bad.pdf")).Pages[0].State==BatchPageState.Failed,"无效 PDF 在记录成功前被拒绝，历史记为失败");
             Check(form.Visible&&!Field<bool>(form,"_isPlotting")&&frame.Status=="原状态","单张失败也恢复界面、保留原行状态");
+
+            // 回归验证：单张成功后按钮激活，且支持连续两次执行与取消后重试，界面不卡死
+            plotter.Invalid = false;
+            var openBtn = Field<Button>(form, "btnOpenSinglePdf");
+            var saveBtn = Field<Button>(form, "btnSaveSinglePdfAs");
+            var consecutive1 = (System.Threading.Tasks.Task<string?>)Call(form, "ExecuteSinglePdf", 0, Path.Combine(root, "consec1.pdf"))!;
+            PumpUntil(consecutive1);
+            Check(File.Exists(consecutive1.Result!) && openBtn.Enabled && saveBtn.Enabled, "单张成功后打开和另存按钮已启用且文件存在");
+
+            var consecutive2 = (System.Threading.Tasks.Task<string?>)Call(form, "ExecuteSinglePdf", 0, Path.Combine(root, "consec2.pdf"))!;
+            PumpUntil(consecutive2);
+            Check(File.Exists(consecutive2.Result!) && form.Visible && !Field<bool>(form, "_isPlotting"), "连续第二次单张执行成功且窗体处于非打印空闲态");
+
+            host.ManualFrame = null;
+            var cancelThenRun = (System.Threading.Tasks.Task<string?>)Call(form, "ExecuteSinglePdf", 1, Path.Combine(root, "cancelled2.pdf"))!;
+            PumpUntil(cancelThenRun);
+            Check(cancelThenRun.Result == null && !Field<bool>(form, "_isPlotting"), "取消手工框选后恢复空闲状态");
+            var recover = (System.Threading.Tasks.Task<string?>)Call(form, "ExecuteSinglePdf", 0, Path.Combine(root, "recovered.pdf"))!;
+            PumpUntil(recover);
+            Check(File.Exists(recover.Result!) && form.Visible && !Field<bool>(form, "_isPlotting"), "取消手工范围后再次执行单张正常完成");
         }
         finally{CadHostProvider.Host=oldHost;CadHostProvider.Plotter=oldPlotter;Directory.Delete(root,true);}
     }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastBatchPlot.CadBridge;
 using FastBatchPlot.Core.Models;
+using FastBatchPlot.Core.Pdf;
 using FastBatchPlot.Core.Tasks;
 
 namespace FastBatchPlot.UI.Views
@@ -75,7 +76,7 @@ namespace FastBatchPlot.UI.Views
         {
             if(_activeRun!=null)throw new InvalidOperationException("已有任务正在执行。");
             _activeRun=run;btnCancelPlot.Enabled=true;
-            var completion=new TaskCompletionSource<bool>();var timer=new Timer{Interval=75};bool inTick=false;
+            var completion=new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);var timer=new Timer{Interval=75};bool inTick=false;
             Action finish=()=>
             {
                 timer.Stop();timer.Dispose();Text=_baseTitle;
@@ -89,7 +90,13 @@ namespace FastBatchPlot.UI.Views
                 try
                 {
                     // 最后一页之后再交还一次消息循环，接收合并前取消。
-                    if(run.IsFinished){finish();completion.SetResult(true);return;}
+                    if(run.IsFinished)
+                    {
+                        SinglePdfTrace.Write("TaskRun.Finished", "run.IsFinished is true; completing task");
+                        finish();
+                        completion.TrySetResult(true);
+                        return;
+                    }
                     run.Step((page,config)=>
                     {
                         if(!ReferenceEquals(host,CadHostProvider.Host)||!ReferenceEquals(plotter,CadHostProvider.Plotter))
@@ -132,7 +139,13 @@ namespace FastBatchPlot.UI.Views
                     // 只刷新本批次行的状态列；整表重建会让大批次闪烁、跳回顶部并重复计算命名。
                     RefreshRowStatuses(original);
                 }
-                catch(Exception ex){finish();FinishPlotTask();completion.SetException(ex);}
+                catch(Exception ex)
+                {
+                    SinglePdfTrace.Write("TaskRun.Error", ex.Message);
+                    finish();
+                    FinishPlotTask();
+                    completion.TrySetException(ex);
+                }
                 finally{inTick=false;}
             };
             timer.Start();return completion.Task;

@@ -40,6 +40,8 @@ namespace FastBatchPlot.UI.Views
         private NumericUpDown numDetectionScale = null!;
         private Button btnPickSample = null!;
         private ComboBox cboDetectMode = null!;
+        private Button btnOpenSinglePdf = null!;
+        private Button btnSaveSinglePdfAs = null!;
 
         // UI Controls
         private DataGridView dgvDrawings = null!;
@@ -129,6 +131,48 @@ namespace FastBatchPlot.UI.Views
                 }
             };
             btnSinglePdf = CreateButton("单张 PDF…", async (s,e) => await ShowSinglePdfOptions());
+            btnOpenSinglePdf = CreateButton("打开单张 PDF", (s,e) =>
+            {
+                if (File.Exists(_lastSinglePdfPath))
+                {
+                    string err = TryOpenSinglePdfCore(_lastSinglePdfPath);
+                    if (err.Length > 0) lblStatus.Text = err;
+                    else lblStatus.Text = "已打开单张 PDF：" + _lastSinglePdfPath;
+                }
+                else
+                {
+                    lblStatus.Text = "单张 PDF 文件不存在或已被移动。";
+                    btnOpenSinglePdf.Enabled = false;
+                    btnSaveSinglePdfAs.Enabled = false;
+                }
+            });
+            btnOpenSinglePdf.Enabled = false;
+            btnSaveSinglePdfAs = CreateButton("另存为…", (s,e) =>
+            {
+                if (File.Exists(_lastSinglePdfPath))
+                {
+                    using (var picker = new SaveFileDialog { Filter = "PDF 文件 (*.pdf)|*.pdf", DefaultExt = "pdf", AddExtension = true, FileName = Path.GetFileName(_lastSinglePdfPath), OverwritePrompt = true })
+                    {
+                        if (picker.ShowDialog(this) != DialogResult.OK) return;
+                        try
+                        {
+                            SinglePdfFile.SaveCopy(_lastSinglePdfPath, picker.FileName, true);
+                            lblStatus.Text = "单张 PDF 已另存至：" + picker.FileName;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(this, ex.Message, "另存失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    lblStatus.Text = "单张 PDF 文件不存在或已被移动。";
+                    btnOpenSinglePdf.Enabled = false;
+                    btnSaveSinglePdfAs.Enabled = false;
+                }
+            });
+            btnSaveSinglePdfAs.Enabled = false;
             btnDetectionReport = CreateButton("识别报告", (s,e) => ShowDetectionReport());
             btnAutoDetect = CreateButton("🔍 搜索图框", (s, e) => AutoDetectFrames());
             cboScanScope = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = 120 };
@@ -171,7 +215,7 @@ namespace FastBatchPlot.UI.Views
             cboSortRule.SelectedIndex = 0;
             cboSortRule.SelectedIndexChanged += (s, e) => ReorderFrames();
 
-            pnlTop.Controls.AddRange(new Control[] { new Label { Text = "模式:", AutoSize = true, Padding = new Padding(0,8,0,0) }, cboDetectMode, cboScanScope, btnAutoDetect, btnSinglePdf, btnDetectionReport, btnSelectFrames, btnWindow, btnGroup, btnPickSample, btnLayerFilter, btnClearFilter,
+            pnlTop.Controls.AddRange(new Control[] { new Label { Text = "模式:", AutoSize = true, Padding = new Padding(0,8,0,0) }, cboDetectMode, cboScanScope, btnAutoDetect, btnSinglePdf, btnOpenSinglePdf, btnSaveSinglePdfAs, btnDetectionReport, btnSelectFrames, btnWindow, btnGroup, btnPickSample, btnLayerFilter, btnClearFilter,
                 new Label { Text = "面积过滤(%)", AutoSize = true, Padding = new Padding(0,8,0,0) }, numAreaFilter, chkRemoveDuplicates, chkRemoveNestedFrames,
                 new Label { Text = "识别比例 1:（0自动）", AutoSize=true,Padding=new Padding(0,8,0,0)},numDetectionScale,
                 btnSelectAll, btnInvertSelect, lblSort, cboSortRule, btnSort, btnExportCatalog });
@@ -195,7 +239,16 @@ namespace FastBatchPlot.UI.Views
             // 右键菜单
             ctxMenu = new ContextMenuStrip();
             ctxMenu.Items.Add("单张 PDF 输出…", null, async (s,e) => await ShowSinglePdfOptions());
-            ctxMenu.Items.Add("最近单张 PDF（打开/另存）", null, (s,e) => { if(File.Exists(_lastSinglePdfPath)) ShowSinglePdfResult(_lastSinglePdfPath, ""); else lblStatus.Text="本次会话尚无单张 PDF，或文件已被移走。"; });
+            ctxMenu.Items.Add("最近单张 PDF（打开）", null, (s,e) =>
+            {
+                if(File.Exists(_lastSinglePdfPath))
+                {
+                    string err = TryOpenSinglePdfCore(_lastSinglePdfPath);
+                    if (err.Length > 0) lblStatus.Text = err;
+                    else lblStatus.Text = "已打开最近单张 PDF：" + _lastSinglePdfPath;
+                }
+                else lblStatus.Text="本次会话尚无单张 PDF，或文件已被移走。";
+            });
             ctxMenu.Items.Add("打印预览（选中一行）", null, (s,e) => PreviewSelectedFrame());
             ctxMenu.Items.Add("🔍 在CAD中定位此图 (双击)", null, (s, e) => LocateSelectedFrameInCad());
             ctxMenu.Items.Add(new ToolStripSeparator());

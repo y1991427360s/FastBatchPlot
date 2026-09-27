@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FastBatchPlot.CadBridge;
 using FastBatchPlot.Core.Models;
+using FastBatchPlot.Core.Pdf;
 using ZwSoft.ZwCAD.ApplicationServices;
 using ZwSoft.ZwCAD.DatabaseServices;
 
@@ -63,6 +64,7 @@ namespace FastBatchPlot.ZWCAD
         public void Activate()
         {
             EnsureActiveDocument();
+            SinglePdfTrace.Write("ZwCadLayoutContext.Activate.Start", $"TargetLayout={_targetLayout}");
             // 在 setter 前标记，使切换部分成功但随后抛错也会恢复。
             _activationAttempted = true;
             // 布局保存时激活了视口（很常见），切过去后先回到图纸空间，结束后再恢复。
@@ -75,6 +77,7 @@ namespace FastBatchPlot.ZWCAD
             ExitFloatingViewport();
             if (!IsAtLayout(_targetLayout, _targetSpace))
                 throw new InvalidOperationException("CAD 未能切换到图框来源空间，已停止打印。");
+            SinglePdfTrace.Write("ZwCadLayoutContext.Activate.End", $"CurrentLayout={LayoutManager.Current.CurrentLayout}");
         }
 
         public void Dispose()
@@ -85,6 +88,7 @@ namespace FastBatchPlot.ZWCAD
             {
                 if (!_activationAttempted) return;
                 EnsureActiveDocument();
+                SinglePdfTrace.Write("ZwCadLayoutContext.Dispose.Start", $"Restoring to {_originalLayout}");
                 if (!IsAtLayout(_originalLayout, _originalSpace))
                 {
                     _layoutSwitchAttempted = true;
@@ -95,12 +99,21 @@ namespace FastBatchPlot.ZWCAD
                     throw new InvalidOperationException("原空间校验不一致。");
                 // 用户原本在浮动视口内工作时先恢复该状态；原视图是视口内的模型视图，必须在视口中恢复。
                 if (_originalFloating && (_switchedToPaperSpace || _layoutSwitchAttempted) && !InFloatingViewport())
+                {
+                    SinglePdfTrace.Write("ZwCadLayoutContext.Dispose.SwitchToModelSpace");
                     _document.Editor.SwitchToModelSpace();
+                }
                 // 同布局输出未改视图；重复写入相同视图也会触发数据库修改事件。
-                if (_layoutSwitchAttempted) _document.Editor.SetCurrentView(_originalView);
+                if (_layoutSwitchAttempted)
+                {
+                    SinglePdfTrace.Write("ZwCadLayoutContext.Dispose.SetCurrentView");
+                    _document.Editor.SetCurrentView(_originalView);
+                }
+                SinglePdfTrace.Write("ZwCadLayoutContext.Dispose.End", $"Restored layout={LayoutManager.Current.CurrentLayout}");
             }
             catch (Exception ex)
             {
+                SinglePdfTrace.Write("ZwCadLayoutContext.Dispose.Error", ex.Message);
                 throw new InvalidOperationException("打印后恢复原布局或视图失败，未提交输出文件：" + ex.Message, ex);
             }
             finally { _originalView.Dispose(); }

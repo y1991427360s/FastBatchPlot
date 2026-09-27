@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using FastBatchPlot.Core.Planning;
 using FastBatchPlot.CadBridge;
 using FastBatchPlot.Core.Models;
+using FastBatchPlot.Core.Pdf;
 using ZwSoft.ZwCAD.ApplicationServices;
 using ZwSoft.ZwCAD.DatabaseServices;
 using ZwSoft.ZwCAD.Geometry;
@@ -251,6 +252,7 @@ namespace FastBatchPlot.ZWCAD
                             if (!plotInfo.IsValidated || !deviceMatched)
                                 throw new InvalidOperationException("宿主没有保留所选打印设备，已停止出图。");
                         }
+                        SinglePdfTrace.Write("ZwCadPlotEngine.ProcessPlotState.Check", PlotFactory.ProcessPlotState.ToString());
                         if (PlotFactory.ProcessPlotState != ProcessPlotState.NotPlotting)
                             throw new InvalidOperationException("CAD 打印引擎正忙，未执行本次打印。");
 
@@ -265,21 +267,37 @@ namespace FastBatchPlot.ZWCAD
                         {
                             FastBatchPlot.Core.Assets.StampOutputGuard.Resolve(config);
                             stage = "开始打印";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginPlot.Before");
                             pe.BeginPlot(null, null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginPlot.After");
                             deviceSubmissionStarted = !preview && toPrinter;
                             stage = "开始输出文档";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginDocument.Before", temporaryPath ?? "(printer)");
                             pe.BeginDocument(plotInfo, doc.Name, null, !preview && toPrinter ? config.Copies : 1, !preview && !toPrinter, temporaryPath);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginDocument.After");
                             stage = "开始输出页面";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginPage.Before");
                             pe.BeginPage(pageInfo, plotInfo, true, null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginPage.After");
                             stage = "生成页面图形";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginGenerateGraphics.Before");
                             pe.BeginGenerateGraphics(null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.BeginGenerateGraphics.After");
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndGenerateGraphics.Before");
                             pe.EndGenerateGraphics(null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndGenerateGraphics.After");
                             stage = "结束输出页面";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndPage.Before");
                             pe.EndPage(previewInfo);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndPage.After");
                             stage = "结束输出文档";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndDocument.Before");
                             pe.EndDocument(null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndDocument.After");
                             stage = "结束打印";
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndPlot.Before");
                             pe.EndPlot(null);
+                            SinglePdfTrace.Write("ZwCadPlotEngine.EndPlot.After");
                             if (previewInfo != null)
                             {
                                 switch (previewInfo.Status)
@@ -291,6 +309,7 @@ namespace FastBatchPlot.ZWCAD
                                 }
                             }
                         }
+                        SinglePdfTrace.Write("ZwCadPlotEngine.PublishEngine.Disposed");
                     }
                     }
                     catch(Exception ex){stampFailure=ex;throw;}
@@ -308,17 +327,25 @@ namespace FastBatchPlot.ZWCAD
                     tr.Abort();
                     }
                 }
+                SinglePdfTrace.Write("ZwCadPlotEngine.LayoutContext.Disposed");
                 stage = "恢复打印环境";
                 if(previousImageFrame!=null){Application.SetSystemVariable("IMAGEFRAME",previousImageFrame);previousImageFrame=null;}
                 Application.SetSystemVariable("BACKGROUNDPLOT", previousBackgroundPlot);
                 previousBackgroundPlot = null;
                 if(stampTemporaryPath!=null){File.Delete(stampTemporaryPath);stampTemporaryPath=null;}
                 stage = "校验并提交输出文件";
-                if (!preview && !toPrinter) PlotFileFormats.ValidateAndCommit(temporaryPath!, outputFilePath!, config.ExportFormat, plan, config.OverwriteExisting);
+                if (!preview && !toPrinter)
+                {
+                    SinglePdfTrace.Write("ZwCadPlotEngine.ValidateAndCommit.Before", outputFilePath);
+                    PlotFileFormats.ValidateAndCommit(temporaryPath!, outputFilePath!, config.ExportFormat, plan, config.OverwriteExisting);
+                    SinglePdfTrace.Write("ZwCadPlotEngine.ValidateAndCommit.After", outputFilePath);
+                }
+                SinglePdfTrace.Write("ZwCadPlotEngine.ProcessPlotState.After", PlotFactory.ProcessPlotState.ToString());
                 return true;
             }
             catch (Exception ex)
             {
+                SinglePdfTrace.Write("ZwCadPlotEngine.Error", $"Stage: {stage}, Error: {ex.Message}");
                 LogPlotError(stage, ex);
                 errorMessage = stage + "失败：" + ex.Message + (deviceSubmissionStarted ? " 设备可能已接收本页任务，请先检查打印队列，避免重复提交。" : "");
                 return false;
